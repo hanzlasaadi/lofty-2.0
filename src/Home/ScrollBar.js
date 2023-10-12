@@ -6,15 +6,15 @@ const ScrollBar = () => {
   const listRef = useRef(null);
   useEffect(() => {
     const handleScroll = () => {
-      if (listRef.current) {
-        const scrollOffset =
-          window.pageYOffset || document.documentElement.scrollTop;
-        listRef.current.scrollTo({
-          top: 0,
-          left: scrollOffset,
-          behavior: "smooth",
-        });
-      }
+      // if (listRef.current) {
+      //   const scrollOffset =
+      //     window.pageYOffset || document.documentElement.scrollTop;
+      //   listRef.current.scrollTo({
+      //     top: 0,
+      //     left: scrollOffset,
+      //     behavior: "smooth",
+      //   });
+      // }
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -43,21 +43,23 @@ const ScrollBar = () => {
       });
     }
   };
-  const  handl=()=> {
+  const handl = () => {
     navigate("Lahore");
-  }
-  const  hand=()=> {
+  };
+  const hand = () => {
     navigate("Karachi");
-  }
-
+  };
 
   return (
     <>
       {/* <!-- ========== Scroll Bar============= --> */}
       <div>
         <br />
-        <div className="list-container" ref={listRef}>
-          <ul className="horizontal-list">
+        <div
+          className="list-container d-flex align-items-center justify-content-center"
+          ref={listRef}
+        >
+          <ul className="horizontal-list d-flex flex-wrap gap-3 justify-content-center">
             <li onClick={handl}> Lahore </li>
             <li>Islamabad</li>
             <li onClick={hand}>Karachi</li>
@@ -78,14 +80,20 @@ const ScrollBar = () => {
           <div class="essential-items-area mb-120">
             <div class="section-title3"></div>
             <div class="slider-btn-wrap">
-              <div class="slider-btn prev-btn-12">
-                {/* left */}
-                <i onClick={moveLeft} class="bi bi-arrow-left" style={{cursor:"pointer"}}></i>
+              {/* <div class="slider-btn prev-btn-12">
+                <i
+                  onClick={moveLeft}
+                  class="bi bi-arrow-left"
+                  style={{ cursor: "pointer" }}
+                ></i>
               </div>
-              {/* right */}
               <div class="slider-btn next-btn-12">
-                <i onClick={moveRight} class="bi bi-arrow-right" style={{cursor:"pointer"}}></i>
-              </div>
+                <i
+                  onClick={moveRight}
+                  class="bi bi-arrow-right"
+                  style={{ cursor: "pointer" }}
+                ></i>
+              </div> */}
             </div>
           </div>
         </div>
