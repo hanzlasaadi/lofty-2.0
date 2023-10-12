@@ -4,7 +4,7 @@ import Krachi from "./Cities/Krachi";
 import Form from "./Home/Form";
 import Booking from "./Home/Booking";
 import Clinder from "./Home/Clinder";
-// import LoginSignup from "./nav-bar/loginSignup";
+import LoginSignup from "./nav-bar/auth";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
         <Route path="Form" element={<Form />} />
         <Route path="Booking" element={<Booking />} />
         <Route path="Clinder" element={<Clinder />} />
-        {/* <Route path="login" element={<LoginSignup />} /> */}
+        <Route path="login" element={<LoginSignup />} />
       </Routes>
     </BrowserRouter>
   );
