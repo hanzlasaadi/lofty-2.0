@@ -132,7 +132,7 @@ const NavBar = () => {
               {/* <  login form  Start> */}
               <nav className="navbar navbar-expand-lg ">
                 <div className="navbar-nav ml-auto action-buttons">
-                  <div className="nav-item dropdown">
+                  {/* <div className="nav-item dropdown">
                     <a
                       href="#"
                       data-toggle="dropdown"
@@ -141,10 +141,7 @@ const NavBar = () => {
                       Login
                     </a>
                     <div className="dropdown-menu action-form">
-                      <span
-                        action="/examples/actions/confirmation.php"
-                        method="post"
-                      >
+                      <span method="post">
                         <p className="hint-text">
                           Sign in with your social media account
                         </p>
@@ -282,11 +279,14 @@ const NavBar = () => {
                           className="btn btn-primary btn-block"
                           onClick={SubmitSignUpForm}
                         >
-                          Sign up{" "}
+                          Login / Signup{" "}
                         </button>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
+                  <Link to={"/login"}>
+                    <p>Login / Signup</p>
+                  </Link>
                 </div>
               </nav>
 
