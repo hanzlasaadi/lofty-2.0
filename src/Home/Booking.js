@@ -121,7 +121,7 @@ const Booking = ({ isLoggedIn, setIsLoggedIn }) => {
           <div class="best">{roomDetails.roomDetail.description}</div>
 
           <div class="err">
-            <Link to="/Clinder">
+            <Link to={`/Clinder/${roomDetails.roomDetail.adId}`}>
               <button type="button" class="btn btn-primary btn-lg">
                 <span class="">
                   Rs.{Math.round(roomDetails.roomDetail.price)}/

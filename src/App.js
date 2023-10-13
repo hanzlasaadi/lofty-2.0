@@ -35,7 +35,7 @@ function App() {
             <Booking isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
           }
         />
-        <Route path="Clinder" element={<Clinder />} />
+        <Route path="Clinder/:roomId" element={<Clinder />} />
         <Route
           path="login"
           element={
@@ -47,7 +47,7 @@ function App() {
         />
         <Route path="Favorite" element={<Favorite />} />
 
-        <Route path="Conformbook" element={<Conformbook />} />
+        <Route path="Conformbook/:roomId" element={<Conformbook />} />
       </Routes>
     </BrowserRouter>
   );
