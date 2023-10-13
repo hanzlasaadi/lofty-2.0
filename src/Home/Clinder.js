@@ -23,11 +23,11 @@ const Clinder = () => {
             <br />
           </div>
           <div className="col-lg-4">
-            <div class="form-group">
+            <div className="form-group">
               <input
                 id="dp1"
                 type="text"
-                class="form-control clickable input-md"
+                className="form-control clickable input-md"
                 // id="DtChkIn"
                 placeholder="&#xf133;  Check-In"
               />
@@ -35,11 +35,11 @@ const Clinder = () => {
           </div>
           <div className="col-lg-4 text-center text-black">to</div>
           <div className="col-lg-4">
-            <div class="form-group">
+            <div className="form-group">
               <input
                 id="dp2"
                 type="text"
-                class="form-control clickable input-md"
+                className="form-control clickable input-md"
                 // id="DtChkOut"
                 placeholder="&#xf133;  Check-Out"
               />
@@ -50,7 +50,7 @@ const Clinder = () => {
         <br />
         <div className="error-h text-center">
           <h2>Note</h2>
-          <div class="badge  text-wrap">
+          <div className="badge  text-wrap">
             All Booking will have Standard Checkin and Checkout time 12PM . 12PM
           </div>
         </div>
@@ -58,9 +58,9 @@ const Clinder = () => {
         <br />
         <br />
         <br />
-        <div class="error-k text-center">
+        <div className="error-k text-center">
           <Link to={`/Conformbook/${roomId}`}>
-            <button type="button" class="btn btn-primary btn-lg">
+            <button type="button" className="btn btn-primary btn-lg">
               CONFIRM
             </button>
           </Link>

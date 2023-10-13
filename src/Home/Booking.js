@@ -25,25 +25,25 @@ const Booking = ({ isLoggedIn, setIsLoggedIn }) => {
   return (
     <>
       <NavBar />
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="error-wrapper">
-              <div class="error-img">
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-12">
+            <div className="error-wrapper">
+              <div className="error-img">
                 <img
-                  class="img-fluid rounded-4"
+                  className="img-fluid rounded-4"
                   src={roomDetails.roomImages[0]}
                   loading="lazy"
                   alt="Room Img"
                 />
-                <div class="icon-img">
-                  <a href="abc" class="link">
+                <div className="icon-img">
+                  <a href="abc" className="link">
                     <svg
                       width="30"
                       height="20"
                       viewBox="0 0 14 13"
                       xmlns="http://www.w3.org/2000/svg"
-                      class="icon-circle"
+                      className="icon-circle"
                     >
                       <path d="M12.4147 1.51371C11.0037 0.302997 8.92573 0.534835 7.61736 1.87434L7.12993 2.38954L6.61684 1.87434C5.33413 0.534835 3.23047 0.302997 1.81948 1.51371C0.203258 2.90473 0.126295 5.37767 1.56294 6.87174L6.53988 12.0237C6.84773 12.3586 7.38647 12.3586 7.69433 12.0237L12.6713 6.87174C14.1079 5.37767 14.0309 2.90473 12.4147 1.51371Z" />
                     </svg>
@@ -53,33 +53,33 @@ const Booking = ({ isLoggedIn, setIsLoggedIn }) => {
             </div>
           </div>
         </div>
-        <div class=" mt-1">
-          <h2 class="Deluxe">{roomDetails.roomDetail.roomType}</h2>
-          <h3 class="FACILITES">FACILITES</h3>
-          <div class="row-ico d-flex">
+        <div className=" mt-1">
+          <h2 className="Deluxe">{roomDetails.roomDetail.roomType}</h2>
+          <h3 className="FACILITES">FACILITES</h3>
+          <div className="row-ico d-flex">
             {roomDetails.facilityList.map((fac, i) => {
               return (
-                <div class="ico c col-lg-2" key={i}>
+                <div className="ico c col-lg-2" key={i}>
                   <img
-                    class="u"
+                    className="u"
                     src={fac.image}
                     alt={fac.facilityName}
                     loading="lazy"
                   />
-                  <span class="number">{fac.facilityName}</span>
+                  <span className="number">{fac.facilityName}</span>
                 </div>
               );
             })}
           </div>
-          <h3 class="FACILITES">GALLERY</h3>
-          <div class="row gutters justify-content-center">
+          <h3 className="FACILITES">GALLERY</h3>
+          <div className="row gutters justify-content-center">
             {roomDetails.roomImages.slice(1).map((img, i) => {
               return (
-                <div class="col-lg-4 col-md-4 col-xs-6 thumb" key={i}>
-                  <a href={img} class="fancybox" rel="ligthbox">
+                <div className="col-lg-4 col-md-4 col-xs-6 thumb" key={i}>
+                  <a href={img} className="fancybox" rel="ligthbox">
                     <img
                       src={img}
-                      class="zoom img-fluid"
+                      className="zoom img-fluid"
                       alt=""
                       loading="lazy"
                     />
@@ -89,45 +89,45 @@ const Booking = ({ isLoggedIn, setIsLoggedIn }) => {
             })}
           </div>
           <div className="container">
-            <h3 class="FACILITES locatoin">
+            <h3 className="FACILITES locatoin">
               ABOUT HOTEL
               <img src="https://cdn-icons-png.flaticon.com/512/9800/9800512.png" />
             </h3>
-            <div class="bor">
-              <div class="col">
-                <h5 class="b">Hotel Name:</h5>
+            <div className="bor">
+              <div className="col">
+                <h5 className="b">Hotel Name:</h5>
                 <br />
-                <h5 class="a">{roomDetails.roomDetail.hotelName}</h5>
+                <h5 className="a">{roomDetails.roomDetail.hotelName}</h5>
               </div>
-              <div class="col">
-                <h5 class="b">Location:</h5>
+              <div className="col">
+                <h5 className="b">Location:</h5>
                 <br />
-                <h5 class="a">{roomDetails.roomDetail.location}</h5>
+                <h5 className="a">{roomDetails.roomDetail.location}</h5>
               </div>
-              <div class="col">
-                <h5 class="b">Room Number:</h5>
+              <div className="col">
+                <h5 className="b">Room Number:</h5>
                 <br />
-                <h5 class="a">{roomDetails.roomDetail.roomNo}</h5>
+                <h5 className="a">{roomDetails.roomDetail.roomNo}</h5>
               </div>
             </div>
           </div>
           <br />
-          <div class="error">
-            <button type="button" class="btn btn-primary btn-lg ">
-              View Hotel Detail <i class="bi bi-chevron-right"></i>
+          <div className="error">
+            <button type="button" className="btn btn-primary btn-lg ">
+              View Hotel Detail <i className="bi bi-chevron-right"></i>
             </button>
           </div>
-          <h3 class="FACILITES locatoin">DESCRIPTION</h3>
-          <div class="best">{roomDetails.roomDetail.description}</div>
+          <h3 className="FACILITES locatoin">DESCRIPTION</h3>
+          <div className="best">{roomDetails.roomDetail.description}</div>
 
-          <div class="err">
+          <div className="err">
             <Link to={`/Clinder/${roomDetails.roomDetail.adId}`}>
-              <button type="button" class="btn btn-primary btn-lg">
-                <span class="">
+              <button type="button" className="btn btn-primary btn-lg">
+                <span className="">
                   Rs.{Math.round(roomDetails.roomDetail.price)}/
                 </span>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BOOK NOW{" "}
-                <i class="bi bi-arrow-right"></i>
+                <i className="bi bi-arrow-right"></i>
               </button>
             </Link>
           </div>

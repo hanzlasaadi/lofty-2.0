@@ -25,14 +25,14 @@ const Krachi = () => {
   return (
     <>
       <NavBar />
-      <div class="shop-page pt-30 mb-120">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-3">
-              <div class="shop-sidebar">
-                {/* <div class="card">
-                  <div class="card-body">
-                    <div class="map-container">
+      <div className="shop-page pt-30 mb-120">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-3">
+              <div className="shop-sidebar">
+                {/* <div className="card">
+                  <div className="card-body">
+                    <div className="map-container">
                       <iframe
                         src="https://www.google.com/maps/embed?pb=..."
                         width="100%"
@@ -45,139 +45,143 @@ const Krachi = () => {
                   </div>
                 </div> */}
 
-                <div class="shop-widget">
-                  <div class="check-box-item">
-                    <h5 class="shop-widget-title">Property Type</h5>
-                    <div class="checkbox-container">
-                      <label class="containerss">
+                <div className="shop-widget">
+                  <div className="check-box-item">
+                    <h5 className="shop-widget-title">Property Type</h5>
+                    <div className="checkbox-container">
+                      <label className="containerss">
                         Hotels
                         <input type="checkbox" checked="checked" />
-                        <span class="checkmark"></span>
+                        <span className="checkmark"></span>
                       </label>
-                      <label class="containerss">
+                      <label className="containerss">
                         Hostels
                         <input type="checkbox" />
-                        <span class="checkmark"></span>
+                        <span className="checkmark"></span>
                       </label>
-                      <label class="containerss">
+                      <label className="containerss">
                         Apartments
                         <input type="checkbox" />
-                        <span class="checkmark"></span>
+                        <span className="checkmark"></span>
                       </label>
-                      <label class="containerss">
+                      <label className="containerss">
                         Apartment hotels
                         <input type="checkbox" />
-                        <span class="checkmark"></span>
+                        <span className="checkmark"></span>
                       </label>
-                      <label class="containerss">
+                      <label className="containerss">
                         Guesthouses
                         <input type="checkbox" />
-                        <span class="checkmark"></span>
+                        <span className="checkmark"></span>
                       </label>
-                      <label class="containerss">
+                      <label className="containerss">
                         Cottages
                         <input type="checkbox" />
-                        <span class="checkmark"></span>
+                        <span className="checkmark"></span>
                       </label>
                     </div>
                   </div>
                 </div>
 
-                <div class="shop-widget">
-                  <div class="check-box-item">
-                    <h5 class="shop-widget-title">Facilities and Services</h5>
-                    <div class="checkbox-container">
-                      <label class="containerss">
+                <div className="shop-widget">
+                  <div className="check-box-item">
+                    <h5 className="shop-widget-title">
+                      Facilities and Services
+                    </h5>
+                    <div className="checkbox-container">
+                      <label className="containerss">
                         Free Wi-Fi
                         <input type="checkbox" checked="checked" />
-                        <span class="checkmark"></span>
+                        <span className="checkmark"></span>
                       </label>
-                      <label class="containerss">
+                      <label className="containerss">
                         Free parking
                         <input type="checkbox" />
-                        <span class="checkmark"></span>
+                        <span className="checkmark"></span>
                       </label>
-                      <label class="containerss">
+                      <label className="containerss">
                         Swimming pool
                         <input type="checkbox" />
-                        <span class="checkmark"></span>
+                        <span className="checkmark"></span>
                       </label>
-                      <label class="containerss">
+                      <label className="containerss">
                         Spa
                         <input type="checkbox" />
-                        <span class="checkmark"></span>
+                        <span className="checkmark"></span>
                       </label>
                     </div>
                   </div>
                 </div>
 
-                <div class="shop-widget">
-                  <div class="check-box-item">
-                    <h5 class="shop-widget-title">Accommodation Features</h5>
-                    <div class="checkbox-container">
-                      <label class="containerss">
+                <div className="shop-widget">
+                  <div className="check-box-item">
+                    <h5 className="shop-widget-title">
+                      Accommodation Features
+                    </h5>
+                    <div className="checkbox-container">
+                      <label className="containerss">
                         Air Conditioning
                         <input type="checkbox" checked="checked" />
-                        <span class="checkmark"></span>
+                        <span className="checkmark"></span>
                       </label>
-                      <label class="containerss">
+                      <label className="containerss">
                         Balcony
                         <input type="checkbox" />
-                        <span class="checkmark"></span>
+                        <span className="checkmark"></span>
                       </label>
-                      <label class="containerss">
+                      <label className="containerss">
                         Kitchen
                         <input type="checkbox" />
-                        <span class="checkmark"></span>
+                        <span className="checkmark"></span>
                       </label>
-                      <label class="containerss">
+                      <label className="containerss">
                         TV
                         <input type="checkbox" />
-                        <span class="checkmark"></span>
+                        <span className="checkmark"></span>
                       </label>
                     </div>
                   </div>
                 </div>
 
-                <div class="shop-widget">
-                  <div class="check-box-item">
-                    <h5 class="shop-widget-title">Meals</h5>
-                    <div class="checkbox-container">
-                      <label class="containerss">
+                <div className="shop-widget">
+                  <div className="check-box-item">
+                    <h5 className="shop-widget-title">Meals</h5>
+                    <div className="checkbox-container">
+                      <label className="containerss">
                         Breakfast
                         <input type="checkbox" checked="checked" />
-                        <span class="checkmark"></span>
+                        <span className="checkmark"></span>
                       </label>
-                      <label class="containerss">
+                      <label className="containerss">
                         Lunch
                         <input type="checkbox" />
-                        <span class="checkmark"></span>
+                        <span className="checkmark"></span>
                       </label>
-                      <label class="containerss">
+                      <label className="containerss">
                         Dinner
                         <input type="checkbox" />
-                        <span class="checkmark"></span>
+                        <span className="checkmark"></span>
                       </label>
-                      <label class="containerss">
+                      <label className="containerss">
                         All Inclusive
                         <input type="checkbox" />
-                        <span class="checkmark"></span>
+                        <span className="checkmark"></span>
                       </label>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-lg-9">
-              <div class="row mb-50">
-                <div class="col-lg-12">
-                  <div class="multiselect-bar">
+            <div className="col-lg-9">
+              <div className="row mb-50">
+                <div className="col-lg-12">
+                  <div className="multiselect-bar">
                     <h6>LOFTYROOMS</h6>
-                    <div class="multiselect-area">
-                      <div class="single-select">
+                    <div className="multiselect-area">
+                      <div className="single-select">
                         <span>Show</span>
                         <select
-                          class="defult-select-drowpown"
+                          className="defult-select-drowpown"
                           id="color-dropdown"
                         >
                           <option selected value="0">
@@ -189,9 +193,9 @@ const Krachi = () => {
                           <option value="4">25</option>
                         </select>
                       </div>
-                      <div class="single-select two">
+                      <div className="single-select two">
                         <select
-                          class="defult-select-drowpown"
+                          className="defult-select-drowpown"
                           id="eyes-dropdown"
                         >
                           <option selected value="0">
@@ -210,12 +214,15 @@ const Krachi = () => {
               {/* hanzla */}
               {allRooms.map((room) => {
                 return (
-                  <div class="row search-card-result rounded-4" key={room.adId}>
-                    <div class="col-md-5">
+                  <div
+                    className="row search-card-result rounded-4"
+                    key={room.adId}
+                  >
+                    <div className="col-md-5">
                       {/* 👇️ react router link */}
                       <Link to={`/Booking/${room.adId}`}>
                         <img
-                          class="img-fluid rounded-4"
+                          className="img-fluid rounded-4"
                           src={`${room.adImage1}`}
                           alt="Room Image"
                           loading="lazy"
@@ -224,31 +231,31 @@ const Krachi = () => {
                     </div>
 
                     <Link className="col-md-7" to={`/Booking/${room.adId}`}>
-                      {/* <div class="col-md-7"> */}
-                      <span class="room-title">{room.roomType}</span>
+                      {/* <div className="col-md-7"> */}
+                      <span className="room-title">{room.roomType}</span>
                       <p>
-                        <span class="titl">&nbsp;</span>
+                        <span className="titl">&nbsp;</span>
                       </p>
                       <p>
-                        <span class="price">
+                        <span className="price">
                           RS.{Math.round(room.price)}/DAY
                         </span>
                       </p>
                       <p>
-                        <span class="titl">&nbsp;</span>
+                        <span className="titl">&nbsp;</span>
                       </p>
                       <p>
-                        <i class="bi bi-person custom-icon"></i>
-                        <span class="number">{room.noOfPerson}</span>
-                        <i class="bi bi-tv custom-icon"></i>
-                        <span class="number">{room.noOfBed}</span>
+                        <i className="bi bi-person custom-icon"></i>
+                        <span className="number">{room.noOfPerson}</span>
+                        <i className="bi bi-tv custom-icon"></i>
+                        <span className="number">{room.noOfBed}</span>
                       </p>
-                      {/* <div class="review">
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-half"></i>
-                        <i class="bi bi-star"></i>
+                      {/* <div className="review">
+                        <i className="bi bi-star-fill"></i>
+                        <i className="bi bi-star-fill"></i>
+                        <i className="bi bi-star-fill"></i>
+                        <i className="bi bi-star-half"></i>
+                        <i className="bi bi-star"></i>
                       </div> */}
                     </Link>
                   </div>
@@ -256,31 +263,31 @@ const Krachi = () => {
               })}
             </div>
 
-            <div class="center-content">
+            <div className="center-content">
               <div aria-label="Page navigation example">
-                <ul class="pagination">
-                  <li class="page-item">
-                    <a class="page-link" href="#">
+                <ul className="pagination">
+                  <li className="page-item">
+                    <a className="page-link" href="#">
                       Previous
                     </a>
                   </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">
+                  <li className="page-item">
+                    <a className="page-link" href="#">
                       1
                     </a>
                   </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">
+                  <li className="page-item">
+                    <a className="page-link" href="#">
                       2
                     </a>
                   </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">
+                  <li className="page-item">
+                    <a className="page-link" href="#">
                       3
                     </a>
                   </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">
+                  <li className="page-item">
+                    <a className="page-link" href="#">
                       Next
                     </a>
                   </li>

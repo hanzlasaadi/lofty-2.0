@@ -31,52 +31,56 @@ const Conformbook = () => {
               loading="lazy"
             />
           </div>
-          <div class="col-md-4 mt-3">
-            <span class="room-title">{roomDetails.roomDetail.roomType}</span>
+          <div className="col-md-4 mt-3">
+            <span className="room-title">
+              {roomDetails.roomDetail.roomType}
+            </span>
             <p>
-              <span class="titl">&nbsp;</span>
+              <span className="titl">&nbsp;</span>
             </p>
             <p>
-              <span class="price">
+              <span className="price">
                 RS.{Math.round(roomDetails.roomDetail.price)}/DAY
               </span>
             </p>
             <p>
-              <span class="titl">&nbsp;</span>
+              <span className="titl">&nbsp;</span>
             </p>
             <p>
-              <i class="bi bi-person custom-icon"></i>
-              <span class="number">{roomDetails.roomDetail.noOfPerson}</span>
-              <i class="bi bi-tv custom-icon"></i>
-              <span class="number">{roomDetails.roomDetail.noOfBed}</span>
+              <i className="bi bi-person custom-icon"></i>
+              <span className="number">
+                {roomDetails.roomDetail.noOfPerson}
+              </span>
+              <i className="bi bi-tv custom-icon"></i>
+              <span className="number">{roomDetails.roomDetail.noOfBed}</span>
             </p>
-            {/* <div class="review">
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-half"></i>
-              <i class="bi bi-star"></i>
+            {/* <div className="review">
+              <i className="bi bi-star-fill"></i>
+              <i className="bi bi-star-fill"></i>
+              <i className="bi bi-star-fill"></i>
+              <i className="bi bi-star-half"></i>
+              <i className="bi bi-star"></i>
             </div> */}
           </div>
         </div>
       </div>
       {/* ------------------------------ */}
       <div className="container">
-        <h3 class="FACILITES locatoin">
+        <h3 className="FACILITES locatoin">
           ABOUT HOTEL
           {/* <img  src="https://cdn-icons-png.flaticon.com/512/9800/9800512.png" /> */}
         </h3>
-        <div class="bor row">
-          <div class="col-lg-8 ">
-            <h5 class="a">Hotel Name:</h5>
+        <div className="bor row">
+          <div className="col-lg-8 ">
+            <h5 className="a">Hotel Name:</h5>
             <br />
-            <h5 class="a">Location:</h5>
+            <h5 className="a">Location:</h5>
           </div>
 
-          <div class="col-lg-4">
-            <h5 class="b">{roomDetails.roomDetail.hotelName}</h5>
+          <div className="col-lg-4">
+            <h5 className="b">{roomDetails.roomDetail.hotelName}</h5>
             <br />
-            <h5 class="b">{roomDetails.roomDetail.location}</h5>
+            <h5 className="b">{roomDetails.roomDetail.location}</h5>
           </div>
         </div>
       </div>
