@@ -212,12 +212,12 @@ const Krachi = () => {
               {/* hanzla */}
               {allRooms.map((room) => {
                 return (
-                  <div class="row search-card-result" key={room.adId}>
+                  <div class="row search-card-result rounded-4" key={room.adId}>
                     <div class="col-md-5">
                       {/* 👇️ react router link */}
                       <Link to="/Booking">
                         <img
-                          class="img-fluid"
+                          class="img-fluid rounded-4"
                           src={`${room.adImage1}`}
                           alt="Card image cap"
                         />
@@ -226,16 +226,16 @@ const Krachi = () => {
 
                     <div class="col-md-7">
                       <span class="room-title">{room.roomType}</span>
-                      {/* <p>
-                        <span class="titl">
-                          Join over 1 Million of users. Dignissimos
-                          asspaneriores vitae velit veniam
-                        </span>
-                      </p> */}
+                      <p>
+                        <span class="titl">&nbsp;</span>
+                      </p>
                       <p>
                         <span class="price">
                           RS.{Math.round(room.price)}/DAY
                         </span>
+                      </p>
+                      <p>
+                        <span class="titl">&nbsp;</span>
                       </p>
                       <p>
                         <i class="bi bi-person custom-icon"></i>
