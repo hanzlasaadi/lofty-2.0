@@ -6,17 +6,15 @@ import NavBar from "../nav-bar/NavBar";
 import "./Krachi.css";
 import { Link } from "react-router-dom";
 import Footer from "../Home/Footer";
-import Booking from "../Home/Booking";
+// import Booking from "../Home/Booking";
 import axios from "axios";
+import { apiUrl } from "../assets/utils/env";
 
 const Krachi = () => {
   const [allRooms, setAllRooms] = useState([]);
   React.useEffect(() => {
     axios
-      .get(
-        `https://loftyrooms.cyberasol.com/api/api/Customer/GetAllRoomsCityWise?CityId=${1}
-    `
-      )
+      .get(`${apiUrl}/api/Customer/GetAllRoomsCityWise?CityId=${1}`)
       .then((res) => {
         setAllRooms(res.data.data);
         console.log(res.data.data);
@@ -215,16 +213,18 @@ const Krachi = () => {
                   <div class="row search-card-result rounded-4" key={room.adId}>
                     <div class="col-md-5">
                       {/* 👇️ react router link */}
-                      <Link to="/Booking">
+                      <Link to={`/Booking/${room.adId}`}>
                         <img
                           class="img-fluid rounded-4"
                           src={`${room.adImage1}`}
-                          alt="Card image cap"
+                          alt="Room Image"
+                          loading="lazy"
                         />
                       </Link>
                     </div>
 
-                    <div class="col-md-7">
+                    <Link className="col-md-7" to={`/Booking/${room.adId}`}>
+                      {/* <div class="col-md-7"> */}
                       <span class="room-title">{room.roomType}</span>
                       <p>
                         <span class="titl">&nbsp;</span>
@@ -250,7 +250,7 @@ const Krachi = () => {
                         <i class="bi bi-star-half"></i>
                         <i class="bi bi-star"></i>
                       </div> */}
-                    </div>
+                    </Link>
                   </div>
                 );
               })}

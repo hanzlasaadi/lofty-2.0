@@ -17,11 +17,11 @@ function App() {
         <Route path="Lahore" element={<Lahore />} />
         <Route path="Karachi" element={<Krachi />} />
         <Route path="Form" element={<Form />} />
-        <Route path="Booking" element={<Booking />} />
+        <Route path="Booking/:roomId" element={<Booking />} />
         <Route path="Clinder" element={<Clinder />} />
         <Route path="login" element={<LoginSignup />} />
         <Route path="Favorite" element={<Favorite />} />
-        
+
         <Route path="Conformbook" element={<Conformbook />} />
       </Routes>
     </BrowserRouter>
