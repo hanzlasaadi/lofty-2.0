@@ -24,23 +24,23 @@ const NavBar = () => {
   }, [displayText]);
   //  <<<<<<<<<<<<<<<<<<<        Forms handling    >>>>>>>>>>>>>>>>>>>>>
   const SubmitLoginForm = () => {
-    console.log("setLoginOncHangeData===>>", loginOncHangeData)
-  }
+    console.log("setLoginOncHangeData===>>", loginOncHangeData);
+  };
   const LoginOnChange = (e) => {
     let obj = loginOncHangeData;
     obj[e.target.name] = e.target.value;
     setLoginOncHangeData(obj);
-    console.log("Login", e.target.value)
-  }
+    console.log("Login", e.target.value);
+  };
   const SubmitSignUpForm = () => {
-    console.log("setSignUpOncHangeData===>>", signUpOncHangeData)
-  }
+    console.log("setSignUpOncHangeData===>>", signUpOncHangeData);
+  };
   const SignUpOnChange = (e) => {
     let obj = signUpOncHangeData;
     obj[e.target.name] = e.target.value;
     setSignUpOncHangeData(obj);
-    console.log("SignUp", e.target.value)
-  }
+    console.log("SignUp", e.target.value);
+  };
   const loftyroom = () => {
     navigate("/");
   };
@@ -48,15 +48,14 @@ const NavBar = () => {
   const Whatsapp = () => {
     const phoneNumber = "+923056129012";
     const message = "Hello";
-    const url = `https://api.whatsapp.com/send?phone=${encodeURIComponent(phoneNumber)}&text=${encodeURIComponent(message)}`;
+    const url = `https://api.whatsapp.com/send?phone=${encodeURIComponent(
+      phoneNumber
+    )}&text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
   };
 
-
-
   return (
     <>
-   
       <div class="cover">
         <div class="contents">
           <h1>Contents</h1>
@@ -73,8 +72,8 @@ const NavBar = () => {
               </h2>
             </div>
           </div>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
-          <div class="main-menu">
+          {/* <div class="collapse navbar-collapse" id="navbarSupportedContent"></div> */}
+          {/* <div class="main-menu">
             <div class="mobile-logo-area d-lg-none d-flex justify-content-between align-items-center">
               <div class="mobile-logo-wrap">
                 <a href="index.html">
@@ -85,9 +84,9 @@ const NavBar = () => {
                 <i class="bi bi-x-lg"></i>
               </div>
             </div>
-          </div>
+          </div> */}
 
-          <div class="nav-right d-flex jsutify-content-end align-items-center">
+          <div class="nav-right d-flex justify-content-end align-items-center">
             <ul>
               <li>
                 <Link to="/Favorite">
@@ -134,22 +133,64 @@ const NavBar = () => {
               <nav class="navbar navbar-expand-lg ">
                 <div class="navbar-nav ml-auto action-buttons">
                   <div class="nav-item dropdown">
-                    <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle mr-4">Login</a>
+                    <a
+                      href="#"
+                      data-toggle="dropdown"
+                      class="nav-link dropdown-toggle mr-4"
+                    >
+                      Login
+                    </a>
                     <div class="dropdown-menu action-form">
-                      <span action="/examples/actions/confirmation.php" method="post">
-                        <p class="hint-text">Sign in with your social media account</p>
+                      <span
+                        action="/examples/actions/confirmation.php"
+                        method="post"
+                      >
+                        <p class="hint-text">
+                          Sign in with your social media account
+                        </p>
                         <div class="form-group social-btn clearfix">
-                          <a href="#" class="btn btn-secondary facebook-btn float-left"><i class="bi bi-facebook"></i> Facebook</a>
-                          <a href="#" class="btn btn-secondary twitter-btn float-right"><i class="bi bi-twitter"></i> Twitter</a>
+                          <a
+                            href="#"
+                            class="btn btn-secondary facebook-btn float-left"
+                          >
+                            <i class="bi bi-facebook"></i> Facebook
+                          </a>
+                          <a
+                            href="#"
+                            class="btn btn-secondary twitter-btn float-right"
+                          >
+                            <i class="bi bi-twitter"></i> Twitter
+                          </a>
                         </div>
-                        <div class="or-seperator"><b>or</b></div>
+                        <div class="or-seperator">
+                          <b>or</b>
+                        </div>
                         <div class="form-group">
-                          <input type="text" class="form-control" name="UserName" onChange={(e) => LoginOnChange(e)} placeholder="Username" required="required" />
+                          <input
+                            type="text"
+                            class="form-control"
+                            name="UserName"
+                            onChange={(e) => LoginOnChange(e)}
+                            placeholder="Username"
+                            required="required"
+                          />
                         </div>
                         <div class="form-group">
-                          <input type="password" class="form-control" name="Password" onChange={(e) => LoginOnChange(e)} placeholder="Password" required="required" />
+                          <input
+                            type="password"
+                            class="form-control"
+                            name="Password"
+                            onChange={(e) => LoginOnChange(e)}
+                            placeholder="Password"
+                            required="required"
+                          />
                         </div>
-                        <button class="btn btn-primary btn-block" onClick={SubmitLoginForm}>Login</button>
+                        <button
+                          class="btn btn-primary btn-block"
+                          onClick={SubmitLoginForm}
+                        >
+                          Login
+                        </button>
                         <div class="text-center mt-2">
                           <a href="#">Forgot Your password?</a>
                         </div>
@@ -157,35 +198,92 @@ const NavBar = () => {
                     </div>
                   </div>
                   <div class="nav-item dropdown">
-                    <a data-toggle="dropdown" class="btn btn-primary dropdown-toggle sign-up-btn" >Sign up</a>
+                    <a
+                      data-toggle="dropdown"
+                      class="btn btn-primary dropdown-toggle sign-up-btn"
+                    >
+                      Sign up
+                    </a>
                     <div class="dropdown-menu action-form">
                       <div method="post">
-                        <p class="hint-text">Fill in this form to create your account!</p>
+                        <p class="hint-text">
+                          Fill in this form to create your account!
+                        </p>
                         <div class="form-group">
-                          <input type="text" class="form-control" placeholder="Username" name="UserName" onChange={(e) => SignUpOnChange(e)} />
+                          <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Username"
+                            name="UserName"
+                            onChange={(e) => SignUpOnChange(e)}
+                          />
                         </div>
                         <div class="form-group">
-                          <input type="text" class="form-control" placeholder="LastName" name="LastName" onChange={(e) => SignUpOnChange(e)} />
+                          <input
+                            type="text"
+                            class="form-control"
+                            placeholder="LastName"
+                            name="LastName"
+                            onChange={(e) => SignUpOnChange(e)}
+                          />
                         </div>
                         <div class="form-group">
-                          <input type="email" class="form-control" placeholder="Email" name="Email" onChange={(e) => SignUpOnChange(e)} />
+                          <input
+                            type="email"
+                            class="form-control"
+                            placeholder="Email"
+                            name="Email"
+                            onChange={(e) => SignUpOnChange(e)}
+                          />
                         </div>
                         <div class="form-group">
-                          <input type="number" class="form-control" placeholder="Phone" name="Mobile" onChange={(e) => SignUpOnChange(e)} />
+                          <input
+                            type="number"
+                            class="form-control"
+                            placeholder="Phone"
+                            name="Mobile"
+                            onChange={(e) => SignUpOnChange(e)}
+                          />
                         </div>
                         <div class="form-group">
-                          <input type="number" class="form-control" placeholder="Cnic" name="Cnic" onChange={(e) => SignUpOnChange(e)} />
+                          <input
+                            type="number"
+                            class="form-control"
+                            placeholder="Cnic"
+                            name="Cnic"
+                            onChange={(e) => SignUpOnChange(e)}
+                          />
                         </div>
                         <div class="form-group">
-                          <input type="password " class="form-control" name="Password" onChange={(e) => SignUpOnChange(e)} placeholder="Password" />
+                          <input
+                            type="password "
+                            class="form-control"
+                            name="Password"
+                            onChange={(e) => SignUpOnChange(e)}
+                            placeholder="Password"
+                          />
                         </div>
                         <div class="form-group">
-                          <input type="password" class="form-control" name="Confirm Password" onChange={(e) => SignUpOnChange(e)} placeholder="Confirm Password" />
+                          <input
+                            type="password"
+                            class="form-control"
+                            name="Confirm Password"
+                            onChange={(e) => SignUpOnChange(e)}
+                            placeholder="Confirm Password"
+                          />
                         </div>
                         <div class="form-group">
-                          <label class="form-check-label"><input type="checkbox" /> I accept the <a href="#">Terms &amp; Conditions</a></label>
+                          <label class="form-check-label">
+                            <input type="checkbox" /> I accept the{" "}
+                            <a href="#">Terms &amp; Conditions</a>
+                          </label>
                         </div>
-                        <button class="btn btn-primary btn-block" onClick={SubmitSignUpForm}>Sign up </button>
+                        <button
+                          class="btn btn-primary btn-block"
+                          onClick={SubmitSignUpForm}
+                        >
+                          Sign up{" "}
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -194,9 +292,13 @@ const NavBar = () => {
 
               {/* Login Form End  */}
 
-              <button onClick={() => {
-                window.location.href = "tel:+923232345673";
-              }} type="button" class="btn btn-outline">
+              <button
+                onClick={() => {
+                  window.location.href = "tel:+923232345673";
+                }}
+                type="button"
+                class="btn btn-outline"
+              >
                 CallNow
               </button>
             </ul>
@@ -206,7 +308,6 @@ const NavBar = () => {
           </div>
         </div>
       </header>
-      
     </>
   );
 };

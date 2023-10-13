@@ -30,7 +30,7 @@ const Krachi = () => {
           <div class="row">
             <div class="col-lg-3">
               <div class="shop-sidebar">
-                <div class="card">
+                {/* <div class="card">
                   <div class="card-body">
                     <div class="map-container">
                       <iframe
@@ -43,7 +43,7 @@ const Krachi = () => {
                       ></iframe>
                     </div>
                   </div>
-                </div>
+                </div> */}
 
                 <div class="shop-widget">
                   <div class="check-box-item">
