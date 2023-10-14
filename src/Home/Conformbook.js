@@ -8,17 +8,27 @@ const Conformbook = ({ isLoggedIn, setIsLoggedIn }) => {
       <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
 
       <div id="popup1" class="overlay">
-        <div class="popup">
-          <img
-            src="https://media.istockphoto.com/id/1425217376/vector/a-checkmark-that-looks-like-it-was-written-with-a-pen.jpg?s=612x612&w=0&k=20&c=ZJLNQ2Yjh5gmFJyDnLngB_Bju2Fb-LjvEa7YRUsjA_k="
-            alt="modalTickImg"
-            style={{ WidthFull: "20px" }}
-          />
-          <a class="close" href="#">
-            &times;
-          </a>
-          <div class="content">
-            <p>This is done totally without JavaScript. Just HTML and CSS.</p>
+        <div class="popup ">
+          <div className="center-content">
+            <img
+              src="https://media.istockphoto.com/id/1425217376/vector/a-checkmark-that-looks-like-it-was-written-with-a-pen.jpg?s=612x612&w=0&k=20&c=ZJLNQ2Yjh5gmFJyDnLngB_Bju2Fb-LjvEa7YRUsjA_k="
+              style={{ width: "100%" }}
+              alt="logo"
+            />
+          </div>
+
+          <div class="center-content ">
+            <p>
+              <h1 clas>BOOKING REQUEST</h1>
+            </p>
+          </div>
+          <div className="center-content">
+            <p>SUBMITTED SUCCESSFULLY!</p>
+          </div>
+          <div className="error-k text-center">
+            <a href="#" className="btn btn-primary btn-lg mb-3 w-85  mt-5">
+              My Bookings
+            </a>
           </div>
         </div>
       </div>
@@ -141,8 +151,6 @@ const Conformbook = ({ isLoggedIn, setIsLoggedIn }) => {
           </div>
         </div>
         <div className="error-k text-center">
-          {/* <Link to={`/Conformbook/${roomId}`}> */}
-
           <a
             type="button"
             href="#popup1"
@@ -151,7 +159,6 @@ const Conformbook = ({ isLoggedIn, setIsLoggedIn }) => {
             CONFIRM
           </a>
         </div>
-        {/* </Link> */}
       </div>
 
       <Footer />
