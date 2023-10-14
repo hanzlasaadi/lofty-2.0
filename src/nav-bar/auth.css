@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
+@import url("https://fonts.googleapis.auth-com/css?family=Montserrat:400,800");
 
 * {
   box-sizing: border-box;
@@ -11,8 +11,16 @@
   align-items: center;
   flex-direction: column;
   font-family: "Montserrat", sans-serif;
-  height: 100vh;
-  margin: -20px 0 50px;
+  height: 50vh;
+  margin: 150px 0 50px;
+}
+
+.auth-h1 {
+  margin: 0px;
+}
+
+.auth-h2 {
+  text-align: center;
 }
 
 .auth-p {
@@ -23,15 +31,16 @@
   margin: 20px 0 30px;
 }
 
-span {
+.auth-span {
   font-size: 12px;
 }
 
 .auth-a {
-  color: #333;
-  font-size: 14px;
+  color: blue;
+  font-size: 12px;
   text-decoration: none;
   margin: 15px 0;
+  cursor: pointer;
 }
 
 .auth-button {
@@ -71,7 +80,7 @@ span {
   text-align: center;
 }
 
-input {
+.auth-input {
   background-color: #eee;
   border: none;
   padding: 12px 15px;
@@ -85,7 +94,7 @@ input {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   position: relative;
   overflow: hidden;
-  width: 768px;
+  width: 800px;
   max-width: 100%;
   min-height: 480px;
 }
@@ -103,7 +112,7 @@ input {
   z-index: 2;
 }
 
-.auth-container.right-panel-active .auth-sign-in-container {
+.auth-container.auth-right-panel-active .auth-sign-in-container {
   transform: translateX(100%);
 }
 
@@ -114,7 +123,7 @@ input {
   z-index: 1;
 }
 
-.auth-container.right-panel-active .auth-sign-up-container {
+.auth-container.auth-right-panel-active .auth-sign-up-container {
   transform: translateX(100%);
   opacity: 1;
   z-index: 5;
@@ -146,17 +155,11 @@ input {
   z-index: 100;
 }
 
-.auth-container.right-panel-active .auth-overlay-container {
+.auth-container.auth-right-panel-active .auth-overlay-container {
   transform: translateX(-100%);
 }
 
 .auth-overlay {
-  background: #ff416c;
-  background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
-  background: linear-gradient(to right, #ff4b2b, #ff416c);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 0 0;
   color: #ffffff;
   position: relative;
   left: -100%;
@@ -166,7 +169,7 @@ input {
   transition: transform 0.6s ease-in-out;
 }
 
-.auth-container.right-panel-active .auth-overlay {
+.auth-container.auth-right-panel-active .auth-overlay {
   transform: translateX(50%);
 }
 
@@ -189,7 +192,7 @@ input {
   transform: translateX(-20%);
 }
 
-.auth-container.right-panel-active .auth-overlay-left {
+.auth-container.auth-right-panel-active .auth-overlay-left {
   transform: translateX(0);
 }
 
@@ -198,21 +201,6 @@ input {
   transform: translateX(0);
 }
 
-.auth-container.right-panel-active .auth-overlay-right {
+.auth-container.auth-right-panel-active .auth-overlay-right {
   transform: translateX(20%);
-}
-
-.auth-social-container {
-  margin: 20px 0;
-}
-
-.auth-social-container a {
-  border: 1px solid #dddddd;
-  border-radius: 50%;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 5px;
-  height: 40px;
-  width: 40px;
 }

@@ -10,10 +10,10 @@ import Footer from "./Footer";
 const Home = () => {
   return (
     <>
-      <div class="cover">
-        <div class="contents">
+      <div className="cover">
+        <div className="contents">
           <h1>Contents</h1>
-          <span class="close">Close</span>
+          <span className="close">Close</span>
         </div>
       </div>
       <NavBar />

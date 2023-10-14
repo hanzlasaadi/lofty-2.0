@@ -77,20 +77,20 @@ const ScrollBar = () => {
           </ul>
         </div>
         <div className="ScrolingArrow">
-          <div class="essential-items-area mb-120">
-            <div class="section-title3"></div>
-            <div class="slider-btn-wrap">
-              {/* <div class="slider-btn prev-btn-12">
+          <div className="essential-items-area mb-120">
+            <div className="section-title3"></div>
+            <div className="slider-btn-wrap">
+              {/* <div className="slider-btn prev-btn-12">
                 <i
                   onClick={moveLeft}
-                  class="bi bi-arrow-left"
+                  className="bi bi-arrow-left"
                   style={{ cursor: "pointer" }}
                 ></i>
               </div>
-              <div class="slider-btn next-btn-12">
+              <div className="slider-btn next-btn-12">
                 <i
                   onClick={moveRight}
-                  class="bi bi-arrow-right"
+                  className="bi bi-arrow-right"
                   style={{ cursor: "pointer" }}
                 ></i>
               </div> */}
