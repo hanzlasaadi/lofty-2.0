@@ -10,7 +10,7 @@ import Footer from "../Home/Footer";
 import axios from "axios";
 import { apiUrl } from "../assets/utils/env";
 
-const Krachi = () => {
+const Krachi = ({ isLoggedIn, setIsLoggedIn }) => {
   const [allRooms, setAllRooms] = useState([]);
   React.useEffect(() => {
     axios
@@ -24,7 +24,7 @@ const Krachi = () => {
 
   return (
     <>
-      <NavBar />
+      <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <div className="shop-page pt-30 mb-120">
         <div className="container">
           <div className="row">

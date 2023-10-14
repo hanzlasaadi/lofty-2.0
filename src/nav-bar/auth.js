@@ -37,7 +37,7 @@ export default function LoginSignup({ isLoggedIn, setIsLoggedIn }) {
       setIsLoggedIn(false);
       console.log("token not present: ", checkToken);
     }
-  }, []);
+  }, [setIsLoggedIn]);
   //  <<<<<<<<<<<<<<<<<<<        Forms handling    >>>>>>>>>>>>>>>>>>>>>
   // <<<<   Submit SIGN-IN handler   >>>>>
   const SubmitLoginForm = (e) => {

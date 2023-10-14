@@ -4,12 +4,12 @@ import NavBar from "../nav-bar/NavBar";
 import Footer from "./Footer";
 // import Conformbook from "./Conformbook";
 import { Link, useParams } from "react-router-dom";
-const Clinder = () => {
+const Clinder = ({ isLoggedIn, setIsLoggedIn }) => {
   const { roomId } = useParams();
   console.log(roomId);
   return (
     <>
-      <NavBar />
+      <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <div className="container">
         <div className="row br">
           <br />

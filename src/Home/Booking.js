@@ -24,7 +24,7 @@ const Booking = ({ isLoggedIn, setIsLoggedIn }) => {
 
   return (
     <>
-      <NavBar />
+      <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
@@ -36,19 +36,21 @@ const Booking = ({ isLoggedIn, setIsLoggedIn }) => {
                   loading="lazy"
                   alt="Room Img"
                 />
-                <div className="icon-img">
-                  <a href="abc" className="link">
-                    <svg
-                      width="30"
-                      height="20"
-                      viewBox="0 0 14 13"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="icon-circle"
-                    >
-                      <path d="M12.4147 1.51371C11.0037 0.302997 8.92573 0.534835 7.61736 1.87434L7.12993 2.38954L6.61684 1.87434C5.33413 0.534835 3.23047 0.302997 1.81948 1.51371C0.203258 2.90473 0.126295 5.37767 1.56294 6.87174L6.53988 12.0237C6.84773 12.3586 7.38647 12.3586 7.69433 12.0237L12.6713 6.87174C14.1079 5.37767 14.0309 2.90473 12.4147 1.51371Z" />
-                    </svg>
-                  </a>
-                </div>
+                {isLoggedIn ? (
+                  <div className="icon-img">
+                    <a href="abc" className="link">
+                      <svg
+                        width="30"
+                        height="20"
+                        viewBox="0 0 14 13"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="icon-circle"
+                      >
+                        <path d="M12.4147 1.51371C11.0037 0.302997 8.92573 0.534835 7.61736 1.87434L7.12993 2.38954L6.61684 1.87434C5.33413 0.534835 3.23047 0.302997 1.81948 1.51371C0.203258 2.90473 0.126295 5.37767 1.56294 6.87174L6.53988 12.0237C6.84773 12.3586 7.38647 12.3586 7.69433 12.0237L12.6713 6.87174C14.1079 5.37767 14.0309 2.90473 12.4147 1.51371Z" />
+                      </svg>
+                    </a>
+                  </div>
+                ) : null}
               </div>
             </div>
           </div>
@@ -121,15 +123,23 @@ const Booking = ({ isLoggedIn, setIsLoggedIn }) => {
           <div className="best">{roomDetails.roomDetail.description}</div>
 
           <div className="err">
-            <Link to={`/Clinder/${roomDetails.roomDetail.adId}`}>
-              <button type="button" className="btn btn-primary btn-lg">
-                <span className="">
-                  Rs.{Math.round(roomDetails.roomDetail.price)}/
-                </span>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BOOK NOW{" "}
-                <i className="bi bi-arrow-right"></i>
-              </button>
-            </Link>
+            {isLoggedIn ? (
+              <Link to={`/Clinder/${roomDetails.roomDetail.adId}`}>
+                <button type="button" className="btn btn-primary btn-lg">
+                  <span className="">
+                    Rs.{Math.round(roomDetails.roomDetail.price)}/
+                  </span>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BOOK NOW{" "}
+                  <i className="bi bi-arrow-right"></i>
+                </button>
+              </Link>
+            ) : (
+              <Link to={`/login`}>
+                <button type="button" className="btn btn-primary btn-lg">
+                  Login to Book Now <i className="bi bi-arrow-right"></i>
+                </button>
+              </Link>
+            )}
           </div>
         </div>
       </div>
