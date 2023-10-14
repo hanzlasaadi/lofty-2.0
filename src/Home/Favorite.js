@@ -1,16 +1,89 @@
-import React from "react";
+import React, { useState } from "react";
 import NavBar from "../nav-bar/NavBar";
-const Favorat = () => {
+import axios from "axios";
+import { apiUrl } from "../assets/utils/env";
+
+const Favorat = ({
+  isLoggedIn,
+  setIsLoggedIn,
+  authToken,
+  favRooms,
+  setFavRooms,
+}) => {
+  const [customerId, setCustomerId] = useState(
+    localStorage.getItem("customerId")
+  );
+  // const customerId = localStorage.getItem("customerId");
+  console.log(customerId, "cusId USeEffect");
+
+  React.useEffect(() => {
+    axios
+      .request({
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+        method: "GET",
+        url: `${apiUrl}/api/Customer/GetAllFavouriteRoomList?CustomerId=${customerId}`,
+      })
+      .then((res) => {
+        console.log(res.data);
+        setFavRooms(res.data.data);
+      })
+      .catch((err) => {
+        console.log("error", err);
+      });
+  }, []);
+
   return (
     <>
-      <NavBar />
-      <div className="container bg-light mt-3 rounded">
+      <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+      {favRooms.map((room, i) => {
+        return (
+          <div className="container bg-light mt-3 rounded-4" key={i}>
+            <div className="row">
+              <div className="col-md-4">
+                <img
+                  className="img-fluid smaller-image"
+                  src={room.adImage1}
+                  alt="roomImg"
+                />
+              </div>
+              <div className="col-md-4 mt-3">
+                <span className="room-title">{room.roomType}</span>
+                <p>
+                  <span className="titl">&nbsp;</span>
+                </p>
+                <p>
+                  <span className="price">RS.{Math.round(room.price)}/DAY</span>
+                </p>
+                <p>
+                  <span className="titl">&nbsp;</span>
+                </p>
+                <p>
+                  <i className="bi bi-person custom-icon"></i>
+                  <span className="number">{room.noOfPerson}</span>
+                  <i className="bi bi-tv custom-icon"></i>
+                  <span className="number">{room.noOfBed}</span>
+                </p>
+                {/* <div className="review">
+                  <i className="bi bi-star-fill"></i>
+                  <i className="bi bi-star-fill"></i>
+                  <i className="bi bi-star-fill"></i>
+                  <i className="bi bi-star-half"></i>
+                  <i className="bi bi-star"></i>
+                </div> */}
+              </div>
+            </div>
+          </div>
+        );
+      })}
+      {/* <div className="container bg-light mt-3 rounded">
         <div className="row">
           <div className="col-md-4">
             <img
               className="img-fluid smaller-image"
               src="..\assets\images\blog\Lahore4.jpg"
-              alt="Card image cap"
+              alt="roomImg"
             />
           </div>
           <div className="col-md-4 mt-3">
@@ -39,7 +112,7 @@ const Favorat = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

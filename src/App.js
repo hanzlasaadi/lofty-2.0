@@ -10,9 +10,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Favorite from "./Home/Favorite";
 import Conformbook from "./Home/Conformbook";
 import { useEffect, useState } from "react";
+import { favDummyData } from "./assets/utils/dummyData";
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [authToken, setAuthToken] = useState(null);
+  const [favRooms, setFavRooms] = useState([favDummyData]);
 
   useEffect(() => {
     let checkToken = localStorage.getItem("token");
@@ -70,7 +73,18 @@ function App() {
             />
           }
         />
-        <Route path="Favorite" element={<Favorite />} />
+        <Route
+          path="Favorite"
+          element={
+            <Favorite
+              isLoggedIn={isLoggedIn}
+              setIsLoggedIn={setIsLoggedIn}
+              authToken={authToken}
+              favRooms={favRooms}
+              setFavRooms={setFavRooms}
+            />
+          }
+        />
 
         <Route
           path="Conformbook/:roomId"

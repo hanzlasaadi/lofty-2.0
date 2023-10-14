@@ -46,3 +46,13 @@ export const dummyRoomDetails = {
   ],
   reservedDates: [],
 };
+
+export const favDummyData = {
+  adId: 0,
+  noOfBed: 0,
+  noOfPerson: 0,
+  adImage1: "https://placehold.co/600x400/EEE/31343C",
+  price: 0,
+  basePrice: 0,
+  roomType: "Room Name",
+};

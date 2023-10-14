@@ -2,15 +2,16 @@ import React, { useState } from "react";
 import "./HomeCss/Conform.css";
 import NavBar from "../nav-bar/NavBar";
 import Footer from "./Footer";
-const Conformbook = () => {
+const Conformbook = ({ isLoggedIn, setIsLoggedIn }) => {
   return (
     <>
-      <NavBar />
+      <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
 
       <div id="popup1" class="overlay">
         <div class="popup">
           <img
             src="https://media.istockphoto.com/id/1425217376/vector/a-checkmark-that-looks-like-it-was-written-with-a-pen.jpg?s=612x612&w=0&k=20&c=ZJLNQ2Yjh5gmFJyDnLngB_Bju2Fb-LjvEa7YRUsjA_k="
+            alt="modalTickImg"
             style={{ WidthFull: "20px" }}
           />
           <a class="close" href="#">
@@ -29,7 +30,7 @@ const Conformbook = () => {
               <img
                 className="img-fluid smaller-image"
                 src="..\assets\images\blog\Lahore4.jpg"
-                alt="Card image cap"
+                alt="RoomImg"
               />
             </div>
             <div class="  col-md-4 mt-3">
