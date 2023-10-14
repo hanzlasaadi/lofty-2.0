@@ -24,11 +24,7 @@ const Krachi = ({ isLoggedIn, setIsLoggedIn }) => {
 
   return (
     <>
-<<<<<<< HEAD
-      <NavBar />
-=======
       <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
->>>>>>> 1ec2750924e323d6ee6da6970d199862f7b6d38a
       <div className="shop-page pt-30 mb-120">
         <div className="container">
           <div className="row">
@@ -176,10 +172,6 @@ const Krachi = ({ isLoggedIn, setIsLoggedIn }) => {
                 </div>
               </div>
             </div>
-<<<<<<< HEAD
-          
-
-=======
             <div className="col-lg-9">
               <div className="row mb-50">
                 <div className="col-lg-12">
@@ -271,7 +263,6 @@ const Krachi = ({ isLoggedIn, setIsLoggedIn }) => {
               })}
             </div>
 
->>>>>>> 1ec2750924e323d6ee6da6970d199862f7b6d38a
             <div className="center-content">
               <div aria-label="Page navigation example">
                 <ul className="pagination">

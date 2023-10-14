@@ -24,11 +24,7 @@ const Booking = ({ isLoggedIn, setIsLoggedIn }) => {
 
   return (
     <>
-<<<<<<< HEAD
-      <NavBar />
-=======
       <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
->>>>>>> 1ec2750924e323d6ee6da6970d199862f7b6d38a
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
@@ -40,83 +36,6 @@ const Booking = ({ isLoggedIn, setIsLoggedIn }) => {
                   loading="lazy"
                   alt="Room Img"
                 />
-<<<<<<< HEAD
-                <div className="icon-img">
-                  <a href="abc" className="link">
-                    <svg
-                      width="30"
-                      height="20"
-                      viewBox="0 0 14 13"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="icon-circle"
-                    >
-                      <path d="M12.4147 1.51371C11.0037 0.302997 8.92573 0.534835 7.61736 1.87434L7.12993 2.38954L6.61684 1.87434C5.33413 0.534835 3.23047 0.302997 1.81948 1.51371C0.203258 2.90473 0.126295 5.37767 1.56294 6.87174L6.53988 12.0237C6.84773 12.3586 7.38647 12.3586 7.69433 12.0237L12.6713 6.87174C14.1079 5.37767 14.0309 2.90473 12.4147 1.51371Z" />
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className=" mt-1">
-          <h2 className="Deluxe">{roomDetails.roomDetail.roomType}</h2>
-          <h3 className="FACILITES">FACILITES</h3>
-          <div className="row-ico d-flex">
-            {roomDetails.facilityList.map((fac, i) => {
-              return (
-                <div className="ico c col-lg-2" key={i}>
-                  <img
-                    className="u"
-                    src={fac.image}
-                    alt={fac.facilityName}
-                    loading="lazy"
-                  />
-                  <span className="number">{fac.facilityName}</span>
-                </div>
-              );
-            })}
-          </div>
-          <h3 className="FACILITES">GALLERY</h3>
-          <div className="row gutters justify-content-center">
-            {roomDetails.roomImages.slice(1).map((img, i) => {
-              return (
-                <div className="col-lg-4 col-md-4 col-xs-6 thumb" key={i}>
-                  <a href={img} className="fancybox" rel="ligthbox">
-                    <img
-                      src={img}
-                      className="zoom img-fluid"
-                      alt=""
-                      loading="lazy"
-                    />
-                  </a>
-                </div>
-              );
-            })}
-          </div>
-          <div className="container">
-            <h3 className="FACILITES locatoin">
-              ABOUT HOTEL
-              <img src="https://cdn-icons-png.flaticon.com/512/9800/9800512.png" />
-            </h3>
-            <div className="bor">
-              <div className="col">
-                <h5 className="b">Hotel Name:</h5>
-                <br />
-                <h5 className="a">{roomDetails.roomDetail.hotelName}</h5>
-              </div>
-              <div className="col">
-                <h5 className="b">Location:</h5>
-                <br />
-                <h5 className="a">{roomDetails.roomDetail.location}</h5>
-              </div>
-              <div className="col">
-                <h5 className="b">Room Number:</h5>
-                <br />
-                <h5 className="a">{roomDetails.roomDetail.roomNo}</h5>
-              </div>
-            </div>
-          </div>
-=======
                 {isLoggedIn ? (
                   <div className="icon-img">
                     <a href="abc" className="link">
@@ -194,7 +113,6 @@ const Booking = ({ isLoggedIn, setIsLoggedIn }) => {
               </div>
             </div>
           </div>
->>>>>>> 1ec2750924e323d6ee6da6970d199862f7b6d38a
           <br />
           <div className="error">
             <button type="button" className="btn btn-primary btn-lg ">
@@ -205,17 +123,6 @@ const Booking = ({ isLoggedIn, setIsLoggedIn }) => {
           <div className="best">{roomDetails.roomDetail.description}</div>
 
           <div className="err">
-<<<<<<< HEAD
-            <Link to={`/Clinder/${roomDetails.roomDetail.adId}`}>
-              <button type="button" className="btn btn-primary btn-lg">
-                <span className="">
-                  Rs.{Math.round(roomDetails.roomDetail.price)}/
-                </span>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BOOK NOW{" "}
-                <i className="bi bi-arrow-right"></i>
-              </button>
-            </Link>
-=======
             {isLoggedIn ? (
               <Link to={`/Clinder/${roomDetails.roomDetail.adId}`}>
                 <button type="button" className="btn btn-primary btn-lg">
@@ -233,7 +140,6 @@ const Booking = ({ isLoggedIn, setIsLoggedIn }) => {
                 </button>
               </Link>
             )}
->>>>>>> 1ec2750924e323d6ee6da6970d199862f7b6d38a
           </div>
         </div>
       </div>
