@@ -20,7 +20,7 @@ const HeaderHome = () => {
 </video> */}
 
       <div id="content">
-        <ul class="slideshow">
+        <ul className="slideshow">
           <li>
             <span></span>
           </li>
@@ -38,13 +38,13 @@ const HeaderHome = () => {
           </li>
         </ul>
 
-        <div class="row height d-flex justify-content-center align-items-center">
-          <div class="col-md-8 col-sm-6">
-            <div class="form">
-              <i class="fa fa-search"></i>
+        <div className="row height d-flex justify-content-center align-items-center">
+          <div className="col-md-8 col-sm-6">
+            <div className="form">
+              <i className="fa fa-search"></i>
               <input
                 type="text"
-                class="form-control form-input"
+                className="form-control form-input"
                 placeholder="Search by city, hotel or neighbourhood"
               />
               <RangeDatePicker
@@ -56,8 +56,8 @@ const HeaderHome = () => {
                   onDateChange(startDate, endDate)
                 }
               />
-              {/* <span class="left-pan">
-                <i class="bi bi-filter"></i>
+              {/* <span className="left-pan">
+                <i className="bi bi-filter"></i>
               </span> */}
               {/* <SearchField /> */}
             </div>

@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "./HomeCss/Conform.css";
 import NavBar from "../nav-bar/NavBar";
 const Conformbook =()=>{
     return(
         <>
         <NavBar/>
-    <div class="container">
        <div className="container bg-light mt-3 rounded">
             <div className="row">
             <div className="col-md-4">
@@ -56,57 +55,7 @@ const Conformbook =()=>{
         <h5 class="a">Pico Road,Pindl Rajputan,Model town,lho</h5>
     </div>
 </div>
-                                  {/* ------------------------------- */}
-</div>
-<div className="container">
-    <h3 class="FACILITES locatoin">RESERVATION DETAIL
-    </h3>
-    <div class="bor row">
-    <div class="col-lg-8 ">
-        <h5 class="b">Person Name:</h5><br/>
-        <h5 class="b">Email:</h5><br/>
-        <h5 class="a">Check In:</h5><br/>
-        <h5 class="a">Check Out:</h5>
-    </div>
-    
-    <div class="col-lg-4">
-        <h5 class="b">Dawwod</h5><br/>
-        <h5 class="a">Dawoodsandhu121@gmail.com</h5><br/>
-        <h5 class="a">28 October, 2023</h5><br/>
-        <h5 class="a">29 October, 2023</h5>
-    </div>
-</div>
 
-</div>
-{/* ------------------------------------------- */}
-<div className="container  mt-3">
-<div class="row usman">
-<div class="col-lg-8 ">
-<h3 class="FACILITES locatoin">PRICE/DAY
-    </h3>
-</div>
-<div className="col-lg-4 mt-5">  <h5 class="a mb-4">RS.0.0</h5></div>
-</div>
-</div>
-<div className="container  mt-2">
-<div class="row usman">
-<div class="col-lg-8 ">
-<h3 class="FACILITES locatoin">DAYS
-    </h3>
-</div>
-<div className="col-lg-4 mt-5">  <h5 class="a mb-4">1</h5></div>
-</div>
-</div>
-<div className="container mb-5 mt-2">
-<div class="row usman">
-<div class="col-lg-8 ">
-<h3 class="FACILITES locatoin">TOTAL
-    </h3>
-</div>
-<div className="col-lg-4 mt-5">  <h5 class="a mb-4">RS.0.0</h5></div>
-</div>
-</div>
-<button type="button" class="btn btn-primary btn-lg ml-5">CONFIRM</button>
 </div>
         </>
     )
