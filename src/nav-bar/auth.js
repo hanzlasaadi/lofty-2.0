@@ -37,7 +37,7 @@ export default function LoginSignup({ isLoggedIn, setIsLoggedIn }) {
       setIsLoggedIn(false);
       console.log("token not present: ", checkToken);
     }
-  }, [setIsLoggedIn]);
+  }, []);
   //  <<<<<<<<<<<<<<<<<<<        Forms handling    >>>>>>>>>>>>>>>>>>>>>
   // <<<<   Submit SIGN-IN handler   >>>>>
   const SubmitLoginForm = (e) => {
@@ -48,16 +48,18 @@ export default function LoginSignup({ isLoggedIn, setIsLoggedIn }) {
     axios
       .post(`${apiUrl}/api/Customer/Login`, loginOncHangeData)
       .then((response) => {
+        if (response.status !== 200)
+          throw new Error(
+            response.data.message || "Could'nt Login, Try Later!"
+          );
+
         let res = response.data.data;
         localStorage.setItem("token", res.token);
         localStorage.setItem("customerId", res.customerId);
         localStorage.setItem("customerName", res.customerName);
         localStorage.setItem("email", res.email);
         localStorage.setItem("mobile", res.mobile);
-      })
-      .then(() => {
         setIsLoggedIn(true);
-        console.log("loggedIN: ", isLoggedIn);
       })
       .catch((err) => {
         console.log("Err===->>>", err);
@@ -67,21 +69,34 @@ export default function LoginSignup({ isLoggedIn, setIsLoggedIn }) {
   // <<<<   Submit SIGN-UP handler   >>>>>
   const SubmitSignUpForm = (e) => {
     e.preventDefault();
-    axios
-      .post(`${apiUrl}/api/Customer/AddUpdateCustomer`, signUpOncHangeData)
+    const signupFormData = new FormData();
+    for (let key in signUpOncHangeData) {
+      signupFormData.append(key, signUpOncHangeData[key]);
+    }
+    axios({
+      method: "post",
+      url: `${apiUrl}/api/Customer/AddUpdateCustomer`,
+      data: signupFormData,
+      headers: { "Content-Type": "multipart/form-data" },
+    })
       .then((response) => {
-        let res = response.data.data;
+        if (response.status !== 200)
+          throw new Error(
+            response.data.message || "Could not signup! Try Again"
+          );
+
+        const res = response.data.data;
         localStorage.setItem("token", res.token);
         localStorage.setItem("customerId", res.customerId);
         localStorage.setItem("customerName", res.customerName);
         localStorage.setItem("email", res.email);
         localStorage.setItem("mobile", res.mobile);
-      })
-      .then(() => {
         setIsLoggedIn(true);
-        console.log("signedUp: ", isLoggedIn);
+      })
+      .catch((err) => {
+        console.log("error: ", err);
       });
-    console.log(signUpOncHangeData);
+    // console.log(signUpOncHangeData);
   };
   const LoginOnChange = (e) => {
     let obj = loginOncHangeData;
@@ -92,7 +107,7 @@ export default function LoginSignup({ isLoggedIn, setIsLoggedIn }) {
 
   // <<<<           LOG-OUT          >>>>>
   const handleLogout = () => {
-    localStorage.removeItem("token");
+    localStorage.clear();
     setIsLoggedIn(false);
   };
 
@@ -104,22 +119,6 @@ export default function LoginSignup({ isLoggedIn, setIsLoggedIn }) {
   };
   // const loftyroom = () => {
   //   navigate("/");
-  // };
-
-  // const handleSignup = (e) => {
-  //   e.preventDefault();
-  //   // console.log(e.target);
-  //   CustomerName = input.CustomerName,
-  //   Email = input.Email,
-  //   Password = input.Password,
-  //   ProfileImage = input.ImagePath,
-  //   Mobile = input.Mobile,
-  //   Cnic = input.Cnic,
-  //   CutomerRoleId = 1,
-  //   IsDeleted = false,
-  //   CreatedDate = DateTime.Now,
-  //   // const form = new FormData(e.target);
-  //   // console.log(...form.values());
   // };
 
   return (
@@ -163,7 +162,10 @@ export default function LoginSignup({ isLoggedIn, setIsLoggedIn }) {
               required
               onChange={SignUpOnChange}
             />
-            <button style={{ marginTop: "10px" }}> Create Account</button>
+            <button style={{ marginTop: "10px" }} onClick={SubmitSignUpForm}>
+              {" "}
+              Create Account
+            </button>
             <h5>
               Already have an account!{" "}
               <a className="auth-ghost" id="signIn" style={{ color: "blue" }}>
@@ -173,7 +175,7 @@ export default function LoginSignup({ isLoggedIn, setIsLoggedIn }) {
           </form>
         </div>
         <div className="auth-form-container auth-sign-in-container">
-          <form action="#">
+          <form onSubmit={SubmitLoginForm}>
             <h1 style={{ paddingBottom: "15px" }}> Login Now</h1>
             <input
               type="email"
@@ -193,7 +195,10 @@ export default function LoginSignup({ isLoggedIn, setIsLoggedIn }) {
               {" "}
               Forgot Your Password?
             </a>
-            <button style={{ marginTop: "10px" }}> Let Me In...</button>
+            <button onClick={SubmitLoginForm} style={{ marginTop: "10px" }}>
+              {" "}
+              Log In
+            </button>
             <h5>
               New to here!{" "}
               <a className="auth-ghost" id="signUp" style={{ color: "blue" }}>
