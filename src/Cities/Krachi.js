@@ -10,7 +10,7 @@ import Footer from "../Home/Footer";
 import axios from "axios";
 import { apiUrl } from "../assets/utils/env";
 
-const Krachi = () => {
+const Krachi = ({ isLoggedIn, setIsLoggedIn }) => {
   const [allRooms, setAllRooms] = useState([]);
   React.useEffect(() => {
     axios
@@ -24,7 +24,11 @@ const Krachi = () => {
 
   return (
     <>
+<<<<<<< HEAD
       <NavBar />
+=======
+      <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+>>>>>>> 1ec2750924e323d6ee6da6970d199862f7b6d38a
       <div className="shop-page pt-30 mb-120">
         <div className="container">
           <div className="row">
@@ -172,8 +176,102 @@ const Krachi = () => {
                 </div>
               </div>
             </div>
+<<<<<<< HEAD
           
 
+=======
+            <div className="col-lg-9">
+              <div className="row mb-50">
+                <div className="col-lg-12">
+                  <div className="multiselect-bar">
+                    <h6>LOFTYROOMS</h6>
+                    <div className="multiselect-area">
+                      <div className="single-select">
+                        <span>Show</span>
+                        <select
+                          className="defult-select-drowpown"
+                          id="color-dropdown"
+                        >
+                          <option selected value="0">
+                            12
+                          </option>
+                          <option value="1">15</option>
+                          <option value="2">18</option>
+                          <option value="3">21</option>
+                          <option value="4">25</option>
+                        </select>
+                      </div>
+                      <div className="single-select two">
+                        <select
+                          className="defult-select-drowpown"
+                          id="eyes-dropdown"
+                        >
+                          <option selected value="0">
+                            Default
+                          </option>
+                          <option value="1">Grid</option>
+                          <option value="2">Closed</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* //////////////////////// one Room*/}
+              {/* hanzla */}
+              {allRooms.map((room) => {
+                return (
+                  <div
+                    className="row search-card-result rounded-4"
+                    key={room.adId}
+                  >
+                    <div className="col-md-5">
+                      {/* 👇️ react router link */}
+                      <Link to={`/Booking/${room.adId}`}>
+                        <img
+                          className="img-fluid rounded-4"
+                          src={`${room.adImage1}`}
+                          alt="Room Image"
+                          loading="lazy"
+                        />
+                      </Link>
+                    </div>
+
+                    <Link className="col-md-7" to={`/Booking/${room.adId}`}>
+                      {/* <div className="col-md-7"> */}
+                      <span className="room-title">{room.roomType}</span>
+                      <p>
+                        <span className="titl">&nbsp;</span>
+                      </p>
+                      <p>
+                        <span className="price">
+                          RS.{Math.round(room.price)}/DAY
+                        </span>
+                      </p>
+                      <p>
+                        <span className="titl">&nbsp;</span>
+                      </p>
+                      <p>
+                        <i className="bi bi-person custom-icon"></i>
+                        <span className="number">{room.noOfPerson}</span>
+                        <i className="bi bi-tv custom-icon"></i>
+                        <span className="number">{room.noOfBed}</span>
+                      </p>
+                      {/* <div className="review">
+                        <i className="bi bi-star-fill"></i>
+                        <i className="bi bi-star-fill"></i>
+                        <i className="bi bi-star-fill"></i>
+                        <i className="bi bi-star-half"></i>
+                        <i className="bi bi-star"></i>
+                      </div> */}
+                    </Link>
+                  </div>
+                );
+              })}
+            </div>
+
+>>>>>>> 1ec2750924e323d6ee6da6970d199862f7b6d38a
             <div className="center-content">
               <div aria-label="Page navigation example">
                 <ul className="pagination">
