@@ -12,6 +12,7 @@ import Favorite from "./Home/Favorite";
 import Conformbook from "./Home/Conformbook";
 import { useEffect, useState } from "react";
 import { favDummyData } from "./assets/utils/dummyData";
+import { addDays } from "date-fns";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -23,7 +24,7 @@ function App() {
   const [datePickerState, setDatePickerState] = useState([
     {
       startDate: new Date(Date.now()),
-      endDate: null,
+      endDate: addDays(new Date(), 7),
       key: "selection",
     },
   ]);
@@ -82,7 +83,12 @@ function App() {
         <Route
           path="Clinder/:roomId"
           element={
-            <Clinder isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+            <Clinder
+              isLoggedIn={isLoggedIn}
+              setIsLoggedIn={setIsLoggedIn}
+              datePickerState={datePickerState}
+              setDatePickerState={setDatePickerState}
+            />
           }
         />
         <Route
