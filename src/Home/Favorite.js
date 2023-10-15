@@ -9,6 +9,7 @@ const Favorat = ({
   authToken,
   favRooms,
   setFavRooms,
+  setFavRoomsId,
 }) => {
   const [customerId, setCustomerId] = useState(
     localStorage.getItem("customerId")
@@ -28,6 +29,11 @@ const Favorat = ({
       .then((res) => {
         console.log(res.data);
         setFavRooms(res.data.data);
+        localStorage.setItem(
+          "favRooms",
+          res.data.data.map((roomDetails) => roomDetails.adId)
+        );
+        setFavRoomsId(localStorage.getItem("favRooms"));
       })
       .catch((err) => {
         console.log("error", err);

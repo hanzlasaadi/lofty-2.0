@@ -60,6 +60,7 @@ export default function LoginSignup({ isLoggedIn, setIsLoggedIn }) {
         localStorage.setItem("customerName", res.customerName);
         localStorage.setItem("email", res.email);
         localStorage.setItem("mobile", res.mobile);
+        localStorage.setItem("favRooms", []);
         setIsLoggedIn(true);
       })
       .catch((err) => {
@@ -92,7 +93,9 @@ export default function LoginSignup({ isLoggedIn, setIsLoggedIn }) {
         localStorage.setItem("customerName", res.customerName);
         localStorage.setItem("email", res.email);
         localStorage.setItem("mobile", res.mobile);
+        localStorage.setItem("favRoomsId", []);
         setIsLoggedIn(true);
+        console.log("Successfully Logged In!");
       })
       .catch((err) => {
         console.log("error: ", err);

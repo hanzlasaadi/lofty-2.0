@@ -17,6 +17,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [authToken, setAuthToken] = useState(null);
   const [favRooms, setFavRooms] = useState([favDummyData]);
+  const [favRoomsId, setFavRoomsId] = useState([]);
 
   useEffect(() => {
     let checkToken = localStorage.getItem("token");
@@ -24,6 +25,7 @@ function App() {
       setIsLoggedIn(true);
       console.log("token is present: ", checkToken);
       setAuthToken(checkToken);
+      setFavRoomsId(localStorage.getItem("favRooms").split(","));
     } else if (
       checkToken === "" ||
       !checkToken ||
@@ -56,7 +58,12 @@ function App() {
         <Route
           path="Booking/:roomId"
           element={
-            <Booking isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+            <Booking
+              isLoggedIn={isLoggedIn}
+              setIsLoggedIn={setIsLoggedIn}
+              authToken={authToken}
+              favRoomsId={favRoomsId}
+            />
           }
         />
         <Route
@@ -83,6 +90,7 @@ function App() {
               authToken={authToken}
               favRooms={favRooms}
               setFavRooms={setFavRooms}
+              setFavRoomsId={setFavRoomsId}
             />
           }
         />

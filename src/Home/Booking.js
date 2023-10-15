@@ -9,19 +9,49 @@ import axios from "axios";
 import { apiUrl } from "../assets/utils/env";
 import { dummyRoomDetails } from "../assets/utils/dummyData";
 
-const Booking = ({ isLoggedIn, setIsLoggedIn }) => {
-  console.log(isLoggedIn, "hello true or false");
+const Booking = ({ isLoggedIn, setIsLoggedIn, authToken, favRoomsId }) => {
+  console.log(isLoggedIn, "inBookingLoggedIn? true or false");
   const { roomId } = useParams();
   const [roomDetails, setRoomDetails] = useState(dummyRoomDetails);
+  const [cusId, setCusId] = useState(localStorage.getItem("customerId"));
+  const [isFav, setIsFav] = useState(false);
+  const [favRoomId, setFavRoomId] = useState(null);
+
   React.useEffect(() => {
+    // setIsFav(Boolean(localStorage.getItem("isFav")));
+    // const favRooms = localStorage.getItem('favRoomsId');
+
     axios
       .get(`${apiUrl}/api/Customer/GetRoomDeatil?AdID=${roomId}`)
       .then((res) => {
         console.log(res.data.data);
+        console.log(favRoomsId);
         setRoomDetails(res.data.data);
+        setFavRoomId(res.data.data.roomDetail.adId);
+        setIsFav(favRoomsId.includes(`${res.data.data.roomDetail.adId}`));
+
+        // not setting fav room from api because of bug
+        // setIsFav(res.data.data.roomDetail.isFavourite);
       })
       .catch((err) => console.log(err));
   }, []);
+
+  const handleAddRemoveFav = () => {
+    console.log(isFav, "isFav");
+    axios
+      .request({
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+        method: "GET",
+        url: `${apiUrl}/api/Customer/IsFavouriteRoom?AdId=${favRoomId}&IsFavourite=${!isFav}&CustomerId=${cusId}`,
+      })
+      .then((res) => {
+        console.log(res, "res");
+        setIsFav(!isFav);
+      })
+      .catch((err) => console.log(err, "error"));
+  };
 
   return (
     <>
@@ -39,16 +69,31 @@ const Booking = ({ isLoggedIn, setIsLoggedIn }) => {
                 />
                 {isLoggedIn ? (
                   <div className="icon-img">
-                    <a href="abc" className="link">
-                      <svg
-                        width="30"
-                        height="20"
-                        viewBox="0 0 14 13"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="icon-circle"
-                      >
-                        <path d="M12.4147 1.51371C11.0037 0.302997 8.92573 0.534835 7.61736 1.87434L7.12993 2.38954L6.61684 1.87434C5.33413 0.534835 3.23047 0.302997 1.81948 1.51371C0.203258 2.90473 0.126295 5.37767 1.56294 6.87174L6.53988 12.0237C6.84773 12.3586 7.38647 12.3586 7.69433 12.0237L12.6713 6.87174C14.1079 5.37767 14.0309 2.90473 12.4147 1.51371Z" />
-                      </svg>
+                    <a href="#" onClick={handleAddRemoveFav} className="link">
+                      {isFav ? (
+                        <svg
+                          width="30"
+                          height="20"
+                          viewBox="0 0 16 14"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M14.4466 0.956185C12.7296 -0.511342 10.2009 -0.230326 8.60876 1.39332L8.01561 2.0178L7.39124 1.39332C5.83031 -0.230326 3.27039 -0.511342 1.55338 0.956185C-0.413391 2.64228 -0.507046 5.63978 1.24119 7.45077L7.29758 13.6956C7.67221 14.1015 8.32779 14.1015 8.70242 13.6956L14.7588 7.45077C16.507 5.63978 16.4134 2.64228 14.4466 0.956185Z"
+                            fill="blue"
+                          />
+                        </svg>
+                      ) : (
+                        <svg
+                          width="30"
+                          height="20"
+                          viewBox="0 0 14 13"
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="icon-circle"
+                        >
+                          <path d="M12.4147 1.51371C11.0037 0.302997 8.92573 0.534835 7.61736 1.87434L7.12993 2.38954L6.61684 1.87434C5.33413 0.534835 3.23047 0.302997 1.81948 1.51371C0.203258 2.90473 0.126295 5.37767 1.56294 6.87174L6.53988 12.0237C6.84773 12.3586 7.38647 12.3586 7.69433 12.0237L12.6713 6.87174C14.1079 5.37767 14.0309 2.90473 12.4147 1.51371Z" />
+                        </svg>
+                      )}
                     </a>
                   </div>
                 ) : null}
