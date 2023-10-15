@@ -40,6 +40,39 @@ const Conformbook = ({
       .catch((err) => console.log("bookingConfirmError: ", err));
   }, []);
 
+  // CReate Booking
+  const handleCreateBooking = () => {
+    // console.log(formatISO(datePickerState[0].endDate));
+    axios
+      .request({
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+        method: "POST",
+        url: `${apiUrl}/api/Booking/CreateBooking`,
+        data: {
+          // BookingNumber = GetRandomNumberNumeric(),
+          // BookingDate = DateTime.Now,
+          AdId: roomId,
+          CustomerId: cusId,
+          Price: bookRoomDetails.roomDetail.price,
+          CommissionPrice: 0,
+          //Paid = false,
+          CheckedIn: formatISO(datePickerState[0].startDate),
+          CheckOut: formatISO(datePickerState[0].endDate),
+          // Status = BookingStatus.Active,
+          // PaidStatus = CheckPaid.None,
+          // IsDeleted = false,
+          // CreatedDate = DateTime.Now,
+        },
+      })
+      .then((res) => {
+        console.log(res.data, " :dataResult");
+        // setBookRoomDetails(res.data.data);
+      })
+      .catch((err) => console.log("bookingConfirmError: ", err));
+  };
+
   return (
     <>
       <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
@@ -205,7 +238,7 @@ const Conformbook = ({
             </div>
           </div>
         </div>
-        <div className="error-k text-center">
+        <div className="error-k text-center" onClick={handleCreateBooking}>
           <a
             type="button"
             href="#popup1"
