@@ -173,7 +173,7 @@ const Booking = ({ isLoggedIn, setIsLoggedIn, authToken, favRoomsId }) => {
 
           <div className="err">
             {isLoggedIn ? (
-              <Link to={`/Clinder/${roomDetails.roomDetail.adId}`}>
+              <Link to={`/Clinder/${roomDetails.roomDetail.adId},${cusId}`}>
                 <button type="button" className="btn btn-primary btn-lg">
                   <span className="">
                     Rs.{Math.round(roomDetails.roomDetail.price)}/

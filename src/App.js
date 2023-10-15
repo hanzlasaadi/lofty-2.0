@@ -115,11 +115,13 @@ function App() {
         />
 
         <Route
-          path="Conformbook/:roomId"
+          path="Conformbook/:roomIdCusId"
           element={
             <Conformbook
               isLoggedIn={isLoggedIn}
               setIsLoggedIn={setIsLoggedIn}
+              authToken={authToken}
+              datePickerState={datePickerState}
             />
           }
         />

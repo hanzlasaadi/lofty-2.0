@@ -1,8 +1,45 @@
-import React, { useState } from "react";
+import React from "react";
 import "./HomeCss/Conform.css";
 import NavBar from "../nav-bar/NavBar";
 import Footer from "./Footer";
-const Conformbook = ({ isLoggedIn, setIsLoggedIn }) => {
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { apiUrl } from "../assets/utils/env";
+import { dummyBookRoomDetails } from "../assets/utils/dummyData";
+import { differenceInDays, formatISO } from "date-fns";
+
+const Conformbook = ({
+  isLoggedIn,
+  setIsLoggedIn,
+  authToken,
+  datePickerState,
+}) => {
+  const [bookRoomDetails, setBookRoomDetails] =
+    React.useState(dummyBookRoomDetails);
+  const { roomIdCusId } = useParams();
+  const [roomId, cusId] = roomIdCusId.split(",");
+
+  const differenceDays = differenceInDays(
+    datePickerState[0].endDate,
+    datePickerState[0].startDate
+  );
+
+  React.useEffect(() => {
+    axios
+      .request({
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+        method: "GET",
+        url: `${apiUrl}/api/Booking/BookRoomDetail?AdId=${roomId}`,
+      })
+      .then((res) => {
+        console.log(res.data.result, " :dataResult");
+        setBookRoomDetails(res.data.data);
+      })
+      .catch((err) => console.log("bookingConfirmError: ", err));
+  }, []);
+
   return (
     <>
       <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
@@ -39,20 +76,24 @@ const Conformbook = ({ isLoggedIn, setIsLoggedIn }) => {
             <div className="col-md-4">
               <img
                 className="img-fluid smaller-image"
-                src="..\assets\images\blog\Lahore4.jpg"
+                src={bookRoomDetails.roomImages[0]}
                 alt="RoomImg"
               />
             </div>
             <div class="  col-md-4 mt-3">
-              <span class="room-title">SUIT</span>
+              <span class="room-title">
+                {bookRoomDetails.roomDetail.roomType}
+              </span>
               <p>
-                <span class="titl">
-                  Join over 1 Million of users. Dignissimos asspaneriores vitae
-                  velit veniam
+                <span class="titl">&nbsp;</span>
+              </p>
+              <p>
+                <span class="price">
+                  RS.{Math.round(bookRoomDetails.roomDetail.price)}/DAY
                 </span>
               </p>
               <p>
-                <span class="price">RS.4500.0/DAY</span>
+                <span class="titl">&nbsp;</span>
               </p>
               <p>
                 <i class="bi bi-person custom-icon"></i>
@@ -60,13 +101,13 @@ const Conformbook = ({ isLoggedIn, setIsLoggedIn }) => {
                 <i class="bi bi-tv custom-icon"></i>
                 <span class="number">2</span>
               </p>
-              <div class="review">
+              {/* <div class="review">
                 <i class="bi bi-star-fill"></i>
                 <i class="bi bi-star-fill"></i>
                 <i class="bi bi-star-fill"></i>
                 <i class="bi bi-star-half"></i>
                 <i class="bi bi-star"></i>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -84,9 +125,9 @@ const Conformbook = ({ isLoggedIn, setIsLoggedIn }) => {
             </div>
 
             <div class="col-lg-4">
-              <h5 class="b">Blue Swiss Hotel And Cafe</h5>
+              <h5 class="b">{bookRoomDetails.roomDetail.hotelName}</h5>
               <br />
-              <h5 class="a">Pico Road,Pindl Rajputan,Model town,lho</h5>
+              <h5 class="a">{bookRoomDetails.roomDetail.location}</h5>
             </div>
           </div>
         </div>
@@ -106,13 +147,21 @@ const Conformbook = ({ isLoggedIn, setIsLoggedIn }) => {
             </div>
 
             <div class="col-lg-4">
-              <h5 class="b">Dawwod</h5>
+              <h5 class="b">{localStorage.getItem("customerName")}</h5>
               <br />
-              <h5 class="a">Dawoodsandhu121@gmail.com</h5>
+              <h5 class="a">{localStorage.getItem("email")}</h5>
               <br />
-              <h5 class="a">28 October, 2023</h5>
+              <h5 class="a">
+                {formatISO(datePickerState[0].startDate, {
+                  representation: "date",
+                })}
+              </h5>
               <br />
-              <h5 class="a">29 October, 2023</h5>
+              <h5 class="a">
+                {formatISO(datePickerState[0].endDate, {
+                  representation: "date",
+                })}
+              </h5>
             </div>
           </div>
         </div>
@@ -124,7 +173,9 @@ const Conformbook = ({ isLoggedIn, setIsLoggedIn }) => {
             </div>
             <div className="col-lg-4 mt-5">
               {" "}
-              <h5 class="a mb-4">RS.0.0</h5>
+              <h5 class="a mb-4">
+                RS.{Math.round(bookRoomDetails.roomDetail.price)}
+              </h5>
             </div>
           </div>
         </div>
@@ -135,7 +186,7 @@ const Conformbook = ({ isLoggedIn, setIsLoggedIn }) => {
             </div>
             <div className="col-lg-4 mt-5">
               {" "}
-              <h5 class="a mb-4">1</h5>
+              <h5 class="a mb-4">{differenceDays}</h5>
             </div>
           </div>
         </div>
@@ -146,7 +197,11 @@ const Conformbook = ({ isLoggedIn, setIsLoggedIn }) => {
             </div>
             <div className="col-lg-4 mt-5">
               {" "}
-              <h5 class="a mb-4">RS.0.0</h5>
+              <h5 class="a mb-4">
+                RS.
+                {Math.round(bookRoomDetails.roomDetail.price * differenceDays)}
+                .0
+              </h5>
             </div>
           </div>
         </div>

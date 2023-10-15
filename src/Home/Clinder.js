@@ -16,7 +16,6 @@ const Clinder = ({
   setDatePickerState,
 }) => {
   const { roomId } = useParams();
-  console.log(roomId);
   return (
     <>
       <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />

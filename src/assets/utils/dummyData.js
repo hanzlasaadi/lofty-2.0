@@ -80,3 +80,21 @@ export const partnerDummyData = {
     },
   ],
 };
+
+export const dummyBookRoomDetails = {
+  roomDetail: {
+    adId: 0,
+    price: 0,
+    roomType: "Room Type",
+    hotelName: "Hotel Name",
+    location: "Hotel Address",
+  },
+  facilityList: [
+    {
+      facilityName: "Central Air conditioning",
+      image: "https://placehold.co/100x100",
+      count: 0,
+    },
+  ],
+  roomImages: ["https://placehold.co/100x100"],
+};
