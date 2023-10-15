@@ -56,3 +56,27 @@ export const favDummyData = {
   basePrice: 0,
   roomType: "Room Name",
 };
+
+export const partnerDummyData = {
+  partnerProfile: {
+    partnerId: 26,
+    firstName: "firstName",
+    lastName: "lastName",
+    email: "email@example.com",
+    phone: "123456789",
+    address: "hotel Address",
+    adId: null,
+    hotelName: "Hotel Name",
+  },
+  review: [],
+  partnerAds: [
+    {
+      adId: 0,
+      noOfBed: 0,
+      noOfPerson: 0,
+      price: 0,
+      roomType: "Room Type",
+      adImage1: "https://placehold.co/100x100",
+    },
+  ],
+};

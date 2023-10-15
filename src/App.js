@@ -105,7 +105,7 @@ function App() {
           }
         />
         <Route
-          path="Veiw"
+          path="/Veiw/:partnerId"
           element={
             <Veiw isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
           }
