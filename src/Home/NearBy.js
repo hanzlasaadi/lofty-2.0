@@ -146,9 +146,9 @@ const NearBy = () => {
             </div>
           </div>
           <div className="row g-4 justify-content-center">
-            {nearByData?.slice(3, 6).map((nearbyRoom) => {
+            {nearByData?.slice(3, 6).map((nearbyRoom, i) => {
               return (
-                <div className="col-lg-4 col-md-6 col-sm-10">
+                <div className="col-lg-4 col-md-6 col-sm-10" key={i}>
                   <div className="blog-card3">
                     <div className="blog-img">
                       <img

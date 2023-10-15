@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./HomeCss/Booking.css";
 import Footer from "./Footer";
 import NavBar from "../nav-bar/NavBar";
+import Veiw from "./Veiwdetail";
 // import Clinder from "./Clinder";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
@@ -115,9 +116,11 @@ const Booking = ({ isLoggedIn, setIsLoggedIn }) => {
           </div>
           <br />
           <div className="error">
-            <button type="button" className="btn btn-primary btn-lg ">
-              View Hotel Detail <i className="bi bi-chevron-right"></i>
-            </button>
+            <a href="/Veiw">
+              <button type="button" className="btn btn-primary btn-lg ">
+                View Hotel Detail <i className="bi bi-chevron-right"></i>
+              </button>
+            </a>
           </div>
           <h3 className="FACILITES locatoin">DESCRIPTION</h3>
           <div className="best">{roomDetails.roomDetail.description}</div>
