@@ -7,7 +7,12 @@ import NearBy from "./NearBy";
 import Popular from "./Popular";
 import QrCode from "./QrCode";
 import Footer from "./Footer";
-const Home = ({ isLoggedIn, setIsLoggedIn }) => {
+const Home = ({
+  isLoggedIn,
+  setIsLoggedIn,
+  datePickerState,
+  setDatePickerState,
+}) => {
   return (
     <>
       <div className="cover">
@@ -18,7 +23,10 @@ const Home = ({ isLoggedIn, setIsLoggedIn }) => {
       </div>
       <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       {/* <!-- ========== Search Bar============= --> */}
-      <HeaderHome />
+      <HeaderHome
+        datePickerState={datePickerState}
+        setDatePickerState={setDatePickerState}
+      />
       {/* <!-- ========== Scroll Bar============= --> */}
       <ScrollBar />
       {/* <!-- ========== QR Code============= --> */}

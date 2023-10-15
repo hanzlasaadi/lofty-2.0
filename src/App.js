@@ -19,13 +19,22 @@ function App() {
   const [favRooms, setFavRooms] = useState([favDummyData]);
   const [favRoomsId, setFavRoomsId] = useState([]);
 
+  // DatePickerStates
+  const [datePickerState, setDatePickerState] = useState([
+    {
+      startDate: new Date(Date.now()),
+      endDate: null,
+      key: "selection",
+    },
+  ]);
+
   useEffect(() => {
     let checkToken = localStorage.getItem("token");
     if (checkToken) {
       setIsLoggedIn(true);
       console.log("token is present: ", checkToken);
       setAuthToken(checkToken);
-      setFavRoomsId(localStorage.getItem("favRooms").split(","));
+      setFavRoomsId(localStorage.getItem("favRooms")?.split(",") || []);
     } else if (
       checkToken === "" ||
       !checkToken ||
@@ -44,7 +53,12 @@ function App() {
         <Route
           path="/"
           element={
-            <Home isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+            <Home
+              isLoggedIn={isLoggedIn}
+              setIsLoggedIn={setIsLoggedIn}
+              datePickerState={datePickerState}
+              setDatePickerState={setDatePickerState}
+            />
           }
         />
         <Route path="Lahore" element={<Lahore />} />

@@ -1,15 +1,31 @@
 import React from "react";
 import "./HomeCss/HeaderHome.css";
-import { RangeDatePicker } from "react-google-flight-datepicker";
-import "react-google-flight-datepicker/dist/main.css";
 // import SearchField from "./search";
-import "./search.css";
+// import "./search.css";
+import { DateRange } from "react-date-range";
+import "react-date-range/dist/styles.css"; // main css file
+import "react-date-range/dist/theme/default.css"; // theme css file
+import { useNavigate } from "react-router-dom";
 
-const HeaderHome = () => {
+const HeaderHome = ({ datePickerState, setDatePickerState }) => {
+  const nav = useNavigate();
   const onDateChange = (startDate, endDate) => {
     console.log(startDate, "startDAte");
     console.log(endDate, "endDate");
   };
+  const [showCal, setShowCal] = React.useState(false);
+
+  const handleShowCal = () => {
+    setShowCal(true);
+  };
+  const handleCloseCal = () => {
+    setShowCal(false);
+  };
+
+  const handleKeyInput = (e) => {
+    if (e.keyCode === 13) nav("/Karachi");
+  };
+
   return (
     <>
       {/* <!-- ========== Search Bar============= --> */}
@@ -20,12 +36,12 @@ const HeaderHome = () => {
 </video> */}
 
       <div id="content">
-        <ul className="slideshow">
+        <ul className="slideshow" style={{ marginBottom: "16rem" }}>
           <li>
             <span></span>
           </li>
           <li>
-            <span>2</span>
+            <span></span>
           </li>
           <li>
             <span></span>
@@ -38,7 +54,10 @@ const HeaderHome = () => {
           </li>
         </ul>
 
-        <div className="row height d-flex justify-content-center align-items-center">
+        <div
+          className="row height d-flex justify-content-center align-items-center"
+          onFocus={handleShowCal}
+        >
           <div className="col-md-8 col-sm-6">
             <div className="form">
               <i className="fa fa-search"></i>
@@ -46,22 +65,27 @@ const HeaderHome = () => {
                 type="text"
                 className="form-control form-input"
                 placeholder="Search by city, hotel or neighbourhood"
-              />
-              <RangeDatePicker
-                startDate={new Date(2020, 0, 15)}
-                endDate={new Date(2020, 1, 1)}
-                minDate={new Date(1900, 0, 1)}
-                maxDate={new Date(2100, 0, 1)}
-                onChange={(startDate, endDate) =>
-                  onDateChange(startDate, endDate)
-                }
+                onKeyUp={handleKeyInput}
               />
               {/* <span className="left-pan">
                 <i className="bi bi-filter"></i>
               </span> */}
               {/* <SearchField /> */}
+              {showCal ? (
+                <i className="fa fa-close" onClick={handleCloseCal}></i>
+              ) : null}
             </div>
           </div>
+          {showCal ? (
+            <div>
+              <DateRange
+                editableDateInputs={true}
+                onChange={(item) => setDatePickerState([item.selection])}
+                moveRangeOnFirstSelection={false}
+                ranges={datePickerState}
+              />
+            </div>
+          ) : null}
         </div>
       </div>
 
