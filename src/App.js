@@ -61,7 +61,6 @@ function App() {
             />
           }
         />
-        <Route path="Lahore" element={<Lahore />} />
         <Route
           path="Karachi"
           element={

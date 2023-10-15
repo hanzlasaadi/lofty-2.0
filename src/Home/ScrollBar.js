@@ -60,20 +60,20 @@ const ScrollBar = () => {
           ref={listRef}
         >
           <ul className="horizontal-list d-flex flex-wrap gap-3 justify-content-center">
-            <li onClick={handl}> Lahore </li>
-            <li>Islamabad</li>
+            <li onClick={hand}>Lahore</li>
+            <li onClick={hand}>Islamabad</li>
             <li onClick={hand}>Karachi</li>
-            <li>Faisalabad</li>
-            <li>Rawalpindi</li>
-            <li>Gujranwala</li>
-            <li>Peshawar</li>
-            <li>Multan</li>
-            <li>Hyderabad</li>
-            <li>Quetta</li>
-            <li>Bahawalpur</li>
-            <li>Sargodha</li>
-            <li>Sialkot</li>
-            <li>Gujrat</li>
+            <li onClick={hand}>Murree</li>
+            <li onClick={hand}>Rawalpindi</li>
+            <li onClick={hand}>Gujranwala</li>
+            <li onClick={hand}>Peshawar</li>
+            <li onClick={hand}>Multan</li>
+            <li onClick={hand}>Hyderabad</li>
+            <li onClick={hand}>Quetta</li>
+            <li onClick={hand}>Bahawalpur</li>
+            <li onClick={hand}>Sargodha</li>
+            <li onClick={hand}>Sialkot</li>
+            <li onClick={hand}>Gujrat</li>
           </ul>
         </div>
         <div className="ScrolingArrow">
