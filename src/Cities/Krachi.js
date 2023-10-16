@@ -47,35 +47,20 @@ const Krachi = ({ isLoggedIn, setIsLoggedIn }) => {
 
                 <div className="shop-widget">
                   <div className="check-box-item">
-                    <h5 className="shop-widget-title">Property Type</h5>
+                    <h5 className="shop-widget-title">Room Types</h5>
                     <div className="checkbox-container">
                       <label className="containerss">
-                        Hotels
-                        <input type="checkbox" checked="checked" />
-                        <span className="checkmark"></span>
-                      </label>
-                      <label className="containerss">
-                        Hostels
+                        Executive
                         <input type="checkbox" />
                         <span className="checkmark"></span>
                       </label>
                       <label className="containerss">
-                        Apartments
+                        Deluxe
                         <input type="checkbox" />
                         <span className="checkmark"></span>
                       </label>
                       <label className="containerss">
-                        Apartment hotels
-                        <input type="checkbox" />
-                        <span className="checkmark"></span>
-                      </label>
-                      <label className="containerss">
-                        Guesthouses
-                        <input type="checkbox" />
-                        <span className="checkmark"></span>
-                      </label>
-                      <label className="containerss">
-                        Cottages
+                        Standard
                         <input type="checkbox" />
                         <span className="checkmark"></span>
                       </label>
@@ -85,27 +70,20 @@ const Krachi = ({ isLoggedIn, setIsLoggedIn }) => {
 
                 <div className="shop-widget">
                   <div className="check-box-item">
-                    <h5 className="shop-widget-title">
-                      Facilities and Services
-                    </h5>
+                    <h5 className="shop-widget-title">Room Capacity</h5>
                     <div className="checkbox-container">
                       <label className="containerss">
-                        Free Wi-Fi
-                        <input type="checkbox" checked="checked" />
-                        <span className="checkmark"></span>
-                      </label>
-                      <label className="containerss">
-                        Free parking
+                        Double
                         <input type="checkbox" />
                         <span className="checkmark"></span>
                       </label>
                       <label className="containerss">
-                        Swimming pool
+                        Twin
                         <input type="checkbox" />
                         <span className="checkmark"></span>
                       </label>
                       <label className="containerss">
-                        Spa
+                        Master
                         <input type="checkbox" />
                         <span className="checkmark"></span>
                       </label>
@@ -113,7 +91,7 @@ const Krachi = ({ isLoggedIn, setIsLoggedIn }) => {
                   </div>
                 </div>
 
-                <div className="shop-widget">
+                {/* <div className="shop-widget">
                   <div className="check-box-item">
                     <h5 className="shop-widget-title">
                       Accommodation Features
@@ -169,7 +147,7 @@ const Krachi = ({ isLoggedIn, setIsLoggedIn }) => {
                       </label>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
             <div className="col-lg-9">
