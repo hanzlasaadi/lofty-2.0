@@ -72,12 +72,16 @@ const HeaderHome = ({ datePickerState, setDatePickerState }) => {
               </span> */}
               {/* <SearchField /> */}
               {showCal ? (
-                <i className="fa fa-close" onClick={handleCloseCal}></i>
+                <i
+                  className="fa fa-close"
+                  style={{ float: "right", cursor: "pointer" }}
+                  onClick={handleCloseCal}
+                ></i>
               ) : null}
             </div>
           </div>
           {showCal ? (
-            <div>
+            <div style={{ paddingLeft: "10rem" }}>
               <DateRange
                 editableDateInputs={true}
                 onChange={(item) => setDatePickerState([item.selection])}

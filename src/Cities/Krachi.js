@@ -151,7 +151,7 @@ const Krachi = ({ isLoggedIn, setIsLoggedIn }) => {
               </div>
             </div>
             <div className="col-lg-9">
-              <div className="row mb-50">
+              {/* <div className="row mb-50">
                 <div className="col-lg-12">
                   <div className="multiselect-bar">
                     <h6>LOFTYROOMS</h6>
@@ -186,7 +186,7 @@ const Krachi = ({ isLoggedIn, setIsLoggedIn }) => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
 
               {/* //////////////////////// one Room*/}
               {/* hanzla */}
