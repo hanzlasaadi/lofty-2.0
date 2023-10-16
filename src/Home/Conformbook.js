@@ -77,8 +77,8 @@ const Conformbook = ({
     <>
       <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
 
-      <div id="popup1" class="overlay">
-        <div class="popup ">
+      <div id="popup1" className="overlay">
+        <div className="popup ">
           <div className="center-content">
             <img
               src="https://media.istockphoto.com/id/1425217376/vector/a-checkmark-that-looks-like-it-was-written-with-a-pen.jpg?s=612x612&w=0&k=20&c=ZJLNQ2Yjh5gmFJyDnLngB_Bju2Fb-LjvEa7YRUsjA_k="
@@ -87,7 +87,7 @@ const Conformbook = ({
             />
           </div>
 
-          <div class="center-content ">
+          <div className="center-content ">
             <p>
               <h1 clas>BOOKING REQUEST</h1>
             </p>
@@ -115,84 +115,84 @@ const Conformbook = ({
                 alt="RoomImg"
               />
             </div>
-            <div class="  col-md-4 mt-3">
-              <span class="room-title">
+            <div className="  col-md-4 mt-3">
+              <span className="room-title">
                 {bookRoomDetails.roomDetail.roomType}
               </span>
               <p>
-                <span class="titl">&nbsp;</span>
+                <span className="titl">&nbsp;</span>
               </p>
               <p>
-                <span class="price">
+                <span className="price">
                   RS.{Math.round(bookRoomDetails.roomDetail.price)}/DAY
                 </span>
               </p>
               <p>
-                <span class="titl">&nbsp;</span>
+                <span className="titl">&nbsp;</span>
               </p>
               <p>
-                <i class="bi bi-person custom-icon"></i>
-                <span class="number">4</span>
-                <i class="bi bi-tv custom-icon"></i>
-                <span class="number">2</span>
+                <i className="bi bi-person custom-icon"></i>
+                <span className="number">4</span>
+                <i className="bi bi-tv custom-icon"></i>
+                <span className="number">2</span>
               </p>
-              {/* <div class="review">
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-half"></i>
-                <i class="bi bi-star"></i>
+              {/* <div className="review">
+                <i className="bi bi-star-fill"></i>
+                <i className="bi bi-star-fill"></i>
+                <i className="bi bi-star-fill"></i>
+                <i className="bi bi-star-half"></i>
+                <i className="bi bi-star"></i>
               </div> */}
             </div>
           </div>
         </div>
         {/* ------------------------------ */}
         <div className="container">
-          <h3 class="FACILITES locatoin">
+          <h3 className="FACILITES locatoin">
             ABOUT HOTEL
             {/* <img  src="https://cdn-icons-png.flaticon.com/512/9800/9800512.png" /> */}
           </h3>
-          <div class="bor row">
-            <div class="col-lg-8 ">
-              <h5 class="b">Hotel Name:</h5>
+          <div className="bor row">
+            <div className="col-lg-8 ">
+              <h5 className="b">Hotel Name:</h5>
               <br />
-              <h5 class="a">Location:</h5>
+              <h5 className="a">Location:</h5>
             </div>
 
-            <div class="col-lg-4">
-              <h5 class="b">{bookRoomDetails.roomDetail.hotelName}</h5>
+            <div className="col-lg-4">
+              <h5 className="b">{bookRoomDetails.roomDetail.hotelName}</h5>
               <br />
-              <h5 class="a">{bookRoomDetails.roomDetail.location}</h5>
+              <h5 className="a">{bookRoomDetails.roomDetail.location}</h5>
             </div>
           </div>
         </div>
         {/* ------------------------------- */}
 
         <div className="container">
-          <h3 class="FACILITES locatoin">RESERVATION DETAIL</h3>
-          <div class="bor row">
-            <div class="col-lg-8 ">
-              <h5 class="b">Person Name:</h5>
+          <h3 className="FACILITES locatoin">RESERVATION DETAIL</h3>
+          <div className="bor row">
+            <div className="col-lg-8 ">
+              <h5 className="b">Person Name:</h5>
               <br />
-              <h5 class="b">Email:</h5>
+              <h5 className="b">Email:</h5>
               <br />
-              <h5 class="a">Check In:</h5>
+              <h5 className="a">Check In:</h5>
               <br />
-              <h5 class="a">Check Out:</h5>
+              <h5 className="a">Check Out:</h5>
             </div>
 
-            <div class="col-lg-4">
-              <h5 class="b">{localStorage.getItem("customerName")}</h5>
+            <div className="col-lg-4">
+              <h5 className="b">{localStorage.getItem("customerName")}</h5>
               <br />
-              <h5 class="a">{localStorage.getItem("email")}</h5>
+              <h5 className="a">{localStorage.getItem("email")}</h5>
               <br />
-              <h5 class="a">
+              <h5 className="a">
                 {formatISO(datePickerState[0].startDate, {
                   representation: "date",
                 })}
               </h5>
               <br />
-              <h5 class="a">
+              <h5 className="a">
                 {formatISO(datePickerState[0].endDate, {
                   representation: "date",
                 })}
@@ -202,37 +202,37 @@ const Conformbook = ({
         </div>
         {/* ------------------------------------------- */}
         <div className="container  mt-3">
-          <div class="row usman">
-            <div class="col-lg-8 ">
-              <h3 class="FACILITES locatoin">PRICE/DAY</h3>
+          <div className="row usman">
+            <div className="col-lg-8 ">
+              <h3 className="FACILITES locatoin">PRICE/DAY</h3>
             </div>
             <div className="col-lg-4 mt-5">
               {" "}
-              <h5 class="a mb-4">
+              <h5 className="a mb-4">
                 RS.{Math.round(bookRoomDetails.roomDetail.price)}
               </h5>
             </div>
           </div>
         </div>
         <div className="container  mt-2">
-          <div class="row usman">
-            <div class="col-lg-8 ">
-              <h3 class="FACILITES locatoin">DAYS</h3>
+          <div className="row usman">
+            <div className="col-lg-8 ">
+              <h3 className="FACILITES locatoin">DAYS</h3>
             </div>
             <div className="col-lg-4 mt-5">
               {" "}
-              <h5 class="a mb-4">{differenceDays}</h5>
+              <h5 className="a mb-4">{differenceDays}</h5>
             </div>
           </div>
         </div>
         <div className="container mb-3 mt-2">
-          <div class="row usman">
-            <div class="col-lg-8 ">
-              <h3 class="FACILITES locatoin">TOTAL</h3>
+          <div className="row usman">
+            <div className="col-lg-8 ">
+              <h3 className="FACILITES locatoin">TOTAL</h3>
             </div>
             <div className="col-lg-4 mt-5">
               {" "}
-              <h5 class="a mb-4">
+              <h5 className="a mb-4">
                 RS.
                 {Math.round(bookRoomDetails.roomDetail.price * differenceDays)}
                 .0

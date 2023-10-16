@@ -23,7 +23,7 @@ const Veiw = ({ isLoggedIn, setIsLoggedIn }) => {
           style={{ background: "#272a61" }}
         >
           <div className="col-lg-8 mt-3">
-            <p class="text-white">Hotel Name:</p>
+            <p className="text-white">Hotel Name:</p>
           </div>
           <div className="col-lg-4 mb-5 mt-3">
             <h4 className="text-white">
@@ -32,7 +32,7 @@ const Veiw = ({ isLoggedIn, setIsLoggedIn }) => {
           </div>
           <div className="row  ">
             <div className="col-lg-8">
-              <p class="text-white">Email:</p>
+              <p className="text-white">Email:</p>
             </div>
             <div className="col-lg-4 mb-4">
               <h4 className="text-white">{partnerData.partnerProfile.email}</h4>
@@ -40,12 +40,12 @@ const Veiw = ({ isLoggedIn, setIsLoggedIn }) => {
           </div>
         </div>
 
-        <ul class="tabs container center-content">
-          <li class="tab">
+        <ul className="tabs container center-content">
+          <li className="tab">
             {/* -----------------------------room page---- */}
             <input type="radio" name="tabs" checked="checked" id="tab1" />
             <label for="tab1">Rooms</label>
-            <div id="tab-content1" class="content">
+            <div id="tab-content1" className="content">
               {partnerData.partnerAds.map((room) => {
                 return (
                   <div className="container bg-light mt-4 rounded">
@@ -84,10 +84,10 @@ const Veiw = ({ isLoggedIn, setIsLoggedIn }) => {
             </div>
           </li>
           {/* ------------------------------------------ */}
-          <li class="tab">
+          <li className="tab">
             <input type="radio" name="tabs" id="tab2" />
             <label for="tab2">Reviews</label>
-            <div id="tab-content2" class="content center-content">
+            <div id="tab-content2" className="content center-content">
               <h2 className="mt-5 mr-8">No Reviews Yet!</h2>
             </div>
           </li>

@@ -123,13 +123,13 @@ const NearBy = () => {
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 395.71 395.71"
                       stroke="#272a61"
-                      stroke-width="0.0039571"
+                      strokeWidth="0.0039571"
                     >
-                      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                      <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                       <g
                         id="SVGRepo_tracerCarrier"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                       ></g>
                       <g id="SVGRepo_iconCarrier">
                         {" "}

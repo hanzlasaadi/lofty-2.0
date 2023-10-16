@@ -34,12 +34,12 @@ const Tab = ({ isLoggedIn, setIsLoggedIn, authToken }) => {
     <>
       <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
 
-      <ul class="tabs container center-content">
-        <li class="tab">
+      <ul className="tabs container center-content">
+        <li className="tab">
           {/* -----------------------------room page---- */}
           <input type="radio" name="tabs" checked="checked" id="tab1" />
           <label for="tab1">Active</label>
-          <div id="tab-content1" class="content">
+          <div id="tab-content1" className="content">
             {dataPresent && allData.activeBookings.length !== 0 ? (
               <div className="container bg-light mt-3 rounded">
                 <div className="row">
@@ -54,7 +54,7 @@ const Tab = ({ isLoggedIn, setIsLoggedIn, authToken }) => {
                     <span className="room-title">
                       {allData.activeBookings[0].roomType}&nbsp;
                       &nbsp;&nbsp;&nbsp;
-                      <i class="bi bi-chevron-right ml-5"></i>
+                      <i className="bi bi-chevron-right ml-5"></i>
                     </span>
                     <p>
                       <span className="titl">&nbsp;</span>
@@ -100,18 +100,18 @@ const Tab = ({ isLoggedIn, setIsLoggedIn, authToken }) => {
           </div>
         </li>
         {/* ------------------------------------------ */}
-        <li class="tab">
+        <li className="tab">
           <input type="radio" name="tabs" id="tab2" />
           <label for="tab2">Booked</label>
-          <div id="tab-content2" class="content center-content">
+          <div id="tab-content2" className="content center-content">
             <h2>No Data Found!</h2>
           </div>
         </li>
 
-        <li class="tab">
+        <li className="tab">
           <input type="radio" name="tabs" id="tab3" />
           <label for="tab3">Past</label>
-          <div id="tab-content2" class="content center-content">
+          <div id="tab-content2" className="content center-content">
             <h2>No Data Found!</h2>
           </div>
         </li>

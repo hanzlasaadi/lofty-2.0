@@ -224,13 +224,13 @@ export default function LoginSignup({ isLoggedIn, setIsLoggedIn }) {
         <div className="auth-form-container auth-sign-in-container">
           <form onSubmit={SubmitLoginForm}>
             <h1 style={{ paddingBottom: "15px" }}> Login Now</h1>
-            <div class="text-center" style={{ marginBlockStart: "-50px" }}>
+            <div className="text-center" style={{ marginBlockStart: "-50px" }}>
               <img
                 src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
                 style={{ width: "185px" }}
                 alt="logo"
               />
-              <h4 class=" text-danger mb-2">We are The Lotus Team</h4>
+              <h4 className=" text-danger mb-2">We are The Lotus Team</h4>
             </div>
 
             <div className="container ml-5">

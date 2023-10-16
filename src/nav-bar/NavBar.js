@@ -99,12 +99,12 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, authToken }) => {
 
           {/* -----------------------notitfication start--------------- */}
           {/* <li>
-            <div class="panel panel-default">
-              <div class="panel-body">
-                <div class="btn-group pull-right top-head-dropdown">
+            <div className="panel panel-default">
+              <div className="panel-body">
+                <div className="btn-group pull-right top-head-dropdown">
                   <a
                     type="button"
-                    class="btn btn-default "
+                    className="btn btn-default "
                     data-toggle="dropdown"
                     aria-haspopup="true"
                     aria-expanded="false"
@@ -120,81 +120,81 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, authToken }) => {
                       <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z" />
                     </svg>
                   </a>
-                  <ul class="dropdown-menu dropdown-menu-right">
+                  <ul className="dropdown-menu dropdown-menu-right">
                     <li>
-                      <a href="#" class="top-text-block">
-                        <div class="top-text-heading">
+                      <a href="#" className="top-text-block">
+                        <div className="top-text-heading">
                           You have <b>3 new themes</b> trending
                         </div>
-                        <div class="top-text-light">15 minutes ago</div>
+                        <div className="top-text-light">15 minutes ago</div>
                       </a>
                     </li>
                     <li>
-                      <a href="#" class="top-text-block">
-                        <div class="top-text-heading">
+                      <a href="#" className="top-text-block">
+                        <div className="top-text-heading">
                           New asset recommendations in <b>Gaming Laptop</b>
                         </div>
-                        <div class="top-text-light">2 hours ago</div>
+                        <div className="top-text-light">2 hours ago</div>
                       </a>
                     </li>
                     <li>
-                      <a href="#" class="top-text-block">
-                        <div class="top-text-heading">
+                      <a href="#" className="top-text-block">
+                        <div className="top-text-heading">
                           New asset recommendations in <b>5 themes</b>
                         </div>
-                        <div class="top-text-light">4 hours ago</div>
+                        <div className="top-text-light">4 hours ago</div>
                       </a>
                     </li>
                     <li>
-                      <a href="#" class="top-text-block">
-                        <div class="top-text-heading">
+                      <a href="#" className="top-text-block">
+                        <div className="top-text-heading">
                           Assets specifications modified in themes
                         </div>
-                        <div class="top-text-light">4 hours ago</div>
+                        <div className="top-text-light">4 hours ago</div>
                       </a>
                     </li>
                     <li>
-                      <a href="#" class="top-text-block">
-                        <div class="top-text-heading">
+                      <a href="#" className="top-text-block">
+                        <div className="top-text-heading">
                           We crawled <b>www.dell.com</b> successfully
                         </div>
-                        <div class="top-text-light">5 hours ago</div>
+                        <div className="top-text-light">5 hours ago</div>
                       </a>
                     </li>
                     <li>
-                      <a href="#" class="top-text-block">
-                        <div class="top-text-heading">
+                      <a href="#" className="top-text-block">
+                        <div className="top-text-heading">
                           Next crawl scheduled on <b>10 Oct 2016</b>
                         </div>
-                        <div class="top-text-light">6 hours ago</div>
+                        <div className="top-text-light">6 hours ago</div>
                       </a>
                     </li>
                     <li>
-                      <a href="#" class="top-text-block">
-                        <div class="top-text-heading">
+                      <a href="#" className="top-text-block">
+                        <div className="top-text-heading">
                           You have an update for <b>www.dell.com</b>
                         </div>
-                        <div class="top-text-light">7 hours ago</div>
+                        <div className="top-text-light">7 hours ago</div>
                       </a>
                     </li>
                     <li>
-                      <a href="#" class="top-text-block">
-                        <div class="top-text-heading">
+                      <a href="#" className="top-text-block">
+                        <div className="top-text-heading">
                           <b>"Gaming Laptop"</b> is now trending
                         </div>
-                        <div class="top-text-light">7 hours ago</div>
+                        <div className="top-text-light">7 hours ago</div>
                       </a>
                     </li>
                     <li>
-                      <a href="#" class="top-text-block">
-                        <div class="top-text-heading">
+                      <a href="#" className="top-text-block">
+                        <div className="top-text-heading">
                           New asset recommendations in <b>Gaming Laptop</b>
                         </div>
-                        <div class="top-text-light">7 hours ago</div>
+                        <div className="top-text-light">7 hours ago</div>
                       </a>
                     </li>
                     <li>
-                      <div class="loader-topbar"></div>
+                      <div className="loader-topbar"></div>
                     </li>
                   </ul>
                 </div>
@@ -220,7 +220,7 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, authToken }) => {
                   </li>
 
                   <li onClick={handleClickNotification}>
-                    <div class="dropdown">
+                    <div className="dropdown">
                       <a
                         href
                         type="button"
@@ -239,11 +239,11 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, authToken }) => {
                           viewBox="0 0 611.999 611.999"
                           stroke="#000000"
                         >
-                          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                           <g
                             id="SVGRepo_tracerCarrier"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                           ></g>
                           <g id="SVGRepo_iconCarrier">
                             {" "}
@@ -262,7 +262,7 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, authToken }) => {
                         </svg>
                       </a>
                       <div
-                        class="dropdown-menu mt-2 "
+                        className="dropdown-menu mt-2 "
                         aria-labelledby="dropdownMenuButton"
                         style={{ width: "300px", marginRight: "100px" }}
                       >
@@ -271,7 +271,7 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, authToken }) => {
                             {notificationData.map((not) => {
                               return (
                                 <>
-                                  <p class="dropdown-item " href="#">
+                                  <p className="dropdown-item " href="#">
                                     {not.message || not.Message}
                                   </p>
                                   <hr />
@@ -280,7 +280,7 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, authToken }) => {
                             })}
                           </>
                         ) : (
-                          <p class="dropdown-item" href="#">
+                          <p className="dropdown-item" href="#">
                             No New Notifications!
                           </p>
                         )}
