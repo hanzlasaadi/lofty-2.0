@@ -6,6 +6,7 @@ import Booking from "./Home/Booking";
 import Clinder from "./Home/Clinder";
 import LoginSignup from "./nav-bar/auth";
 import Veiw from "./Home/Veiwdetail";
+import Tab from "./Home/Tab";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Favorite from "./Home/Favorite";
@@ -129,6 +130,16 @@ function App() {
           path="/Veiw/:partnerId"
           element={
             <Veiw isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+          }
+        />
+        <Route
+          path="/tab"
+          element={
+            <Tab
+              isLoggedIn={isLoggedIn}
+              setIsLoggedIn={setIsLoggedIn}
+              authToken={authToken}
+            />
           }
         />
       </Routes>

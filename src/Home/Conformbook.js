@@ -2,7 +2,7 @@ import React from "react";
 import "./HomeCss/Conform.css";
 import NavBar from "../nav-bar/NavBar";
 import Footer from "./Footer";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { apiUrl } from "../assets/utils/env";
 import { dummyBookRoomDetails } from "../assets/utils/dummyData";
@@ -95,11 +95,13 @@ const Conformbook = ({
           <div className="center-content">
             <p>SUBMITTED SUCCESSFULLY!</p>
           </div>
-          <div className="error-k text-center">
-            <a href="#" className="btn btn-primary btn-lg mb-3 w-85  mt-5">
-              My Bookings
-            </a>
-          </div>
+          <Link to={"/tab"}>
+            <div className="error-k text-center">
+              <a href className="btn btn-primary btn-lg mb-3 w-85  mt-5">
+                My Bookings
+              </a>
+            </div>
+          </Link>
         </div>
       </div>
 
