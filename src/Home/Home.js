@@ -12,6 +12,7 @@ const Home = ({
   setIsLoggedIn,
   datePickerState,
   setDatePickerState,
+  authToken,
 }) => {
   return (
     <>
@@ -21,7 +22,11 @@ const Home = ({
           <span className="close">Close</span>
         </div>
       </div>
-      <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+      <NavBar
+        isLoggedIn={isLoggedIn}
+        setIsLoggedIn={setIsLoggedIn}
+        authToken={authToken}
+      />
       {/* <!-- ========== Search Bar============= --> */}
       <HeaderHome
         datePickerState={datePickerState}

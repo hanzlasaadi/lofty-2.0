@@ -60,6 +60,7 @@ function App() {
               setIsLoggedIn={setIsLoggedIn}
               datePickerState={datePickerState}
               setDatePickerState={setDatePickerState}
+              authToken={authToken}
             />
           }
         />

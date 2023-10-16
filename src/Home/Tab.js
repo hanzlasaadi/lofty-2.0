@@ -12,7 +12,6 @@ const Tab = ({ isLoggedIn, setIsLoggedIn, authToken }) => {
 
   React.useEffect(() => {
     setDataPresent(false);
-    console.log(authToken, "auth");
     axios
       .request({
         headers: {

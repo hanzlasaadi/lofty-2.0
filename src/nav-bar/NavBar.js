@@ -4,25 +4,35 @@ import imgHead from "../assets/images/logo.png";
 import Favorite from "../Home/Favorite";
 import { Link } from "react-router-dom";
 import "./nav-bar.css";
-const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
-  console.log(isLoggedIn);
+import { apiUrl } from "../assets/utils/env";
+import axios from "axios";
+
+const NavBar = ({ isLoggedIn, setIsLoggedIn, authToken }) => {
   const [displayText, setDisplayText] = useState(false);
   const [loginOncHangeData, setLoginOncHangeData] = useState({});
   const [signUpOncHangeData, setSignUpOncHangeData] = useState({});
+  const [notificationData, setNotificationData] = useState([]);
+  const cusId = localStorage.getItem("customerId");
   const navigate = useNavigate();
   let timer = useRef(null);
   //  <<<<<<<<<<<<<<<<<<<        useEffect    >>>>>>>>>>>>>>>>>>>>>
-  // useEffect(() => {
-  //   if (displayText == false) {
-  //     setTimeout(() => {
-  //       setDisplayText(true);
-  //     }, 5000);
-  //   } else {
-  //     setTimeout(() => {
-  //       setDisplayText(false);
-  //     }, 3000);
-  //   }
-  // }, [displayText]);
+  const handleClickNotification = () => {
+    axios
+      .request({
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+        method: "GET",
+        url: `${apiUrl}/api/Booking/GetAllNotification?CustomerId=${cusId}`,
+      })
+      .then((res) => {
+        console.log(res.data);
+        setNotificationData(res.data.data);
+      })
+      .catch((err) => {
+        console.log("errorGettingNotificationData: ", err);
+      });
+  };
   //  <<<<<<<<<<<<<<<<<<<        Forms handling    >>>>>>>>>>>>>>>>>>>>>
   const SubmitLoginForm = () => {
     console.log("setLoginOncHangeData===>>", loginOncHangeData);
@@ -209,10 +219,10 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
                     </Link>
                   </li>
 
-                  <li>
+                  <li onClick={handleClickNotification}>
                     <div class="dropdown">
                       <a
-                        href="#"
+                        href
                         type="button"
                         id="dropdownMenuButton"
                         data-toggle="dropdown"
@@ -256,17 +266,24 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
                         aria-labelledby="dropdownMenuButton"
                         style={{ width: "300px", marginRight: "100px" }}
                       >
-                        <p class="dropdown-item " href="#">
-                          Action
-                        </p>
-                        <hr />
-                        <p class="dropdown-item" href="#">
-                          Another action
-                        </p>
-                        <hr />
-                        <p class="dropdown-item" href="#">
-                          Something else here
-                        </p>
+                        {notificationData.length !== 0 ? (
+                          <>
+                            {notificationData.map((not) => {
+                              return (
+                                <>
+                                  <p class="dropdown-item " href="#">
+                                    {not.message || not.Message}
+                                  </p>
+                                  <hr />
+                                </>
+                              );
+                            })}
+                          </>
+                        ) : (
+                          <p class="dropdown-item" href="#">
+                            No New Notifications!
+                          </p>
+                        )}
                       </div>
                     </div>
                   </li>
