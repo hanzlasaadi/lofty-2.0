@@ -8,7 +8,7 @@ const QrCode = () => {
           <div className="col-lg-4">
             <img
               className="phone"
-              src="..\assets\Qrcode.PNG"
+              src="..\assets\callToAction2.png"
               alt="no_image_QRcode"
             />
           </div>
@@ -22,7 +22,7 @@ const QrCode = () => {
           <div className="col-lg-4">
             <img
               className="qrcode"
-              src="..\assets\QRcode_Image.jpeg"
+              src="..\assets\frame.png"
               alt="no_image_QRcode"
             />
           </div>
