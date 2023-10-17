@@ -4,10 +4,12 @@ import "./auth.css";
 import { apiUrl } from "./../assets/utils/env";
 import axios from "axios";
 import NavBar from "./NavBar";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginSignup({ isLoggedIn, setIsLoggedIn }) {
   const [signUpOncHangeData, setSignUpOncHangeData] = useState({});
   const [loginOncHangeData, setLoginOncHangeData] = useState({});
+  const nav = useNavigate();
 
   // form transform css functionality
   React.useEffect(() => {
@@ -62,6 +64,7 @@ export default function LoginSignup({ isLoggedIn, setIsLoggedIn }) {
         localStorage.setItem("mobile", res.mobile);
         localStorage.setItem("favRooms", []);
         setIsLoggedIn(true);
+        nav("/");
       })
       .catch((err) => {
         console.log("Err===->>>", err);
@@ -95,6 +98,7 @@ export default function LoginSignup({ isLoggedIn, setIsLoggedIn }) {
         localStorage.setItem("mobile", res.mobile);
         localStorage.setItem("favRoomsId", []);
         setIsLoggedIn(true);
+        nav("/");
         console.log("Successfully Logged In!");
       })
       .catch((err) => {
