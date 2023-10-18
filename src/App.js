@@ -65,7 +65,7 @@ function App() {
           }
         />
         <Route
-          path="Karachi"
+          path="/City/:cityId"
           element={
             <Krachi isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
           }

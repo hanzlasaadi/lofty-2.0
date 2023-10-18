@@ -1,9 +1,24 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import "./HomeCss/ScrollBar.css";
 import { useNavigate } from "react-router-dom";
+import { dummyCityData } from "../assets/utils/dummyData";
+import axios from "axios";
+import { apiUrl } from "../assets/utils/env";
+
 const ScrollBar = () => {
+  const [cities, setCities] = useState(dummyCityData);
   const navigate = useNavigate();
   const listRef = useRef(null);
+
+  useEffect(() => {
+    axios
+      .get(`${apiUrl}/api/Customer/GetAllCities`)
+      .then((res) => {
+        console.log("getAllRoomsCitywise: ", res);
+        setCities(res.data.data);
+      })
+      .catch((err) => console.log("errorGettingCityData: ", err));
+  }, []);
   useEffect(() => {
     const handleScroll = () => {
       // if (listRef.current) {
@@ -43,12 +58,12 @@ const ScrollBar = () => {
       });
     }
   };
-  const handl = () => {
-    navigate("Lahore");
-  };
-  const hand = () => {
-    navigate("Karachi");
-  };
+  // const handl = () => {
+  //   navigate("Lahore");
+  // };
+  // const hand = () => {
+  //   navigate("Karachi");
+  // };
 
   return (
     <>
@@ -60,20 +75,18 @@ const ScrollBar = () => {
           ref={listRef}
         >
           <ul className="horizontal-list d-flex flex-wrap gap-3 justify-content-center">
-            <li onClick={hand}>Lahore</li>
-            <li onClick={hand}>Islamabad</li>
-            <li onClick={hand}>Karachi</li>
-            <li onClick={hand}>Murree</li>
-            <li onClick={hand}>Rawalpindi</li>
-            <li onClick={hand}>Gujranwala</li>
-            <li onClick={hand}>Peshawar</li>
-            <li onClick={hand}>Multan</li>
-            <li onClick={hand}>Hyderabad</li>
-            <li onClick={hand}>Quetta</li>
-            <li onClick={hand}>Bahawalpur</li>
-            <li onClick={hand}>Sargodha</li>
-            <li onClick={hand}>Sialkot</li>
-            <li onClick={hand}>Gujrat</li>
+            {cities.map((city) => {
+              return (
+                <li
+                  key={city.id}
+                  onClick={() => {
+                    navigate(`/City/${city.id}`);
+                  }}
+                >
+                  {city.cityName}
+                </li>
+              );
+            })}
           </ul>
         </div>
         <div className="ScrolingArrow">

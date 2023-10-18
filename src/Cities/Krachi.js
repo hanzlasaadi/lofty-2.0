@@ -4,20 +4,21 @@
 import React, { useState } from "react";
 import NavBar from "../nav-bar/NavBar";
 import "./Krachi.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Footer from "../Home/Footer";
 // import Booking from "../Home/Booking";
 import axios from "axios";
 import { apiUrl } from "../assets/utils/env";
 
 const Krachi = ({ isLoggedIn, setIsLoggedIn }) => {
+  const { cityId } = useParams();
   const [allRooms, setAllRooms] = useState([]);
   React.useEffect(() => {
     axios
-      .get(`${apiUrl}/api/Customer/GetAllRoomsCityWise?CityId=${1}`)
+      .get(`${apiUrl}/api/Customer/GetAllRoomsCityWise?CityId=${cityId}`)
       .then((res) => {
         setAllRooms(res.data.data);
-        console.log(res.data.data);
+        console.log("allRoomsData: ", res.data.data);
       })
       .catch((err) => console.log(err));
   }, []);

@@ -98,3 +98,14 @@ export const dummyBookRoomDetails = {
   ],
   roomImages: ["https://placehold.co/100x100"],
 };
+
+export const dummyCityData = [
+  {
+    id: 1,
+    cityName: "Lahore",
+  },
+  {
+    id: 6,
+    cityName: "Murree",
+  },
+];
