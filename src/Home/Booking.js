@@ -135,12 +135,12 @@ const Booking = ({ isLoggedIn, setIsLoggedIn, authToken, favRoomsId }) => {
               );
             })}
           </div>
-          <div className="container">
+          <div className="container ">
             <h3 className="FACILITES locatoin">
               ABOUT HOTEL
               <img src="https://cdn-icons-png.flaticon.com/512/9800/9800512.png" />
             </h3>
-            <div className="bor">
+            <div className="bor shadow  ">
               <div className="col">
                 <h5 className="b">Hotel Name:</h5>
                 <br />

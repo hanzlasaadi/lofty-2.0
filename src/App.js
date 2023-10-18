@@ -7,7 +7,7 @@ import Clinder from "./Home/Clinder";
 import LoginSignup from "./nav-bar/auth";
 import Veiw from "./Home/Veiwdetail";
 import Tab from "./Home/Tab";
-
+import Profile from "./Home/Profile";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Favorite from "./Home/Favorite";
 import Conformbook from "./Home/Conformbook";
@@ -71,6 +71,7 @@ function App() {
           }
         />
         <Route path="Form" element={<Form />} />
+        <Route path="Profile" element={<Profile />} />
         <Route
           path="Booking/:roomId"
           element={
@@ -133,6 +134,7 @@ function App() {
             <Veiw isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
           }
         />
+        <Route path="profile" element={<profile />} />
         <Route
           path="/tab"
           element={

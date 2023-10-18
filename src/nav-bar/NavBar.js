@@ -288,7 +288,7 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, authToken }) => {
                     </div>
                   </li>
                   <li>
-                    <a href="login.html">
+                    <a href="/profile">
                       <svg
                         width="15"
                         height="15"

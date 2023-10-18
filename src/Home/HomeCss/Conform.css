@@ -20,7 +20,18 @@
     align-items: center;
     justify-content: space-between;
 } */
-
+.tabs  .kh > label {
+  /* border-radius: 40px; */
+  display: block;
+  padding: 19px 97px;
+  font-size: 20px;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  color: #fff;
+  background: #888888;
+}
+743px
 .overlay {
   position: absolute;
   top: 0;
@@ -50,7 +61,19 @@
     }
   }
 }
-
+.tabs .content {
+    z-index: 0;
+    overflow: hidden;
+    width: 743px;
+    padding: 25px;
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    /* background: #303030; */
+    color: #dfdfdf;
+    opacity: 0;
+    transition: opacity 400ms ease-out;
+}
 .popup {
   border-radius: 5px;
   margin: 0 auto;

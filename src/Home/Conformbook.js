@@ -82,7 +82,7 @@ const Conformbook = ({
           <div className="center-content">
             <img
               src="https://media.istockphoto.com/id/1425217376/vector/a-checkmark-that-looks-like-it-was-written-with-a-pen.jpg?s=612x612&w=0&k=20&c=ZJLNQ2Yjh5gmFJyDnLngB_Bju2Fb-LjvEa7YRUsjA_k="
-              style={{ width: "100%" }}
+              style={{ width: "70%" }}
               alt="logo"
             />
           </div>
@@ -152,7 +152,7 @@ const Conformbook = ({
             ABOUT HOTEL
             {/* <img  src="https://cdn-icons-png.flaticon.com/512/9800/9800512.png" /> */}
           </h3>
-          <div className="bor row">
+          <div className="bor row shadow">
             <div className="col-lg-8 ">
               <h5 className="b">Hotel Name:</h5>
               <br />
@@ -170,7 +170,7 @@ const Conformbook = ({
 
         <div className="container">
           <h3 className="FACILITES locatoin">RESERVATION DETAIL</h3>
-          <div className="bor row">
+          <div className="bor row shadow">
             <div className="col-lg-8 ">
               <h5 className="b">Person Name:</h5>
               <br />
@@ -202,7 +202,7 @@ const Conformbook = ({
         </div>
         {/* ------------------------------------------- */}
         <div className="container  mt-3">
-          <div className="row usman">
+          <div className="row usman shadow">
             <div className="col-lg-8 ">
               <h3 className="FACILITES locatoin">PRICE/DAY</h3>
             </div>
@@ -215,7 +215,7 @@ const Conformbook = ({
           </div>
         </div>
         <div className="container  mt-2">
-          <div className="row usman">
+          <div className="row usman shadow">
             <div className="col-lg-8 ">
               <h3 className="FACILITES locatoin">DAYS</h3>
             </div>
@@ -226,7 +226,7 @@ const Conformbook = ({
           </div>
         </div>
         <div className="container mb-3 mt-2">
-          <div className="row usman">
+          <div className="row usman shadow">
             <div className="col-lg-8 ">
               <h3 className="FACILITES locatoin">TOTAL</h3>
             </div>
