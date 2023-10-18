@@ -1,8 +1,73 @@
 import React from "react";
 import "./HomeCss/profile.css";
 import NavBar from "../nav-bar/NavBar";
+import axios from "axios";
+import { apiUrl } from "../assets/utils/env";
+import { dummyWalletData } from "../assets/utils/dummyData";
 
-const Profile = ({ isLoggedIn, setIsLoggedIn }) => {
+const Profile = ({ isLoggedIn, setIsLoggedIn, authToken }) => {
+  const [walletAmount, setWalletAmount] = React.useState(0.0);
+  const [paymentHistory, setPaymentHistory] = React.useState([]);
+  const [depositHistory, setDepositHistory] = React.useState([]);
+
+  const [cusId, setCusId] = React.useState(localStorage.getItem("customerId"));
+
+  React.useEffect(() => {
+    setCusId(localStorage.getItem("customerId"));
+    setPaymentHistory([]);
+    setDepositHistory([]);
+    axios
+      .request({
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+        method: "GET",
+        url: `${apiUrl}/api/Customer/GetWalletTotalAmount?CustomerId=${cusId}`,
+      })
+      .then((res) => {
+        console.log(res.data);
+        setWalletAmount(res.data.data.totalAmount);
+      })
+      .catch((err) => {
+        console.log("errorGettingWalletAmountData: ", err);
+      });
+
+    axios
+      .request({
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+        method: "GET",
+        url: `${apiUrl}/api/Customer/CustomerPayitAmountStatus`,
+      })
+      .then((res) => {
+        console.log(res.data);
+        setDepositHistory(res.data.data.depositHistory);
+        setPaymentHistory(res.data.data.walletHistory);
+      })
+      .catch((err) => {
+        console.log("errorGettingWalletHistoryData: ", err);
+      });
+  }, []);
+
+  // React.useEffect(() => {
+  //   axios
+  //     .request({
+  //       headers: {
+  //         Authorization: `Bearer ${authToken}`,
+  //       },
+  //       method: "GET",
+  //       url: `${apiUrl}/api/Customer/CustomerPayitAmountStatus`,
+  //     })
+  //     .then((res) => {
+  //       console.log(res.data);
+  //       setDepositHistory(res.data.data.depositHistory);
+  //       setPaymentHistory(res.data.data.walletHistory);
+  //     })
+  //     .catch((err) => {
+  //       console.log("errorGettingWalletHistoryData: ", err);
+  //     });
+  // }, []);
   return (
     <>
       <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}></NavBar>
@@ -136,7 +201,7 @@ const Profile = ({ isLoggedIn, setIsLoggedIn }) => {
                           }}
                         >
                           <span className="">Available Amount:</span>
-                          &nbsp;&nbsp;<span>0.0</span>
+                          &nbsp;&nbsp;<span>{walletAmount}</span>
                         </div>
                       </ul>
                       {/* ---------------------Amount- end------ */}
@@ -145,118 +210,123 @@ const Profile = ({ isLoggedIn, setIsLoggedIn }) => {
                         style={{ marginTop: "-10px" }}
                       >
                         <li class="tab kh ">
-                          <input type="radio" name="tabs" id="tab1" />
+                          <input
+                            type="radio"
+                            name="tabs"
+                            id="tab1"
+                            defaultChecked
+                          />
                           <label for="tab1">Payment History</label>
                           <div id="tab-content1" class="content">
-                            <div
-                              className="che rounded mt-3"
-                              style={{
-                                backgroundColor: "grey",
-                                width: "-50px",
-                              }}
-                            >
-                              <div className="row">
-                                <div className="col-lg-8 mt-2">
-                                  <p
-                                    className="text-white"
-                                    style={{ marginLeft: "10%" }}
-                                  >
-                                    100000048475847557
-                                  </p>
-                                </div>
-                                <div className="col-lg-4 mt-2">
-                                  {/* <p className="text-white">ksdfjskdfkjsafd</p> */}
-                                  <div className="error-k text-center">
-                                    <a
-                                      type="button"
-                                      className="btn btn-primary btn-sm  "
-                                    >
-                                      Pay & verify
-                                    </a>
+                            {paymentHistory.map((payHis) => {
+                              return (
+                                <div
+                                  className="che rounded mt-3"
+                                  style={{
+                                    backgroundColor: "grey",
+                                    width: "-50px",
+                                  }}
+                                >
+                                  <div className="row mt-3 mb-5">
+                                    <div className="col-lg-8 ">
+                                      <p
+                                        className="text-white"
+                                        style={{ marginLeft: "10%" }}
+                                      >
+                                        Customer:
+                                      </p>
+                                    </div>
+                                    <div className="col-lg-4">
+                                      <p
+                                        className="text-white"
+                                        style={{ marginLeft: "40%" }}
+                                      >
+                                        {" "}
+                                        {payHis.customerName}
+                                      </p>
+                                    </div>
+                                  </div>
+                                  <div className="row mt-3 mb-5">
+                                    <div className="col-lg-8 ">
+                                      <p
+                                        className="text-white"
+                                        style={{ marginLeft: "10%" }}
+                                      >
+                                        Amount:
+                                      </p>
+                                    </div>
+                                    <div className="col-lg-4">
+                                      <p
+                                        className="text-white"
+                                        style={{ marginLeft: "40%" }}
+                                      >
+                                        {" "}
+                                        {payHis.amount}
+                                      </p>
+                                    </div>
                                   </div>
                                 </div>
-                              </div>
-
-                              <div className="row mt-3 mb-5">
-                                <div className="col-lg-8 ">
-                                  <p
-                                    className="text-white"
-                                    style={{ marginLeft: "10%" }}
-                                  >
-                                    Amount:
-                                  </p>
-                                </div>
-                                <div className="col-lg-4">
-                                  <p
-                                    className="text-white"
-                                    style={{ marginLeft: "40%" }}
-                                  >
-                                    {" "}
-                                    1000.0
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
+                              );
+                            })}
                           </div>
                         </li>
                         {/* ------------------------------------------ */}
                         <li class="tab kh ">
-                          <input
-                            type="radio"
-                            name="tabs"
-                            id="tab2"
-                            checked="checked"
-                          />
+                          <input type="radio" name="tabs" id="tab2" />
                           <label for="tab2">Deposit History</label>
                           <div id="tab-content2" class="content">
-                            <div
-                              className="che rounded mt-3"
-                              style={{
-                                backgroundColor: "grey",
-                                width: "-50px",
-                              }}
-                            >
-                              <div className="row">
-                                <div className="col-lg-8 mt-2">
-                                  <p
-                                    className="text-white"
-                                    style={{ marginLeft: "10%" }}
-                                  >
-                                    100000048475847557
-                                  </p>
-                                </div>
-                                <div className="col-lg-4 mt-2">
-                                  {/* <p className="text-white">ksdfjskdfkjsafd</p> */}
-                                  <div className="error-k text-center">
-                                    <a
-                                      type="button"
-                                      className="btn btn-primary btn-sm  "
-                                    >
-                                      Pay & verify
-                                    </a>
+                            {depositHistory.map((depHis) => {
+                              return (
+                                <div
+                                  className="che rounded mt-3"
+                                  style={{
+                                    backgroundColor: "grey",
+                                    width: "-50px",
+                                  }}
+                                >
+                                  <div className="row">
+                                    <div className="col-lg-8 mt-2">
+                                      <p
+                                        className="text-white"
+                                        style={{ marginLeft: "10%" }}
+                                      >
+                                        {depHis.referenceNumber}
+                                      </p>
+                                    </div>
+                                    <div className="col-lg-4 mt-2">
+                                      {/* <p className="text-white">ksdfjskdfkjsafd</p> */}
+                                      <div className="error-k text-center">
+                                        <a
+                                          type="button"
+                                          className="btn btn-primary btn-sm  "
+                                        >
+                                          Pay & verify
+                                        </a>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <div className="row">
+                                    <div className="col-lg-8 ">
+                                      <p
+                                        className="text-white"
+                                        style={{ marginLeft: "10%" }}
+                                      >
+                                        Amount:
+                                      </p>
+                                    </div>
+                                    <div className="col-lg-4">
+                                      <p
+                                        className="text-white"
+                                        style={{ marginLeft: "40%" }}
+                                      >
+                                        {depHis.amount}
+                                      </p>
+                                    </div>
                                   </div>
                                 </div>
-                              </div>
-
-                              <div className="row">
-                                <div className="col-lg-8 ">
-                                  <p
-                                    className="text-white"
-                                    style={{ marginLeft: "10%" }}
-                                  >
-                                    Amount:
-                                  </p>
-                                </div>
-                                <div className="col-lg-4">
-                                  <p
-                                    className="text-white"
-                                    style={{ marginLeft: "40%" }}
-                                  >
-                                    1000.0
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
+                              );
+                            })}
                           </div>
                         </li>
                       </ul>

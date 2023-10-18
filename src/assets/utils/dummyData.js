@@ -109,3 +109,8 @@ export const dummyCityData = [
     cityName: "Murree",
   },
 ];
+
+export const dummyWalletData = {
+  depositHistoy: [],
+  walletHistory: [],
+};

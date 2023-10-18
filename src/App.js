@@ -74,7 +74,11 @@ function App() {
         <Route
           path="Profile"
           element={
-            <Profile isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+            <Profile
+              isLoggedIn={isLoggedIn}
+              setIsLoggedIn={setIsLoggedIn}
+              authToken={authToken}
+            />
           }
         />
         <Route
