@@ -71,7 +71,12 @@ function App() {
           }
         />
         <Route path="Form" element={<Form />} />
-        <Route path="Profile" element={<Profile />} />
+        <Route
+          path="Profile"
+          element={
+            <Profile isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+          }
+        />
         <Route
           path="Booking/:roomId"
           element={
@@ -134,7 +139,6 @@ function App() {
             <Veiw isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
           }
         />
-        <Route path="profile" element={<profile />} />
         <Route
           path="/tab"
           element={
