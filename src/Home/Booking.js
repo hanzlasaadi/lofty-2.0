@@ -8,6 +8,11 @@ import axios from "axios";
 import { apiUrl } from "../assets/utils/env";
 import { dummyRoomDetails } from "../assets/utils/dummyData";
 
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+// Import Swiper styles
+import "swiper/css";
+
 const Booking = ({ isLoggedIn, setIsLoggedIn, authToken, favRoomsId }) => {
   console.log(isLoggedIn, "inBookingLoggedIn? true or false");
   const { roomId } = useParams();
@@ -104,19 +109,28 @@ const Booking = ({ isLoggedIn, setIsLoggedIn, authToken, favRoomsId }) => {
           <h2 className="Deluxe">{roomDetails.roomDetail.roomType}</h2>
           <h3 className="FACILITES">FACILITES</h3>
           <div className="row-ico d-flex">
-            {roomDetails.facilityList.map((fac, i) => {
-              return (
-                <div className="ico c col-lg-2" key={i}>
-                  <img
-                    className="u"
-                    src={fac.image}
-                    alt={fac.facilityName}
-                    loading="lazy"
-                  />
-                  <span className="number">{fac.facilityName}</span>
-                </div>
-              );
-            })}
+            <Swiper
+              spaceBetween={50}
+              slidesPerView={3}
+              onSlideChange={() => console.log("slide change")}
+              onSwiper={(swiper) => console.log(swiper)}
+            >
+              {roomDetails.facilityList.map((fac, i) => {
+                return (
+                  <SwiperSlide className="ico c col-lg-2" key={i}>
+                    {/* <div className="ico c col-lg-2" key={i}> */}
+                    <img
+                      className=""
+                      src={fac.image}
+                      alt={fac.facilityName}
+                      loading="lazy"
+                    />
+                    <span className="number">{fac.facilityName}</span>
+                    {/* </div> */}
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
           </div>
           <h3 className="FACILITES">GALLERY</h3>
           <div className="row gutters justify-content-center">
