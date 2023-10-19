@@ -152,7 +152,15 @@ const Booking = ({ isLoggedIn, setIsLoggedIn, authToken, favRoomsId }) => {
           <div className="container ">
             <h3 className="FACILITES locatoin">
               ABOUT HOTEL
-              <img src="https://cdn-icons-png.flaticon.com/512/9800/9800512.png" />
+              <a
+                target="blank"
+                href={`https://www.google.com/maps/@${roomDetails.roomDetail.latitude},${roomDetails.roomDetail.longitude},20z`}
+              >
+                <img
+                  alt="location"
+                  src="https://cdn-icons-png.flaticon.com/512/9800/9800512.png"
+                />
+              </a>
             </h3>
             <div className="bor shadow  ">
               <div className="col">
