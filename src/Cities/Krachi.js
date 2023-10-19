@@ -17,6 +17,7 @@ const Krachi = ({ isLoggedIn, setIsLoggedIn }) => {
     axios
       .get(`${apiUrl}/api/Customer/GetAllRoomsCityWise?CityId=${cityId}`)
       .then((res) => {
+        // if (res.data.result === "error") setAllRooms([]);
         setAllRooms(res.data.data);
         console.log("allRoomsData: ", res.data.data);
       })
@@ -29,9 +30,10 @@ const Krachi = ({ isLoggedIn, setIsLoggedIn }) => {
       <div className="shop-page pt-30 mb-120">
         <div className="container">
           <div className="row">
-            <div className="col-lg-3">
-              <div className="shop-sidebar">
-                {/* <div className="card">
+            {allRooms?.length === 0 ? null : (
+              <div className="col-lg-3">
+                <div className="shop-sidebar">
+                  {/* <div className="card">
                   <div className="card-body">
                     <div className="map-container">
                       <iframe
@@ -46,53 +48,53 @@ const Krachi = ({ isLoggedIn, setIsLoggedIn }) => {
                   </div>
                 </div> */}
 
-                <div className="shop-widget">
-                  <div className="check-box-item">
-                    <h5 className="shop-widget-title">Room Types</h5>
-                    <div className="checkbox-container">
-                      <label className="containerss">
-                        Executive
-                        <input type="checkbox" />
-                        <span className="checkmark"></span>
-                      </label>
-                      <label className="containerss">
-                        Deluxe
-                        <input type="checkbox" />
-                        <span className="checkmark"></span>
-                      </label>
-                      <label className="containerss">
-                        Standard
-                        <input type="checkbox" />
-                        <span className="checkmark"></span>
-                      </label>
+                  <div className="shop-widget">
+                    <div className="check-box-item">
+                      <h5 className="shop-widget-title">Room Types</h5>
+                      <div className="checkbox-container">
+                        <label className="containerss">
+                          Executive
+                          <input type="checkbox" />
+                          <span className="checkmark"></span>
+                        </label>
+                        <label className="containerss">
+                          Deluxe
+                          <input type="checkbox" />
+                          <span className="checkmark"></span>
+                        </label>
+                        <label className="containerss">
+                          Standard
+                          <input type="checkbox" />
+                          <span className="checkmark"></span>
+                        </label>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div className="shop-widget">
-                  <div className="check-box-item">
-                    <h5 className="shop-widget-title">Room Capacity</h5>
-                    <div className="checkbox-container">
-                      <label className="containerss">
-                        Double
-                        <input type="checkbox" />
-                        <span className="checkmark"></span>
-                      </label>
-                      <label className="containerss">
-                        Twin
-                        <input type="checkbox" />
-                        <span className="checkmark"></span>
-                      </label>
-                      <label className="containerss">
-                        Master
-                        <input type="checkbox" />
-                        <span className="checkmark"></span>
-                      </label>
+                  <div className="shop-widget">
+                    <div className="check-box-item">
+                      <h5 className="shop-widget-title">Room Capacity</h5>
+                      <div className="checkbox-container">
+                        <label className="containerss">
+                          Double
+                          <input type="checkbox" />
+                          <span className="checkmark"></span>
+                        </label>
+                        <label className="containerss">
+                          Twin
+                          <input type="checkbox" />
+                          <span className="checkmark"></span>
+                        </label>
+                        <label className="containerss">
+                          Master
+                          <input type="checkbox" />
+                          <span className="checkmark"></span>
+                        </label>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                {/* <div className="shop-widget">
+                  {/* <div className="shop-widget">
                   <div className="check-box-item">
                     <h5 className="shop-widget-title">
                       Accommodation Features
@@ -149,8 +151,9 @@ const Krachi = ({ isLoggedIn, setIsLoggedIn }) => {
                     </div>
                   </div>
                 </div> */}
+                </div>
               </div>
-            </div>
+            )}
             <div className="col-lg-9">
               {/* <div className="row mb-50">
                 <div className="col-lg-12">
@@ -191,7 +194,7 @@ const Krachi = ({ isLoggedIn, setIsLoggedIn }) => {
 
               {/* //////////////////////// one Room*/}
               {/* hanzla */}
-              {allRooms.map((room) => {
+              {allRooms?.map((room) => {
                 return (
                   <div
                     className="row search-card-result rounded-4"
@@ -240,6 +243,9 @@ const Krachi = ({ isLoggedIn, setIsLoggedIn }) => {
                   </div>
                 );
               })}
+              {allRooms.length === 0 ? (
+                <h2 className="p-5">No Data Found!</h2>
+              ) : null}
             </div>
 
             <div className="center-content">

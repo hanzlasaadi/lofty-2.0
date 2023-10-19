@@ -89,10 +89,18 @@ const NearBy = ({ cities }) => {
         <div className="container">
           <div className="row mb-60">
             <div className="col-lg-12 d-flex align-items-center justify-content-between flex-wrap gap-3">
-              <div className="section-title3">
+              <div
+                className="section-title3"
+                // w-100 d-flex gap-2 align-items-center justify-content-between
+              >
                 <h2>
                   <span style={{ color: "#272a61" }}>NearBy</span>
                 </h2>
+                {/* <span className="d-lg-none d-md-none d-xl-none align-self-end fw-bold">
+                  <a href onClick={abc}>
+                    Show Nearby Rooms
+                  </a>
+                </span> */}
               </div>
               {isNearbyPresent ? (
                 <div
@@ -265,7 +273,7 @@ const NearBy = ({ cities }) => {
             <div className="row d-md-none d-block pt-30">
               <div className="col-lg-12 d-flex justify-content-center">
                 <div className="h3-view-btn">
-                  <a href onClick={abc}>
+                  <a href onClick={abc} style={{ cursor: "pointer" }}>
                     View All Nearby Rooms
                     <img
                       src="assets/images/icon/haf-button-2.svg"
