@@ -111,6 +111,41 @@ export const dummyCityData = [
 ];
 
 export const dummyWalletData = {
-  depositHistoy: [],
-  walletHistory: [],
+  depositHistoy: [
+    {
+      customerName: "Name",
+      amount: 5000,
+      referenceNumber: "100001394201825564",
+      status: 1,
+      createdDate: "2023-10-11T21:01:51.66502",
+    },
+    {
+      customerName: "Name",
+      amount: 1000,
+      referenceNumber: "100001394280707303",
+      status: 1,
+      createdDate: "2023-10-18T10:17:42.977513",
+    },
+    {
+      customerName: "Name",
+      amount: 500,
+      referenceNumber: "100001394285799965",
+      status: 1,
+      createdDate: "2023-10-19T00:38:28.697143",
+    },
+    {
+      customerName: "Name",
+      amount: 1000,
+      referenceNumber: "100001394207039033",
+      status: 1,
+      createdDate: "2023-10-19T00:54:04.893408",
+    },
+  ],
+  walletHistory: [
+    {
+      customerName: "Name",
+      amount: 1000,
+      createdDate: "2023-10-19T02:02:07.454703",
+    },
+  ],
 };
