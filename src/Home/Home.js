@@ -4,7 +4,7 @@ import NavBar from "../nav-bar/NavBar";
 import HeaderHome from "./HeaderHome";
 import ScrollBar from "./ScrollBar";
 import NearBy from "./NearBy";
-import Popular from "./Popular";
+// import Popular from "./Popular";
 import QrCode from "./QrCode";
 import Footer from "./Footer";
 const Home = ({
@@ -41,7 +41,7 @@ const Home = ({
       {/* <!-- ==========  NearBy  ============= --> */}
       <NearBy />
       {/* <!-- ==========  Popular  ============= --> */}
-      <Popular />
+      {/* <Popular /> */}
       {/* <!-- ========== Footer Area Start============= --> */}
       <Footer />
       {/* <!-- ========== Footer Area end============= --> */}

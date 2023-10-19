@@ -4,7 +4,14 @@ import axios from "axios";
 import { apiUrl } from "../assets/utils/env";
 import { useNavigate } from "react-router-dom";
 
-const NearBy = () => {
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+
+const NearBy = ({ cities }) => {
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
   const [radius, setRadius] = useState(null);
@@ -90,7 +97,7 @@ const NearBy = () => {
               {isNearbyPresent ? (
                 <div
                   className="h3-view-btn d-md-flex d-none"
-                  onClick={() => navigate("/Karachi")}
+                  onClick={() => navigate(`/City/1`)}
                 >
                   <span className="nearbyViewAll" style={{ cursor: "pointer" }}>
                     See all rooms&nbsp;&nbsp;
@@ -146,48 +153,69 @@ const NearBy = () => {
             </div>
           </div>
           <div className="row g-4 justify-content-center">
-            {nearByData?.slice(3, 6).map((nearbyRoom, i) => {
-              return (
-                <div className="col-lg-4 col-md-6 col-sm-10" key={i}>
-                  <div className="blog-card3">
-                    <div className="blog-img">
-                      <img
-                        className="img-fluid"
-                        src={nearbyRoom.adImage1}
-                        alt="roomImg"
-                      />
-                    </div>
-                    <div className="bolg-content">
-                      <div className="cetagoty">
-                        <a
-                          className="cursor-pointer"
-                          href="#"
-                          onClick={() => handleBookNowClick(nearbyRoom.adId)}
-                        >
-                          Book Now
-                        </a>
+            <Swiper
+              breakpoints={{
+                576: {
+                  // width: 576,
+                  slidesPerView: 1,
+                },
+                768: {
+                  // width: 768,
+                  slidesPerView: 3,
+                },
+              }}
+              spaceBetween={0}
+              slidesPerView={1}
+              navigation={true}
+              modules={[Navigation]}
+              onSlideChange={() => console.log("slide change")}
+              onSwiper={(swiper) => console.log(swiper)}
+            >
+              {nearByData?.map((nearbyRoom, i) => {
+                return (
+                  <SwiperSlide className="col-lg-4 col-md-6 col-sm-10" key={i}>
+                    {/* <div className="col-lg-4 col-md-6 col-sm-10" key={i}> */}
+                    <div className="blog-card3">
+                      <div className="blog-img">
+                        <img
+                          className="img-fluid"
+                          src={nearbyRoom.adImage1}
+                          alt="roomImg"
+                        />
                       </div>
-                      <div className="blog-meta">
-                        <ul>
-                          <li>
-                            <a href="blog-grid.html">
-                              {nearbyRoom.roomType}{" "}
-                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rs.
-                              {nearbyRoom.price}/-
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                      {/* <h4>
+                      <div className="bolg-content">
+                        <div className="cetagoty">
+                          <a
+                            className="cursor-pointer"
+                            href
+                            onClick={() => handleBookNowClick(nearbyRoom.adId)}
+                          >
+                            Book Now
+                          </a>
+                        </div>
+                        <div className="blog-meta">
+                          <ul>
+                            <li>
+                              <a href="blog-grid.html">
+                                {nearbyRoom.roomType}{" "}
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rs.
+                                {nearbyRoom.price}/-
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                        {/* <h4>
                         <a href="blog-details.html">
                           A Best room, For tourist to stay
                         </a>
                       </h4> */}
+                      </div>
                     </div>
-                  </div>
-                </div>
-              );
-            })}
+                    {/* </div> */}
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
             {/* <div className="col-lg-4 col-md-6 col-sm-10">
               <div className="blog-card3">
                 <div className="blog-img">
@@ -219,19 +247,35 @@ const NearBy = () => {
               </div>
             </div> */}
           </div>
-          <div className="row d-md-none d-block pt-30">
-            <div className="col-lg-12 d-flex justify-content-center">
-              <div className="h3-view-btn">
-                <a href="shop.html">
-                  View All Product
-                  <img
-                    src="assets/images/icon/haf-button-2.svg"
-                    alt="Image_No_Show"
-                  />
-                </a>
+          {isNearbyPresent ? (
+            <div className="row d-md-none d-block pt-30">
+              <div className="col-lg-12 d-flex justify-content-center">
+                <div className="h3-view-btn">
+                  <a href onClick={() => navigate(`/City/1`)}>
+                    View All Rooms
+                    <img
+                      src="assets/images/icon/haf-button-2.svg"
+                      alt="Image_No_Show"
+                    />
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
+          ) : (
+            <div className="row d-md-none d-block pt-30">
+              <div className="col-lg-12 d-flex justify-content-center">
+                <div className="h3-view-btn">
+                  <a href onClick={abc}>
+                    View All Nearby Rooms
+                    <img
+                      src="assets/images/icon/haf-button-2.svg"
+                      alt="Image_No_Show"
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
       {/* <!-- ==========  NearBy  ============= --> */}
