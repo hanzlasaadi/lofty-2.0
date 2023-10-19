@@ -3,7 +3,7 @@ import "./HomeCss/profile.css";
 import NavBar from "../nav-bar/NavBar";
 import axios from "axios";
 import { apiUrl } from "../assets/utils/env";
-import { dummyWalletData } from "../assets/utils/dummyData";
+// import { dummyWalletData } from "../assets/utils/dummyData";
 
 const Profile = ({ isLoggedIn, setIsLoggedIn, authToken }) => {
   const [historyFound, setHistoryFound] = React.useState(false);
@@ -58,6 +58,50 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, authToken }) => {
     };
     apiCall();
   }, []);
+
+  // --------------Change Password
+  const [passwordOnChangeData, setPasswordOnChangeData] = React.useState({});
+  const [submittingPass, setSubmittingPass] = React.useState(false);
+
+  const handlePasswordChange = (e) => {
+    let obj = passwordOnChangeData;
+    obj[e.target.name] = e.target.value;
+    setPasswordOnChangeData(obj);
+    console.log("Password Change: ", e.target.value);
+  };
+
+  const handleSubmitPassChange = (e) => {
+    e.preventDefault();
+    setSubmittingPass(true);
+    passwordOnChangeData.CustomerId = cusId;
+    console.log("obj: ", passwordOnChangeData);
+    axios
+      .request({
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+        method: "POST",
+        url: `${apiUrl}/api/Customer/ChangePassword`,
+        data: passwordOnChangeData,
+      })
+      .then((response) => {
+        if (response.status !== 200)
+          throw new Error(
+            response.data.message || "Could'nt Change Password, Try Later!"
+          );
+
+        console.log(response.data);
+        setSubmittingPass(false);
+        document.getElementById("oldpassword").value = "";
+        document.getElementById("newpassword").value = "";
+        document.getElementById("confirmpassword").value = "";
+        alert("Successfully Changed Password");
+      })
+      .catch((err) => {
+        console.log("Error chanaging pass->>>", err);
+        setSubmittingPass(false);
+      });
+  };
 
   return (
     <>
@@ -293,6 +337,7 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, authToken }) => {
                                         {/* <p className="text-white">ksdfjskdfkjsafd</p> */}
                                         <div className="error-k text-center">
                                           <a
+                                            href
                                             type="button"
                                             className="btn btn-primary btn-sm  "
                                           >
@@ -353,12 +398,11 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, authToken }) => {
                     <div class="mainDiv">
                       <div class="cardStyle">
                         <form
-                          action=""
-                          method="post"
                           name="signupForm"
                           id="signupForm"
+                          onSubmit={(e) => handleSubmitPassChange(e)}
                         >
-                          <img src="" id="signupLogo" />
+                          {/* <img src="" id="signupLogo" /> */}
 
                           <h2 class="formTitle s">PASSWORD CHANGE</h2>
                           <div class="inputDiv">
@@ -367,10 +411,11 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, authToken }) => {
                             </label>
                             <input
                               type="password"
-                              id="password"
+                              id="oldpassword"
                               className="rounded"
-                              name="password"
+                              name="OldPassword"
                               required
+                              onChange={handlePasswordChange}
                             />
                           </div>
 
@@ -380,10 +425,11 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, authToken }) => {
                             </label>
                             <input
                               type="password"
-                              id="password"
+                              id="newpassword"
                               className="rounded"
-                              name="password"
+                              name="NewPassword"
                               required
+                              onChange={handlePasswordChange}
                             />
                           </div>
 
@@ -393,9 +439,10 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, authToken }) => {
                             </label>
                             <input
                               type="password"
-                              id="confirmPassword"
+                              id="confirmpassword"
                               className="rounded"
                               name="confirmPassword"
+                              required
                             />
                           </div>
 
@@ -403,12 +450,15 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, authToken }) => {
                             <button
                               type="submit"
                               id="submitButton"
-                              onclick="validateSignupForm()"
+                              onClick={(e) => handleSubmitPassChange(e)}
                               class="submitButton pure-button  rounded-pill"
                               style={{ backgroundColor: "#272a61" }}
                             >
-                              <span>Save</span>
-                              <span id="loader"></span>
+                              {submittingPass ? (
+                                <span id="loader"></span>
+                              ) : (
+                                <span>Save</span>
+                              )}
                             </button>
                           </div>
                         </form>
@@ -430,7 +480,7 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, authToken }) => {
                         name="signupForm"
                         id="signupForm"
                       >
-                        <img src="" id="signupLogo" />
+                        {/* <img src="" id="signupLogo" /> */}
 
                         <h2 class="formTitle s">HELP & SUPPORT</h2>
                         <div class="inputDiv">
