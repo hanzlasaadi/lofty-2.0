@@ -6,14 +6,47 @@ import { apiUrl } from "../assets/utils/env";
 import { Link } from "react-router-dom";
 // import { dummyWalletData } from "../assets/utils/dummyData";
 
-const Profile = ({ isLoggedIn, setIsLoggedIn, authToken }) => {
+const Profile = ({ isLoggedIn, setIsLoggedIn, authToken, setAuthToken }) => {
+  const [cusId, setCusId] = React.useState(localStorage.getItem("customerId"));
   const [historyFound, setHistoryFound] = React.useState(false);
   const [walHistoryFound, setWalHistoryFound] = React.useState(false);
   const [walletAmount, setWalletAmount] = React.useState(0.0);
   const [paymentHistory, setPaymentHistory] = React.useState([]);
   const [depositHistory, setDepositHistory] = React.useState([]);
 
-  const [cusId, setCusId] = React.useState(localStorage.getItem("customerId"));
+  // Change Account Settings
+  const [accountOnChangeData, setAccountOnChangeData] = React.useState({});
+  const [customerName, setCustomerName] = React.useState(
+    localStorage.getItem("customerName")
+  );
+
+  // handle change account settings
+  const handleChangeAccountSettings = (e) => {
+    let obj = accountOnChangeData;
+    obj[e.target.name] = e.target.value;
+    setAccountOnChangeData(obj);
+    console.log("Login", e.target.value);
+  };
+  const handleSubmitChangeAccountSettings = async (e) => {
+    e.preventDefault();
+    let formdata = new FormData();
+    formdata.append("CustomerId", cusId);
+    formdata.append("CustomerName", accountOnChangeData.CustomerName);
+
+    axios
+      .post(`${apiUrl}/api/Customer/AddUpdateCustomer`, formdata)
+      .then((response) => {
+        if (response.data.result !== "success")
+          throw new Error("Could'nt fetch data!");
+        console.log("res:", response.data.data);
+        localStorage.setItem("token", response.data.data.token);
+        setAuthToken(response.data.data.token);
+        localStorage.setItem("customerName", response.data.data.customerName);
+        if (response.data.data.profileImage)
+          localStorage.setItem("profileImage", response.data.data.profileImage);
+      })
+      .catch((error) => console.log("errorUpdatingAccountData", error));
+  };
 
   React.useEffect(() => {
     setCusId(localStorage.getItem("customerId"));
@@ -128,11 +161,11 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, authToken }) => {
             </p>
           </div>
           <div className="error-k text-center mt-4">
-            <a href="" className="btn btn-primary w-25">
+            <a href className="btn btn-primary w-25">
               NO
             </a>
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="" className="btn btn-primary w-25">
+            <a href className="btn btn-primary w-25">
               Yes
             </a>
           </div>
@@ -290,10 +323,11 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, authToken }) => {
                     <div className="mainDiv">
                       <div className="cardStyle">
                         <form
-                          action=""
-                          method="post"
                           name="signupForm"
                           id="signupForm"
+                          onSubmit={async (e) =>
+                            await handleSubmitChangeAccountSettings(e)
+                          }
                         >
                           <img
                             alt="signupLogo"
@@ -301,50 +335,58 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, authToken }) => {
                             id="signupLogo"
                           />
                           <div className="inputDiv">
-                            <label className="inputLabel" for="password">
+                            <label className="inputLabel" for="customerName">
                               Full Name
                             </label>
                             <input
-                              type="password"
-                              id="password"
+                              type="text"
+                              id="customerName"
                               className="rounded"
-                              name="password"
+                              name="CustomerName"
+                              value={customerName}
+                              onChange={(e) => {
+                                handleChangeAccountSettings(e);
+                                setCustomerName(e.target.value);
+                              }}
                               required
                             />
                           </div>
                           <div className="inputDiv">
-                            <label className="inputLabel" for="password">
+                            <label className="inputLabel" for="Email">
                               Email
                             </label>
                             <input
-                              type="password"
-                              id="password"
+                              type="email"
+                              id="Email"
                               className="rounded"
-                              name="password"
-                              required
+                              name="Email"
+                              value={localStorage.getItem("email")}
+                              disabled
                             />
                           </div>
                           <div className="inputDiv">
-                            <label className="inputLabel" for="confirmphone">
+                            <label className="inputLabel" for="mobile">
                               Phone no.
                             </label>
                             <input
-                              type="number"
-                              id="confirmphone"
+                              type="tel"
+                              id="mobile"
                               className="rounded"
-                              name="confirmPassword"
+                              name="mobile"
+                              value={localStorage.getItem("mobile")}
+                              disabled
                             />
                           </div>
                           <div className="buttonWrapper">
                             <button
                               type="submit"
                               id="submitButton"
-                              onclick="validateSignupForm()"
+                              onclick={handleSubmitChangeAccountSettings}
                               className="submitButton pure-button  rounded-pill"
                               style={{ backgroundColor: "#272a61" }}
                             >
                               <span>UPDATE</span>
-                              <span id="loader"></span>
+                              {/* <span id="loader"></span> */}
                             </button>
                           </div>
                         </form>

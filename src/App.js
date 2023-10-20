@@ -79,6 +79,7 @@ function App() {
               isLoggedIn={isLoggedIn}
               setIsLoggedIn={setIsLoggedIn}
               authToken={authToken}
+              setAuthToken={setAuthToken}
             />
           }
         />
