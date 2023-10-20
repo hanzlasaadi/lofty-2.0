@@ -2,9 +2,9 @@ import React from "react";
 import "./HomeCss/HeaderHome.css";
 // import SearchField from "./search";
 // import "./search.css";
-import { DateRange } from "react-date-range";
-import "react-date-range/dist/styles.css"; // main css file
-import "react-date-range/dist/theme/default.css"; // theme css file
+// import { DateRange } from "react-date-range";
+// import "react-date-range/dist/styles.css"; // main css file
+// import "react-date-range/dist/theme/default.css"; // theme css file
 import { useNavigate } from "react-router-dom";
 
 import "@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css";

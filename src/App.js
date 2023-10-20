@@ -13,7 +13,6 @@ import Favorite from "./Home/Favorite";
 import Conformbook from "./Home/Conformbook";
 import { useEffect, useState } from "react";
 import { favDummyData } from "./assets/utils/dummyData";
-import { addDays } from "date-fns";
 import { utils } from "@hassanmojab/react-modern-calendar-datepicker";
 
 function App() {
@@ -29,13 +28,6 @@ function App() {
     from: utils().getToday(),
     to: obj,
   });
-  const [laterDatePickerState, setLaterDatePickerState] = useState([
-    {
-      startDate: new Date(Date.now()),
-      endDate: addDays(new Date(), 7),
-      key: "selection",
-    },
-  ]);
 
   useEffect(() => {
     let checkToken = localStorage.getItem("token");
@@ -106,8 +98,7 @@ function App() {
               isLoggedIn={isLoggedIn}
               setIsLoggedIn={setIsLoggedIn}
               datePickerState={datePickerState}
-              laterDatePickerState={laterDatePickerState}
-              setLaterDatePickerState={setLaterDatePickerState}
+              setDatePickerState={setDatePickerState}
             />
           }
         />
@@ -141,7 +132,7 @@ function App() {
               isLoggedIn={isLoggedIn}
               setIsLoggedIn={setIsLoggedIn}
               authToken={authToken}
-              datePickerState={laterDatePickerState}
+              datePickerState={datePickerState}
             />
           }
         />

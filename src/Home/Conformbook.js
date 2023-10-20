@@ -19,10 +19,18 @@ const Conformbook = ({
   const { roomIdCusId } = useParams();
   const [roomId, cusId] = roomIdCusId.split(",");
 
-  const differenceDays = differenceInDays(
-    datePickerState[0].endDate,
-    datePickerState[0].startDate
+  const startDate = new Date(
+    datePickerState.from.year,
+    datePickerState.from.month,
+    datePickerState.from.day
   );
+  const endDate = new Date(
+    datePickerState.to.year,
+    datePickerState.to.month,
+    datePickerState.to.day
+  );
+
+  const differenceDays = differenceInDays(endDate, startDate);
 
   React.useEffect(() => {
     axios
@@ -58,8 +66,8 @@ const Conformbook = ({
           Price: bookRoomDetails.roomDetail.price,
           CommissionPrice: 0,
           //Paid = false,
-          CheckedIn: formatISO(datePickerState[0].startDate),
-          CheckOut: formatISO(datePickerState[0].endDate),
+          CheckedIn: formatISO(startDate),
+          CheckOut: formatISO(endDate),
           // Status = BookingStatus.Active,
           // PaidStatus = CheckPaid.None,
           // IsDeleted = false,
@@ -187,13 +195,13 @@ const Conformbook = ({
               <h5 className="a">{localStorage.getItem("email")}</h5>
               <br />
               <h5 className="a">
-                {formatISO(datePickerState[0].startDate, {
+                {formatISO(startDate, {
                   representation: "date",
                 })}
               </h5>
               <br />
               <h5 className="a">
-                {formatISO(datePickerState[0].endDate, {
+                {formatISO(endDate, {
                   representation: "date",
                 })}
               </h5>

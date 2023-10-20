@@ -3,36 +3,40 @@ import "./HomeCss/Clinder.css";
 import NavBar from "../nav-bar/NavBar";
 import Footer from "./Footer";
 
-import { DateRangePicker } from "react-date-range";
-import "react-date-range/dist/styles.css"; // main css file
-import "react-date-range/dist/theme/default.css"; // theme css file
+import "@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css";
+import DatePicker from "@hassanmojab/react-modern-calendar-datepicker";
 
 // import Conformbook from "./Conformbook";
 import { Link, useParams } from "react-router-dom";
+import { formatISO } from "date-fns";
 const Clinder = ({
   isLoggedIn,
   setIsLoggedIn,
-  laterDatePickerState,
-  setLaterDatePickerState,
   datePickerState,
+  setDatePickerState,
 }) => {
-  React.useEffect(() => {
-    setLaterDatePickerState([
-      {
-        startDate: new Date(
-          datePickerState.from.year,
-          datePickerState.from.month,
-          datePickerState.from.day
-        ),
-        endDate: new Date(
-          datePickerState.to.year,
-          datePickerState.to.month,
-          datePickerState.to.day
-        ),
-        key: "selection",
-      },
-    ]);
-  }, []);
+  const renderCustomInput = ({ ref }) => (
+    <input
+      readOnly
+      ref={ref} // necessary
+      placeholder="Pick a Date"
+      // value={datePickerState ? `✅: ${datePickerState.day}` : ""}
+      style={{
+        textAlign: "center",
+        // padding: "1rem 1.5rem",
+        fontSize: "1rem",
+        border: "1px solid #272a61",
+        borderRadius: "100px",
+        // boxShadow: "0 1.5rem 2rem grey",
+        color: "#272a61",
+        backgroundColor: "#fff",
+        outline: "none",
+        alignSelf: "center",
+        width: "100%",
+      }}
+      className="my-custom-input-class" // a styling class
+    />
+  );
   const { roomId } = useParams();
   return (
     <>
@@ -50,21 +54,16 @@ const Clinder = ({
             <br />
           </div> */}
           <div className="col-lg-4 align-self-center">
-            <div className="form-group">
-              {/* <input
-                id="dp1"
-                type="text"
-                className="form-control clickable input-md"
-                // id="DtChkIn"
-                placeholder="&#xf133;  Check-In"
-              /> */}
-              <DateRangePicker
-                onChange={(item) => setLaterDatePickerState([item.selection])}
-                showSelectionPreview={true}
-                moveRangeOnFirstSelection={false}
-                months={2}
-                ranges={laterDatePickerState}
-                direction="horizontal"
+            <div className="d-flex justify-content-evenly">
+              <h4 className="text-black align-self-center">Dates:&nbsp;</h4>
+              <DatePicker
+                value={datePickerState}
+                onChange={setDatePickerState}
+                inputPlaceholder="Select a day"
+                renderInput={renderCustomInput}
+                colorPrimary="rgb(39, 42, 97)"
+                colorPrimaryLight="rgba(39, 42, 97, 0.4)"
+                shouldHighlightWeekends
               />
             </div>
           </div>
@@ -95,7 +94,21 @@ const Clinder = ({
         <br />
         <div className="error-k text-center">
           <Link to={`/Conformbook/${roomId}`}>
-            <button type="button" className="btn btn-primary btn-lg">
+            <button
+              type="button"
+              className="btn btn-primary btn-lg"
+              onClick={() => {
+                console.log(
+                  formatISO(
+                    new Date(
+                      datePickerState.from.year,
+                      datePickerState.from.month,
+                      datePickerState.from.day
+                    )
+                  )
+                );
+              }}
+            >
               CONFIRM
             </button>
           </Link>
