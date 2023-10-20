@@ -11,6 +11,8 @@ import Profile from "./Home/Profile";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Favorite from "./Home/Favorite";
 import Conformbook from "./Home/Conformbook";
+import AddMoney from "./Home/addMoney";
+
 import { useEffect, useState } from "react";
 import { favDummyData } from "./assets/utils/dummyData";
 import { utils } from "@hassanmojab/react-modern-calendar-datepicker";
@@ -146,6 +148,16 @@ function App() {
           path="/tab"
           element={
             <Tab
+              isLoggedIn={isLoggedIn}
+              setIsLoggedIn={setIsLoggedIn}
+              authToken={authToken}
+            />
+          }
+        />
+        <Route
+          path="/add"
+          element={
+            <AddMoney
               isLoggedIn={isLoggedIn}
               setIsLoggedIn={setIsLoggedIn}
               authToken={authToken}
