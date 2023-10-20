@@ -3,7 +3,7 @@ import "./HomeCss/profile.css";
 import NavBar from "../nav-bar/NavBar";
 import axios from "axios";
 import { apiUrl } from "../assets/utils/env";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // import { dummyWalletData } from "../assets/utils/dummyData";
 
 const Profile = ({ isLoggedIn, setIsLoggedIn, authToken, setAuthToken }) => {
@@ -13,6 +13,7 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, authToken, setAuthToken }) => {
   const [walletAmount, setWalletAmount] = React.useState(0.0);
   const [paymentHistory, setPaymentHistory] = React.useState([]);
   const [depositHistory, setDepositHistory] = React.useState([]);
+  const nav = useNavigate();
 
   // Help & Support
   const [supportMessage, setSupportMessage] = React.useState("");
@@ -35,6 +36,28 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, authToken, setAuthToken }) => {
       })
       .catch((err) => {
         console.log("errorSubmittingSupportData: ", err);
+      });
+  };
+
+  const handleDeleteCustomer = (e) => {
+    e.preventDefault();
+    axios
+      .request({
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+        method: "GET",
+        url: `${apiUrl}/api/Customer/DeleteCustomerData?CustomerId=${cusId}`,
+      })
+      .then((res) => {
+        if (res.data.result === "success") {
+          localStorage.clear();
+          nav("/");
+          nav(0);
+        }
+      })
+      .catch((err) => {
+        console.log("errorDeletingCustomerData: ", err);
       });
   };
 
@@ -185,11 +208,15 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, authToken, setAuthToken }) => {
             </p>
           </div>
           <div className="error-k text-center mt-4">
-            <a href className="btn btn-primary w-25">
+            <a href="/Profile" className="btn btn-primary w-25">
               NO
             </a>
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <a href className="btn btn-primary w-25">
+            <a
+              href
+              onClick={handleDeleteCustomer}
+              className="btn btn-primary w-25"
+            >
               Yes
             </a>
           </div>
