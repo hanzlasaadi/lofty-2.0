@@ -6,7 +6,11 @@ import axios from "axios";
 import NavBar from "./NavBar";
 import { useNavigate } from "react-router-dom";
 
-export default function LoginSignup({ isLoggedIn, setIsLoggedIn }) {
+export default function LoginSignup({
+  isLoggedIn,
+  setIsLoggedIn,
+  setAuthToken,
+}) {
   const [signUpOncHangeData, setSignUpOncHangeData] = useState({});
   const [loginOncHangeData, setLoginOncHangeData] = useState({});
   const nav = useNavigate();
@@ -74,16 +78,19 @@ export default function LoginSignup({ isLoggedIn, setIsLoggedIn }) {
   // <<<<   Submit SIGN-UP handler   >>>>>
   const SubmitSignUpForm = (e) => {
     e.preventDefault();
+    // let formdata = new FormData();
+    // formdata.append("CustomerId", cusId);
+    // formdata.append("CustomerName", accountOnChangeData.CustomerName);
+    // axios
+    // .post(`${apiUrl}/api/Customer/AddUpdateCustomer`, formdata)
+
     const signupFormData = new FormData();
     for (let key in signUpOncHangeData) {
       signupFormData.append(key, signUpOncHangeData[key]);
+      // console.log(key, signUpOncHangeData[key]);
     }
-    axios({
-      method: "post",
-      url: `${apiUrl}/api/Customer/AddUpdateCustomer`,
-      data: signupFormData,
-      headers: { "Content-Type": "multipart/form-data" },
-    })
+    axios
+      .post(`${apiUrl}/api/Customer/AddUpdateCustomer`, signupFormData)
       .then((response) => {
         if (response.status !== 200)
           throw new Error(
@@ -97,14 +104,17 @@ export default function LoginSignup({ isLoggedIn, setIsLoggedIn }) {
         localStorage.setItem("email", res.email);
         localStorage.setItem("mobile", res.mobile);
         localStorage.setItem("favRoomsId", []);
+        localStorage.setItem("ImagePath", "");
         setIsLoggedIn(true);
+        setAuthToken(res.token);
         nav("/");
+
         console.log("Successfully Logged In!");
       })
       .catch((err) => {
         console.log("error: ", err);
       });
-    // console.log(signUpOncHangeData);
+    console.log(signUpOncHangeData);
   };
   const LoginOnChange = (e) => {
     let obj = loginOncHangeData;
@@ -218,7 +228,11 @@ export default function LoginSignup({ isLoggedIn, setIsLoggedIn }) {
                 className="ml-1 mt-1 fs-3 "
               >
                 Already have an account?{" "}
-                <a className="auth-ghost" id="signIn" style={{ color: "blue" }}>
+                <a
+                  className="auth-ghost"
+                  id="signIn"
+                  style={{ color: "blue", cursor: "pointer" }}
+                >
                   <u>LogIn</u>
                 </a>
               </h5>
@@ -279,11 +293,11 @@ export default function LoginSignup({ isLoggedIn, setIsLoggedIn }) {
                   style={{ fontWeight: "bold", font: "200px" }}
                   className="ml-1 mt-4 fs-3 "
                 >
-                  New to here!{" "}
+                  New here?{" "}
                   <a
                     className="auth-ghost"
                     id="signUp"
-                    style={{ color: "blue" }}
+                    style={{ color: "blue", cursor: "pointer" }}
                   >
                     <u>Sign Up</u>
                   </a>

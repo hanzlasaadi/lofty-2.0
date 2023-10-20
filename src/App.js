@@ -111,6 +111,7 @@ function App() {
             <LoginSignup
               isLoggedIn={isLoggedIn}
               setIsLoggedIn={setIsLoggedIn}
+              setAuthToken={setAuthToken}
             />
           }
         />
