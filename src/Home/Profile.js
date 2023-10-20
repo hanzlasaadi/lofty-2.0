@@ -3,6 +3,7 @@ import "./HomeCss/profile.css";
 import NavBar from "../nav-bar/NavBar";
 import axios from "axios";
 import { apiUrl } from "../assets/utils/env";
+import { Link } from "react-router-dom";
 // import { dummyWalletData } from "../assets/utils/dummyData";
 
 const Profile = ({ isLoggedIn, setIsLoggedIn, authToken }) => {
@@ -164,9 +165,11 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, authToken }) => {
             />
           </div>
           <div className="error-k text-center mt-4">
-            <a href="" className="btn btn-primary w-50">
-              ADD
-            </a>
+            <Link to={"/add"}>
+              <a href className="btn btn-primary w-50">
+                ADD
+              </a>
+            </Link>
           </div>
         </div>
       </div>

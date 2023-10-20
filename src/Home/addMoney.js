@@ -1,8 +1,10 @@
 import React from "react";
 import "./HomeCss/addMoney.css";
+import NavBar from "../nav-bar/NavBar";
 const AddMoney = ({ isLoggedIn, setIsLoggedIn, authToken }) => {
   return (
     <>
+      <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <h2
         className="text-white rounded pt-3 pb-3"
         style={{ backgroundColor: "#272a61" }}
