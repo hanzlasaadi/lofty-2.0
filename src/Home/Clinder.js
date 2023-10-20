@@ -12,9 +12,27 @@ import { Link, useParams } from "react-router-dom";
 const Clinder = ({
   isLoggedIn,
   setIsLoggedIn,
+  laterDatePickerState,
+  setLaterDatePickerState,
   datePickerState,
-  setDatePickerState,
 }) => {
+  React.useEffect(() => {
+    setLaterDatePickerState([
+      {
+        startDate: new Date(
+          datePickerState.from.year,
+          datePickerState.from.month,
+          datePickerState.from.day
+        ),
+        endDate: new Date(
+          datePickerState.to.year,
+          datePickerState.to.month,
+          datePickerState.to.day
+        ),
+        key: "selection",
+      },
+    ]);
+  }, []);
   const { roomId } = useParams();
   return (
     <>
@@ -41,11 +59,11 @@ const Clinder = ({
                 placeholder="&#xf133;  Check-In"
               /> */}
               <DateRangePicker
-                onChange={(item) => setDatePickerState([item.selection])}
+                onChange={(item) => setLaterDatePickerState([item.selection])}
                 showSelectionPreview={true}
                 moveRangeOnFirstSelection={false}
                 months={2}
-                ranges={datePickerState}
+                ranges={laterDatePickerState}
                 direction="horizontal"
               />
             </div>

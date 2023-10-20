@@ -89,7 +89,7 @@ const Conformbook = ({
 
           <div className="center-content ">
             <p>
-              <h1 clas>BOOKING REQUEST</h1>
+              <h1>BOOKING REQUEST</h1>
             </p>
           </div>
           <div className="center-content">
