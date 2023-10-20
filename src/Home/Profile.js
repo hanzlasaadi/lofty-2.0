@@ -14,6 +14,30 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, authToken, setAuthToken }) => {
   const [paymentHistory, setPaymentHistory] = React.useState([]);
   const [depositHistory, setDepositHistory] = React.useState([]);
 
+  // Help & Support
+  const [supportMessage, setSupportMessage] = React.useState("");
+
+  const handleSubmitSupportMessage = (e) => {
+    e.preventDefault();
+    console.log(supportMessage);
+    axios
+      .request({
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+        method: "POST",
+        url: `${apiUrl}/api/Customer/AddCustomerHelpSupport?Message=${supportMessage}`,
+      })
+      .then((res) => {
+        if (res.data.result === "success") {
+          setSupportMessage("");
+        }
+      })
+      .catch((err) => {
+        console.log("errorSubmittingSupportData: ", err);
+      });
+  };
+
   // Change Account Settings
   const [accountOnChangeData, setAccountOnChangeData] = React.useState({});
   const [customerName, setCustomerName] = React.useState(
@@ -666,8 +690,7 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, authToken, setAuthToken }) => {
                   >
                     <div className="cardStyle">
                       <form
-                        action=""
-                        method="post"
+                        onSubmit={(e) => handleSubmitSupportMessage(e)}
                         name="signupForm"
                         id="signupForm"
                       >
@@ -675,14 +698,16 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, authToken, setAuthToken }) => {
 
                         <h2 className="formTitle s">HELP & SUPPORT</h2>
                         <div className="inputDiv">
-                          <label className="inputLabel o" for="password">
+                          <label className="inputLabel o" for="supportMsg">
                             How can we help?
                           </label>
                           <textarea
                             className=""
                             placeholder="Write here..."
-                            id="exampleFormControlTextarea1"
+                            id="supportMsg"
                             rows="6"
+                            value={supportMessage}
+                            onChange={(e) => setSupportMessage(e.target.value)}
                           ></textarea>
                         </div>
 
@@ -690,12 +715,12 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, authToken, setAuthToken }) => {
                           <button
                             type="submit"
                             id="submitButton"
-                            onclick="validateSignupForm()"
+                            onclick={(e) => handleSubmitSupportMessage(e)}
                             className="submitButton pure-button pure rounded-pill "
                             style={{ backgroundColor: "#272a61" }}
                           >
                             <span>submit</span>
-                            <span id="loader"></span>
+                            {/* <span id="loader"></span> */}
                           </button>
                         </div>
                       </form>
