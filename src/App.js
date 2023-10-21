@@ -157,7 +157,7 @@ function App() {
           }
         />
         <Route
-          path="/add/:refNumber"
+          path="/add/:refNumber/:bankCode/:key"
           element={
             <AddMoney
               isLoggedIn={isLoggedIn}

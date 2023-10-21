@@ -30,9 +30,10 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, authToken, setAuthToken }) => {
       })
       .then((res) => {
         console.log(res.data);
+        const data = res.data.data;
         setAddingAmount(false);
-        refNumber = res.data.data.referenceNumber;
-        nav(`/add/${refNumber}`);
+        refNumber = data.referenceNumber;
+        nav(`/add/${refNumber}/${data.bankAccountCode}/${data.x_API_KEY}`);
       })
       .catch((err) => {
         console.log("errorAddingAmount: ", err);

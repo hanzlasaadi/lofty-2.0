@@ -3,12 +3,40 @@ import "./HomeCss/addMoney.css";
 import NavBar from "../nav-bar/NavBar";
 import { useParams } from "react-router-dom";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import axios from "axios";
+import { apiUrl } from "../assets/utils/env";
 
 const AddMoney = ({ isLoggedIn, setIsLoggedIn, authToken }) => {
-  const { refNumber } = useParams();
+  const { refNumber, bankCode, key } = useParams();
   const [copied, setCopied] = React.useState(false);
+  const cusId = localStorage.getItem("customerId");
 
   console.log(refNumber, "ref");
+
+  const handleVerify = () => {
+    // console.log(bankCode);
+    // console.log(key);
+    const obj = {
+      ReferenceNumber: Number(refNumber),
+      X_API_KEY: key,
+      BankAccountCode: Number(bankCode),
+      CustomerID: Number(cusId),
+    };
+    axios
+      .post(`${apiUrl}/api/Customer/CheckStatusPaidorNot`, obj)
+      .then((res) => {
+        if (res.data.result === "error")
+          throw new Error("Could'nt Verify your payment!");
+        alert("Successfully Verified your Payment!");
+      })
+      .catch((err) => {
+        console.log("errorVerifyingData: ", err);
+        alert(
+          "We could'nt verify your payment, please try again in the Mobile App!"
+        );
+      });
+  };
+
   return (
     <>
       <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
@@ -73,7 +101,12 @@ const AddMoney = ({ isLoggedIn, setIsLoggedIn, authToken }) => {
       </div>
 
       <div className="error-k text-center mt-4 W-75">
-        <a href type="button" className="btn btn-primary btn-lg">
+        <a
+          href
+          type="button"
+          className="btn btn-primary btn-lg"
+          onClick={handleVerify}
+        >
           VERIFY
         </a>
       </div>
