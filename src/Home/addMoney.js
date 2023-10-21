@@ -2,8 +2,12 @@ import React from "react";
 import "./HomeCss/addMoney.css";
 import NavBar from "../nav-bar/NavBar";
 import { useParams } from "react-router-dom";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+
 const AddMoney = ({ isLoggedIn, setIsLoggedIn, authToken }) => {
   const { refNumber } = useParams();
+  const [copied, setCopied] = React.useState(false);
+
   console.log(refNumber, "ref");
   return (
     <>
@@ -28,15 +32,35 @@ const AddMoney = ({ isLoggedIn, setIsLoggedIn, authToken }) => {
       </div>
 
       <div className="error-k text-center mt-4">
-        <a href type="button" className="btn btn-primary btn-lg">
-          Copy code
-        </a>
+        {/* <a
+          href
+          type="button"
+          className="btn btn-primary btn-lg"
+          onClick={async (e) => {
+            e.preventDefault();
+            try {
+              // await navigator.clipboard.writeText(`${refNumber}`);
+              navigator.clipboard.writeText(this.state.refNum);
+              // setCopied(true);
+            } catch (error) {
+              // setCopied(false);
+              console.log(error, "error copying refNum");
+            }
+          }}
+        >
+          {copied ? "Copied" : "Copy code"}
+        </a> */}
+        <CopyToClipboard text={refNumber} onCopy={() => setCopied(true)}>
+          <a href type="button" className="btn btn-primary btn-lg">
+            {copied ? "Copied!" : "Copy code"}
+          </a>
+        </CopyToClipboard>
       </div>
       <div className="d-flex justify-content-center align-items-center mt-5 ">
-        <p className="fs-4">
+        <p className="fs-4" style={{ textAlign: "center" }}>
           copy above code and pay through any of
           <br />
-          &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; following banks, and verify
+          following banks, and verify
         </p>
       </div>
 
