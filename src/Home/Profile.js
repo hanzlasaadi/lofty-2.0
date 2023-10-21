@@ -14,7 +14,31 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, authToken, setAuthToken }) => {
   const [paymentHistory, setPaymentHistory] = React.useState([]);
   const [depositHistory, setDepositHistory] = React.useState([]);
   const [amountToAdd, setAmountToAdd] = React.useState(0);
+  const [addingAmount, setAddingAmount] = React.useState(false);
+  let refNumber;
   const nav = useNavigate();
+
+  // Add Amount
+  const handleAddAmount = (e) => {
+    setAddingAmount(true);
+    e.preventDefault();
+    console.log("something happened");
+    axios
+      .post(`${apiUrl}/api/Customer/AddAmountinCustomerWallet`, {
+        CustomerId: cusId,
+        Amount: amountToAdd,
+      })
+      .then((res) => {
+        console.log(res.data);
+        setAddingAmount(false);
+        refNumber = res.data.data.referenceNumber;
+        nav(`/add/${refNumber}`);
+      })
+      .catch((err) => {
+        console.log("errorAddingAmount: ", err);
+        setAddingAmount(false);
+      });
+  };
 
   // Help & Support
   const [supportMessage, setSupportMessage] = React.useState("");
@@ -278,11 +302,17 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, authToken, setAuthToken }) => {
             </div>
           </div>
           <div className="error-k text-center mt-4">
-            <Link to={`/add/${amountToAdd}`}>
-              <a href className="btn btn-primary w-50">
-                ADD
-              </a>
-            </Link>
+            {/* <Link to={`/add/${amountToAdd}`}> */}
+            <a href className="btn btn-primary w-50" onClick={handleAddAmount}>
+              {addingAmount ? (
+                <>
+                  <span id="loader"></span>&nbsp;
+                </>
+              ) : (
+                "ADD"
+              )}
+            </a>
+            {/* </Link> */}
           </div>
         </div>
       </div>

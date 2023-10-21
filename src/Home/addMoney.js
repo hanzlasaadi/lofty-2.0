@@ -3,7 +3,8 @@ import "./HomeCss/addMoney.css";
 import NavBar from "../nav-bar/NavBar";
 import { useParams } from "react-router-dom";
 const AddMoney = ({ isLoggedIn, setIsLoggedIn, authToken }) => {
-  const { amountToAdd } = useParams();
+  const { refNumber } = useParams();
+  console.log(refNumber, "ref");
   return (
     <>
       <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
@@ -22,7 +23,7 @@ const AddMoney = ({ isLoggedIn, setIsLoggedIn, authToken }) => {
 
       <div className="content-center">
         <p className="fs-4">
-          Voucher code: <span>1000000393949448</span>
+          Voucher code: <span>{refNumber}</span>
         </p>
       </div>
 
