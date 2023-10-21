@@ -1,0 +1,65 @@
+.footer {
+  background: #fff5ed;
+  /* padding: 50px 80px; */
+  color: #001d23;
+}
+.footer-sec1 {
+  padding-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid hsla(0, 0%, 100%, 0.5);
+}
+.footer-sec1 .last-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 30px;
+}
+.footer-sec1 .third-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 30px;
+  width: 30%;
+}
+.footer-sec1 .first-div {
+  border: none;
+  padding-bottom: 30px;
+  display: flex;
+}
+.footer-sec1 .second-div {
+  border: none;
+  padding-bottom: 30px;
+  display: flex;
+  width: 30%;
+}
+
+.footer-sec1 p {
+  font-weight: bold;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  /* identical to box height */
+
+  /* Neutral white */
+
+  color: #001d23;
+}
+.footer-sec1 .last-div button {
+  width: 173px;
+  height: 48px;
+  /* background: #ffffff; */
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+}
+.footer-sec1 .last-div button i {
+  margin-right: 8px;
+}
+.footer-sec1 div > * {
+  margin-right: 15px;
+  object-fit: contain;
+}
