@@ -210,6 +210,12 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, authToken, setAuthToken }) => {
       });
   };
 
+  const handleSignout = () => {
+    localStorage.clear();
+    nav("/");
+    nav(0);
+  };
+
   return (
     <>
       <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}></NavBar>
@@ -397,12 +403,29 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, authToken, setAuthToken }) => {
                   {/* &nbsp;&nbsp;&nbsp;&nbsp; */}
                   {/* <i className="bi bi-chevron-right"></i> */}
                 </button>
-                {/* <hr className="co" /> */}
+                <button
+                  className="nav-link fs-3 text-white"
+                  id="v-pills-messages-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#v-pills-messages"
+                  type="button"
+                  role="tab"
+                  aria-controls="v-pills-messages"
+                  aria-selected="false"
+                  style={{ textAlign: "left" }}
+                  onClick={handleSignout}
+                >
+                  <i className="bi bi-box-arrow-right mr-3"></i>
+                  Signout
+                  {/* &nbsp;&nbsp;&nbsp;&nbsp; */}
+                  {/* <i className="bi bi-chevron-right"></i> */}
+                </button>
                 <a
                   className="nav-link fs-3 text-danger text-center mt-3"
                   type="button"
                   href="#popup1"
                 >
+                  <i className="bi bi-trash mr-3"></i>
                   Delete Account
                 </a>
                 {/* <button
