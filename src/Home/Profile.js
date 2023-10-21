@@ -132,7 +132,7 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, authToken, setAuthToken }) => {
             Authorization: `Bearer ${authToken}`,
           },
           method: "GET",
-          // url: `${apiUrl}/api/Customer/GetWalletTotalAmount?CustomerId=${cusId}`,
+          url: `${apiUrl}/api/Customer/GetWalletTotalAmount?CustomerId=${cusId}`,
         })
         .then((res) => {
           console.log(res.data);
@@ -148,7 +148,7 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, authToken, setAuthToken }) => {
             Authorization: `Bearer ${authToken}`,
           },
           method: "GET",
-          // url: `${apiUrl}/api/Customer/CustomerPayitAmountStatus`,
+          url: `${apiUrl}/api/Customer/CustomerPayitAmountStatus`,
         })
         .then((res) => {
           console.log(res.data);
