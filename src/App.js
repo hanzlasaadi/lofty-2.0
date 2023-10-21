@@ -157,7 +157,7 @@ function App() {
           }
         />
         <Route
-          path="/add"
+          path="/add/:amountToAdd"
           element={
             <AddMoney
               isLoggedIn={isLoggedIn}

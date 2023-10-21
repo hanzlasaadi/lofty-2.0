@@ -1,7 +1,9 @@
 import React from "react";
 import "./HomeCss/addMoney.css";
 import NavBar from "../nav-bar/NavBar";
+import { useParams } from "react-router-dom";
 const AddMoney = ({ isLoggedIn, setIsLoggedIn, authToken }) => {
+  const { amountToAdd } = useParams();
   return (
     <>
       <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />

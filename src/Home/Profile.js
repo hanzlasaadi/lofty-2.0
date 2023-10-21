@@ -13,6 +13,7 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, authToken, setAuthToken }) => {
   const [walletAmount, setWalletAmount] = React.useState(0.0);
   const [paymentHistory, setPaymentHistory] = React.useState([]);
   const [depositHistory, setDepositHistory] = React.useState([]);
+  const [amountToAdd, setAmountToAdd] = React.useState(0);
   const nav = useNavigate();
 
   // Help & Support
@@ -106,7 +107,7 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, authToken, setAuthToken }) => {
             Authorization: `Bearer ${authToken}`,
           },
           method: "GET",
-          url: `${apiUrl}/api/Customer/GetWalletTotalAmount?CustomerId=${cusId}`,
+          // url: `${apiUrl}/api/Customer/GetWalletTotalAmount?CustomerId=${cusId}`,
         })
         .then((res) => {
           console.log(res.data);
@@ -122,7 +123,7 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, authToken, setAuthToken }) => {
             Authorization: `Bearer ${authToken}`,
           },
           method: "GET",
-          url: `${apiUrl}/api/Customer/CustomerPayitAmountStatus`,
+          // url: `${apiUrl}/api/Customer/CustomerPayitAmountStatus`,
         })
         .then((res) => {
           console.log(res.data);
@@ -240,16 +241,44 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, authToken, setAuthToken }) => {
           </div>
           <div className="inputDiv">
             <input
-              type="password"
-              id="password"
+              type="number"
+              id="amount"
               className="rounded"
               placeholder="Enter your amount"
-              name="password"
+              name="amount"
+              value={amountToAdd}
+              onChange={(e) => setAmountToAdd(e.target.value)}
               required
             />
+            <div className="mt-2 d-flex flex-nowrap justify-content-evenly">
+              <button
+                className="border rounded"
+                onClick={(e) => setAmountToAdd(Number(e.target.textContent))}
+              >
+                1000
+              </button>
+              <button
+                className="border rounded"
+                onClick={(e) => setAmountToAdd(Number(e.target.textContent))}
+              >
+                2000
+              </button>
+              <button
+                className="border rounded"
+                onClick={(e) => setAmountToAdd(Number(e.target.textContent))}
+              >
+                5000
+              </button>
+              <button
+                className="border rounded"
+                onClick={(e) => setAmountToAdd(Number(e.target.textContent))}
+              >
+                10000
+              </button>
+            </div>
           </div>
           <div className="error-k text-center mt-4">
-            <Link to={"/add"}>
+            <Link to={`/add/${amountToAdd}`}>
               <a href className="btn btn-primary w-50">
                 ADD
               </a>
